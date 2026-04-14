@@ -4,7 +4,7 @@ using System.Text;
 
 namespace StellarMinds.Entities
 {
-    internal class Usuario
+    public class Usuario
     {
     }
 }
