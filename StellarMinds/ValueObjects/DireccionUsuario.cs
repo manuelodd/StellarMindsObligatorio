@@ -22,11 +22,11 @@ namespace StellarMinds.ValueObjects
         public void Validar() 
             {
             if (string.IsNullOrEmpty(Pais))
-                throw new InvalidDirectionException("País no puede ser vacío");
+                throw new Exception("País no puede ser vacío");
             if (string.IsNullOrEmpty(Ciudad))
-                throw new InvalidDirectionException("Ciudad no puede ser vacía");
+                throw new Exception("Ciudad no puede ser vacía");
             if (string.IsNullOrEmpty(Calle))
-                throw new InvalidDirectionException("Calle no puede ser vacía");
+                throw new Exception("Calle no puede ser vacía");
         }
     }
 }
