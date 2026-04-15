@@ -13,9 +13,9 @@ namespace StellarMinds.Entities
         public DireccionUsuario Direccion { get; set; }
         public string Telefono { get; set; }
         public string Email { get; set; }
-        public string NombreUsuario { get; set; }
+        public string Username { get; set; }
         public string Password { get; set; }
-        public Enum Rol { get; set; }
+        public RolUsuario Rol { get; set; }
 
 
         public void Validar()

@@ -1,17 +1,14 @@
-﻿using System;
+﻿using StellarMinds.Enums;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace StellarMinds.Entities
 {
-    public class Montura
+    public class Montura : Equipo
     {
-        public int Id { get; set; }
-        public string Marca { get; set; }
-        public string Modelo { get; set; }
-        public int CantidadDisp {  get; set; }
-        public Enum Tipo { get; set; }
+        public TipoMontura Tipo { get; set; }
         public decimal CargaKG { get; set; }
-        public bool EsComputarizado { get; set; }
+        public bool GoTo { get; set; }
     }
 }
