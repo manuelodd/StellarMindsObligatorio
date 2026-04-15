@@ -4,7 +4,9 @@ using System.Text;
 
 namespace StellarMinds.Entities
 {
-    internal class Observaciones
+    public class Observacion
     {
+        public int Id { get; set; }
+        public DateTime Fecha { get; set; }
     }
 }
