@@ -13,7 +13,7 @@ namespace LogicaAccesoDatos
             _usuarios = new List<Usuario>();
         }
 
-        public void AgregarUsuario(Usuario unUsuario) 
+        public void AltaUsuario(Usuario unUsuario) 
         {
             try
             {
