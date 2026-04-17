@@ -1,10 +1,11 @@
 ﻿using LogicaAccesoDatos;
 using StellarMinds.Entities;
 
-namespace LogicaAplicacion
+namespace LogicaAplicacion.CasosDeUso.UsuarioCU
 {
     public class AltaUsuarioCU
     {
+
         private RepositorioUsuario repositorio;
 
 
