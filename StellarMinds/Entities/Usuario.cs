@@ -5,6 +5,7 @@ using StellarMinds.ValueObjects;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Dominio.Exceptions;
 
 namespace StellarMinds.Entities
 {
@@ -34,7 +35,9 @@ namespace StellarMinds.Entities
 
         public void Validar()
         {
-            //ToDo
+            // ToDo, solo para poner algo y poner debuggear
+            if (string.IsNullOrEmpty(Email))
+                throw new InvalidUser("Email no puede ser vacío");
         }
     }
 
