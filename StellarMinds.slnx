@@ -1,6 +1,5 @@
 <Solution>
   <Project Path="DTOs/DTOs.csproj" Id="29e5df61-374c-4d69-bc99-39c6c1b56d25" />
-  <Project Path="Exceptions/Exceptions.csproj" Id="6f6286a8-386d-45ed-bc6b-a928b6d227be" />
   <Project Path="LogicaAccesoDatos/LogicaAccesoDatos.csproj" Id="0f2f4277-447f-496c-9445-98389c46d54f" />
   <Project Path="LogicaAplicacion/LogicaAplicacion.csproj" Id="f79e5c84-7e7a-44a6-bfe1-5e86cf6a7f9f" />
   <Project Path="StellarMinds/Dominio.csproj" />
