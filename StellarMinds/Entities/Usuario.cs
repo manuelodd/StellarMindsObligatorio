@@ -12,6 +12,8 @@ namespace StellarMinds.Entities
     public class Usuario : IValidable
     {
 
+        private static int _id = 0;
+        public int Id { get; set; }
         public UsuarioNombreCompleto NombreCompleto { get; set; }
         public string Telefono { get; set; }
         public string Email { get; set; }
@@ -24,6 +26,7 @@ namespace StellarMinds.Entities
 
         public Usuario(string nombre, string apellido, string telefono, string email, string username, string password, RolUsuario rol, string pais, string ciudad, string calle)
         {
+            Id = _id++;
             NombreCompleto = new UsuarioNombreCompleto(nombre, apellido);
             Telefono = telefono;
             Email = email;

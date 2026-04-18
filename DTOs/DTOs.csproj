@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\StellarMinds\Dominio.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Mappers\" />
   </ItemGroup>
 

@@ -1,5 +1,7 @@
 ﻿using Dominio.Exceptions;
 using StellarMinds.Entities;
+using StellarMinds.Enums;
+using System.Runtime.InteropServices.Marshalling;
 
 namespace LogicaAccesoDatos.RepositorioMemoria
 {
@@ -28,5 +30,6 @@ namespace LogicaAccesoDatos.RepositorioMemoria
                 
             }
         }
+
     }
 }

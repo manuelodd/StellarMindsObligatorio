@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using LogicaAccesoDatos.RepositorioMemoria;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace StellarMindsWebAPP.Controllers
@@ -6,6 +7,7 @@ namespace StellarMindsWebAPP.Controllers
     public class UsuarioController : Controller
     {
         // GET: UsuarioController1
+        
         public ActionResult Index()
         {
             return View();
