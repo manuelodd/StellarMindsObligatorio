@@ -1,3 +1,6 @@
+using Dominio.InterfacesRepositorio;
+
+
 namespace StellarMindsWebAPP
 {
     public class Program
@@ -8,6 +11,7 @@ namespace StellarMindsWebAPP
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddScoped<IRepositorioUsuario, RepositorioUsuario>();
 
             var app = builder.Build();
 

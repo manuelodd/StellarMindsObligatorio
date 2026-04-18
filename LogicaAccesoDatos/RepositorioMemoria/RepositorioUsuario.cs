@@ -1,11 +1,12 @@
 ﻿using Dominio.Exceptions;
+using Dominio.InterfacesRepositorio;
 using StellarMinds.Entities;
 using StellarMinds.Enums;
 using System.Runtime.InteropServices.Marshalling;
 
 namespace LogicaAccesoDatos.RepositorioMemoria
 {
-    public class RepositorioUsuario
+    public class RepositorioUsuario : IRepositorioUsuario
     {
 
         // el "almacen" de _usuarios que teniamos en sistema ahora esta en su correspondiente repositorio"

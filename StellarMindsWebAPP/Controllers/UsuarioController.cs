@@ -1,4 +1,6 @@
-﻿using LogicaAccesoDatos.RepositorioMemoria;
+﻿using Dominio.InterfacesRepositorio;
+using LogicaAccesoDatos.RepositorioMemoria;
+using LogicaAplicacion.CasosDeUso.CUUsuario;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -6,8 +8,24 @@ namespace StellarMindsWebAPP.Controllers
 {
     public class UsuarioController : Controller
     {
+
+
+        private AltaUsuarioCU altaU;
+
+        private IRepositorioUsuario repo;
+
+
+        public UsuarioController(IRepositorioUsuario repo)
+        {
+            this.altaU = new AltaUsuarioCU(repo);
+            this.repo = repo;
+        }
+
+
+
+
         // GET: UsuarioController1
-        
+
         public ActionResult Index()
         {
             return View();

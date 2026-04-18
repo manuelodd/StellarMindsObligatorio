@@ -1,17 +1,19 @@
-﻿using LogicaAccesoDatos.RepositorioMemoria;
+﻿using Dominio.InterfacesRepositorio;
+using LogicaAccesoDatos.RepositorioMemoria;
 using StellarMinds.Entities;
 
 namespace LogicaAplicacion.CasosDeUso.CUUsuario
 {
     public class AltaUsuarioCU
     {
-
-        private RepositorioUsuario repositorio;
+        // en vez de depender de un RepositorioUsuario, esperamos un objeto de tipo interfaz,
+        // no queremos que dependa de la implementacion, queremos que dependa de la LN
+        private IRepositorioUsuario repositorio;
 
         // al instanciar un AltaUsuarioCU se crea una List<Usuario> _usuarios 
-        public AltaUsuarioCU()
+        public AltaUsuarioCU(IRepositorioUsuario repo)
         {
-            repositorio = new RepositorioUsuario();
+            repositorio = repo;
         }
 
 
