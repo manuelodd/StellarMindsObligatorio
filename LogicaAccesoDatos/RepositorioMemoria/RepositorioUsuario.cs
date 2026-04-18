@@ -1,7 +1,7 @@
 ﻿using Dominio.Exceptions;
 using StellarMinds.Entities;
 
-namespace LogicaAccesoDatos
+namespace LogicaAccesoDatos.RepositorioMemoria
 {
     public class RepositorioUsuario
     {
@@ -15,7 +15,7 @@ namespace LogicaAccesoDatos
             _usuarios = new List<Usuario>();
         }
 
-        // el alta se implementa acá
+        // el alta y se implementa acá
         public void AltaUsuario(Usuario unUsuario) 
         {
             try

@@ -1,7 +1,7 @@
-﻿using LogicaAccesoDatos;
+﻿using LogicaAccesoDatos.RepositorioMemoria;
 using StellarMinds.Entities;
 
-namespace LogicaAplicacion.CasosDeUso.UsuarioCU
+namespace LogicaAplicacion.CasosDeUso.CUUsuario
 {
     public class AltaUsuarioCU
     {
