@@ -25,5 +25,20 @@ namespace DTOs.Mappers
                 Calle = unUsuario.Direccion.Calle
             };
         }
+
+        public static Usuario FromDTO(UsuarioDTO dto)
+        {
+            return new Usuario
+            {
+                Id = dto.Id,
+                NombreCompleto = new Dominio.ValueObjects.UsuarioNombreCompleto(dto.Nombre, dto.Apellido),
+                Telefono = dto.Telefono,
+                Email = dto.Email,
+                Username = dto.Username,
+                Password = dto.Password,
+                Rol = dto.Rol,
+                Direccion = new StellarMinds.ValueObjects.UsuarioDireccion(dto.Pais, dto.Ciudad, dto.Calle)
+            };
+        }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Dominio.InterfacesRepositorio;
 using Dominio.ValueObjects;
-using DTOs.DTOS;
+using DTOs.DTOs;
+using DTOs.Mappers;
 using LogicaAccesoDatos.RepositorioMemoria;
 using LogicaAplicacion.InterfacesCasosDeUso;
 using StellarMinds.Entities;
@@ -35,17 +36,7 @@ namespace LogicaAplicacion.CasosDeUso.CUUsuario
 
         public void AltaUsuario(UsuarioDTO dto)
         {
-            Usuario unUsuario = new Usuario();
-            unUsuario.Id = dto.Id;
-            unUsuario.NombreCompleto = new UsuarioNombreCompleto(dto.Nombre, dto.Apellido);
-            unUsuario.Telefono = dto.Telefono;
-            unUsuario.Email = dto.Email;
-            unUsuario.Username = dto.Username;
-            unUsuario.Password = dto.Password;
-            unUsuario.Rol = dto.Rol;
-            unUsuario.Direccion = new UsuarioDireccion(dto.Pais, dto.Ciudad, dto.Calle);
-            // y acá el alta usuario de repositorio (RepositorioUsuario) lo agrega a _usuarios
-            repositorio.AltaUsuario(unUsuario);
+            repositorio.AltaUsuario(UsuarioDTOMapper.FromDTO(dto));
         }
     }
 }
