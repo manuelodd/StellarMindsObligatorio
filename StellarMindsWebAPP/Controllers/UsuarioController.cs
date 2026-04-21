@@ -1,5 +1,6 @@
 ﻿using Dominio.InterfacesRepositorio;
 using DTOs.DTOs;
+using DTOs.Mappers;
 using LogicaAccesoDatos.RepositorioMemoria;
 using LogicaAplicacion.CasosDeUso.CUUsuario;
 using LogicaAplicacion.InterfacesCasosDeUso;
@@ -44,13 +45,20 @@ namespace StellarMindsWebAPP.Controllers
         {
             return View();
         }
+        public ActionResult Create()
+        {
+            return View();
+        }
 
+
+        [HttpPost]
         // GET: UsuarioController1/Create
-        public ActionResult Create(UsuarioDTO unUsuario)
+        public ActionResult Create(UsuarioDTO dto)
         {
             try
             {
-                altaCU.AltaUsuario(unUsuario);
+
+                altaCU.AltaUsuario(dto);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -60,22 +68,6 @@ namespace StellarMindsWebAPP.Controllers
            
         }
 
-        // POST: UsuarioController1/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: UsuarioController1/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
