@@ -22,7 +22,7 @@ namespace StellarMinds.Entities
         public RolUsuario Rol { get; set; }
         public UsuarioDireccion Direccion { get; set; }
 
-
+        public Usuario() { }
 
         public Usuario(string nombre, string apellido, string telefono, string email, string username, string password, RolUsuario rol, string pais, string ciudad, string calle)
         {

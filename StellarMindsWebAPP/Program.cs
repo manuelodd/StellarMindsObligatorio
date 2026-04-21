@@ -1,5 +1,7 @@
 using Dominio.InterfacesRepositorio;
-
+using LogicaAccesoDatos.RepositorioMemoria;
+using LogicaAplicacion.CasosDeUso.CUUsuario;
+using LogicaAplicacion.InterfacesCasosDeUso;
 
 namespace StellarMindsWebAPP
 {
@@ -11,7 +13,13 @@ namespace StellarMindsWebAPP
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            // ini repos
             builder.Services.AddScoped<IRepositorioUsuario, RepositorioUsuario>();
+
+            //ini caos de uso
+            builder.Services.AddScoped<IAltaUsuario, AltaUsuarioCU>();
+
 
             var app = builder.Build();
 
