@@ -30,6 +30,12 @@ namespace LogicaAplicacion.CasosDeUso.CUUsuario
             }
             return aRetornar;
         }
+        /*
+        public IEnumerable<Usuario> FindAll()
+        {
+            return _usuarios;
+        }
+        */
     }
 }
 /*

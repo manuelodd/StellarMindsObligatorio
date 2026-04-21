@@ -19,7 +19,7 @@ namespace LogicaAccesoDatos.RepositorioMemoria
 
         // el alta y se implementa acá
 
-        public void AltaUsuario(Usuario unUsuario) 
+        public void Alta(Usuario unUsuario)
         {
             try
             {
@@ -28,13 +28,8 @@ namespace LogicaAccesoDatos.RepositorioMemoria
             }
             catch (InvalidUser ex)
             {
-                
-            }
-        }
 
-        public void Alta(Usuario aAgregar)
-        {
-            throw new NotImplementedException();
+            }
         }
 
         public IEnumerable<Usuario> FindAll()

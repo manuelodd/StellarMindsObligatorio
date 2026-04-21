@@ -19,6 +19,8 @@ namespace StellarMindsWebAPP
 
             //ini caos de uso
             builder.Services.AddScoped<IAltaUsuario, AltaUsuarioCU>();
+            builder.Services.AddScoped<IListarUsuarios, ListarUsuariosCU>();
+
 
 
             var app = builder.Build();

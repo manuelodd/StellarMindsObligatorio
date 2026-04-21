@@ -1,5 +1,5 @@
 ﻿<!-- IEnumerable<StellarMinds.Entities.Usuario>-->
-@model IEnumerable<DTOs.UsuarioDTO>
+@model IEnumerable<DTOs.DTOs.UsuarioDTO>
 
 @{
     ViewData["Title"] = "Index";
@@ -13,6 +13,12 @@
 <table class="table">
     <thead>
         <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Apellido)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Telefono)
             </th>
@@ -28,12 +34,27 @@
             <th>
                 @Html.DisplayNameFor(model => model.Rol)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pais)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Calle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ciudad)
+            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
+                                    <td>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </td>
+                        <td>
+                @Html.DisplayNameFor(model => model.Apellido)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Telefono)
             </td>
@@ -49,6 +70,15 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Rol)
             </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Pais)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ciudad)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Calle)
+                </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
                 @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |

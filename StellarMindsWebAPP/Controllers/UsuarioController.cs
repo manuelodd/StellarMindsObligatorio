@@ -15,8 +15,6 @@ namespace StellarMindsWebAPP.Controllers
         private IAltaUsuario altaCU;
         private IListarUsuarios findAllCU;
 
-        
-
         /*
         public UsuarioController(IRepositorioUsuario repo)
         {
@@ -28,7 +26,7 @@ namespace StellarMindsWebAPP.Controllers
         {
             this.altaCU = altau;
             this.findAllCU = findAllCu;
-            ;
+            
         }
 
 
@@ -59,7 +57,7 @@ namespace StellarMindsWebAPP.Controllers
             {
                 return View();
             }
-            return View();
+           
         }
 
         // POST: UsuarioController1/Create

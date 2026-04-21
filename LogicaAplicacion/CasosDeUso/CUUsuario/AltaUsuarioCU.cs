@@ -36,7 +36,7 @@ namespace LogicaAplicacion.CasosDeUso.CUUsuario
 
         public void AltaUsuario(UsuarioDTO dto)
         {
-            repositorio.AltaUsuario(UsuarioDTOMapper.FromDTO(dto));
+            repositorio.Alta(UsuarioDTOMapper.FromDTO(dto));
         }
     }
 }
