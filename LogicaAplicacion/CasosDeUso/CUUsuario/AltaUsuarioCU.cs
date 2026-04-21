@@ -1,6 +1,6 @@
 ﻿using Dominio.InterfacesRepositorio;
 using Dominio.ValueObjects;
-using DTOs;
+using DTOs.DTOS;
 using LogicaAccesoDatos.RepositorioMemoria;
 using LogicaAplicacion.InterfacesCasosDeUso;
 using StellarMinds.Entities;

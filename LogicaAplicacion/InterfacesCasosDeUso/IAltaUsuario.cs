@@ -1,4 +1,4 @@
-﻿using DTOs;
+﻿using DTOs.DTOs;
 using StellarMinds.Entities;
 using System;
 using System.Collections.Generic;

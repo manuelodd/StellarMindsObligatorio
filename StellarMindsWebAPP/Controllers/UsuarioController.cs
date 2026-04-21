@@ -1,5 +1,5 @@
 ﻿using Dominio.InterfacesRepositorio;
-using DTOs;
+using DTOs.DTOs;
 using LogicaAccesoDatos.RepositorioMemoria;
 using LogicaAplicacion.CasosDeUso.CUUsuario;
 using LogicaAplicacion.InterfacesCasosDeUso;
@@ -38,7 +38,7 @@ namespace StellarMindsWebAPP.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            return View(findAllCU.ListarUsuarios());
         }
 
         // GET: UsuarioController1/Details/5
@@ -50,6 +50,15 @@ namespace StellarMindsWebAPP.Controllers
         // GET: UsuarioController1/Create
         public ActionResult Create(UsuarioDTO unUsuario)
         {
+            try
+            {
+                altaCU.AltaUsuario(unUsuario);
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
             return View();
         }
 

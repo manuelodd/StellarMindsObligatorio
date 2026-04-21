@@ -1,5 +1,4 @@
 ﻿using Dominio.InterfacesRepositorio;
-using DTOs;
 using LogicaAplicacion.InterfacesCasosDeUso;
 using LogicaAccesoDatos.RepositorioMemoria;
 using System;
@@ -7,6 +6,8 @@ using System.Collections.Generic;
 using System.Text;
 using StellarMinds.Entities;
 using System.Runtime.Versioning;
+using DTOs.DTOs;
+using DTOs.Mappers;
 
 namespace LogicaAplicacion.CasosDeUso.CUUsuario
 {
@@ -25,15 +26,7 @@ namespace LogicaAplicacion.CasosDeUso.CUUsuario
             List<UsuarioDTO> aRetornar = new List<UsuarioDTO>();
             foreach(Usuario unUsuario in repositorio.FindAll())
             {
-                UsuarioDTO dto = new UsuarioDTO();
-                dto.Nombre = unUsuario.NombreCompleto.Nombre;
-                dto.Apellido = unUsuario.NombreCompleto.Apellido;
-                dto.Telefono = unUsuario.Telefono;
-                dto.Email = unUsuario.Email;
-                dto.Username = unUsuario.Username;
-                dto.Password = unUsuario.Password;
-                dto.Rol = unUsuario.Rol;
-                aRetornar.Add(dto);
+                aRetornar.Add(UsuarioDTOMapper.ToDto(unUsuario));
             }
             return aRetornar;
         }
