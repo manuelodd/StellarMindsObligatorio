@@ -12,7 +12,8 @@ namespace StellarMindsWebAPP.Controllers
     {
 
 
-        private IAltaUsuario altaU;
+        private IAltaUsuario altaCU;
+        private IListarUsuarios findAllCU;
 
         
 
@@ -23,9 +24,10 @@ namespace StellarMindsWebAPP.Controllers
             this.repo = repo;
         }
         */
-        public UsuarioController(IAltaUsuario altau)
+        public UsuarioController(IAltaUsuario altau, IListarUsuarios findAllCu)
         {
-            this.altaU = altau;
+            this.altaCU = altau;
+            this.findAllCU = findAllCu;
             ;
         }
 
