@@ -1,10 +1,11 @@
-﻿using System;
+﻿using StellarMinds.InterfacesDominio;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace StellarMinds.Entities
 {
-    public class Equipo
+    public class Equipo : IValidable
     {
         private static int _id = 0;
 
@@ -13,9 +14,14 @@ namespace StellarMinds.Entities
         {
             Id = _id++;
         }
-        public int Id { get; set; }
+        public int Id { get; }
         public string Marca { get; set; }
         public string Modelo { get; set; }
         public int CantDisp {  get; set; }
+
+        public void Validar()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
