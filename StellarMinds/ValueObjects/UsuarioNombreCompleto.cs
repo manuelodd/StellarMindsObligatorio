@@ -3,9 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Dominio.Exceptions;
+using Microsoft.EntityFrameworkCore;
 
 namespace Dominio.ValueObjects
 {
+    [Owned]
     public class UsuarioNombreCompleto : IValidable 
     
     {

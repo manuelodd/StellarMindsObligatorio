@@ -1,4 +1,5 @@
 ﻿using Dominio.Exceptions;
+using Microsoft.EntityFrameworkCore;
 using StellarMinds.InterfacesDominio;
 using System;
 using System.Collections.Generic;
@@ -6,6 +7,8 @@ using System.Text;
 
 namespace StellarMinds.ValueObjects
 {
+    //el owned indica al entity framework que la entidad es debil y que no cree una tabla en la db
+    [Owned]
     public class UsuarioDireccion : IValidable
     {
 
