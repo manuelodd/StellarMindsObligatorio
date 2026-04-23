@@ -19,7 +19,9 @@ namespace StellarMindsWebAPP
 
             //cambio RepositorioUsuario a RepositorioUsuarioEF para utilizar la base de datos
 
-            builder.Services.AddScoped<IRepositorioUsuario, RepositorioUsuarioEF>();
+
+            // PROBANDO SIN EF - - -  -  - - > Cambiar RepositorioUsuario a RepositorioUsuarioEF despues
+            builder.Services.AddScoped<IRepositorioUsuario, RepositorioUsuario>();
 
             //ini caos de uso
             builder.Services.AddScoped<IAltaUsuario, AltaUsuarioCU>();

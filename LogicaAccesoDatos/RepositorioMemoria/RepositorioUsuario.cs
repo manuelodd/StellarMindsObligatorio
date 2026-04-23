@@ -14,7 +14,7 @@ namespace LogicaAccesoDatos.RepositorioMemoria
         // que se inicializa al instanciar RepositorioUsuario
         public RepositorioUsuario()
         {
-            _usuarios = new List<Usuario>();
+            
         }
 
         // el alta y se implementa acá
