@@ -26,7 +26,7 @@ namespace LogicaAccesoDatos.EntityFramework.Repositorios
 
         public IEnumerable<Usuario> FindAll()
         {
-            return _context.Usuarios
+            return _context.Usuarios;
         }
 
         public Usuario FindById(int id)
