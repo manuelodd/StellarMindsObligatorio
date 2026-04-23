@@ -1,4 +1,5 @@
 using Dominio.InterfacesRepositorio;
+using LogicaAccesoDatos.EntityFramework.Repositorios;
 using LogicaAccesoDatos.RepositorioMemoria;
 using LogicaAplicacion.CasosDeUso.CUUsuario;
 using LogicaAplicacion.InterfacesCasosDeUso;
@@ -15,7 +16,10 @@ namespace StellarMindsWebAPP
             builder.Services.AddControllersWithViews();
 
             // ini repos
-            builder.Services.AddScoped<IRepositorioUsuario, RepositorioUsuario>();
+
+            //cambio RepositorioUsuario a RepositorioUsuarioEF para utilizar la base de datos
+
+            builder.Services.AddScoped<IRepositorioUsuario, RepositorioUsuarioEF>();
 
             //ini caos de uso
             builder.Services.AddScoped<IAltaUsuario, AltaUsuarioCU>();
