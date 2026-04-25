@@ -2,7 +2,6 @@
 using Dominio.ValueObjects;
 using DTOs.DTOs;
 using DTOs.Mappers;
-using LogicaAccesoDatos.RepositorioMemoria;
 using LogicaAplicacion.InterfacesCasosDeUso;
 using StellarMinds.Entities;
 using StellarMinds.ValueObjects;
@@ -34,7 +33,7 @@ namespace LogicaAplicacion.CasosDeUso.CUUsuario
         public string Calle { get; set; } = string.Empty;
          */
 
-        public void AltaUsuario(UsuarioDTO dto)
+        public void Execute(UsuarioDTO dto)
         {
             repositorio.Alta(UsuarioDTOMapper.FromDTO(dto));
         }

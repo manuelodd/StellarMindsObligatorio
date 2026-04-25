@@ -14,9 +14,11 @@ namespace LogicaAccesoDatos.EntityFramework.Repositorios
         {
             _context = new StellarMindsContext();
         }
-        public void Alta(Usuario aAgregar)
+        public void Alta(Usuario unUsuario)
         {
-            throw new NotImplementedException();
+            unUsuario.Validar();
+            _context.Usuarios.Add(unUsuario);
+            _context.SaveChanges(); 
         }
 
         public void Delete(int id)

@@ -1,6 +1,5 @@
 ﻿using Dominio.InterfacesRepositorio;
 using LogicaAplicacion.InterfacesCasosDeUso;
-using LogicaAccesoDatos.RepositorioMemoria;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -21,7 +20,7 @@ namespace LogicaAplicacion.CasosDeUso.CUUsuario
             repositorio = repo;
         }
 
-        public List<UsuarioDTO> ListarUsuarios()
+        public List<UsuarioDTO> Execute()
         {
             List<UsuarioDTO> aRetornar = new List<UsuarioDTO>();
             foreach(Usuario unUsuario in repositorio.FindAll())

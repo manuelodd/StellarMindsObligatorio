@@ -37,7 +37,7 @@ namespace StellarMindsWebAPP.Controllers
 
         public ActionResult Index()
         {
-            return View(findAllCU.ListarUsuarios());
+            return View(findAllCU.Execute());
         }
 
         // GET: UsuarioController1/Details/5
@@ -58,7 +58,7 @@ namespace StellarMindsWebAPP.Controllers
             try
             {
 
-                altaCU.AltaUsuario(dto);
+                altaCU.Execute(dto);
                 return RedirectToAction(nameof(Index));
             }
             catch
