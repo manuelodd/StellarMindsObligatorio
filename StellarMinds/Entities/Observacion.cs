@@ -13,7 +13,7 @@ namespace StellarMinds.Entities
 
         public Observacion()
         {
-            Id = _id++;
+
         }
 
         public void Validar()

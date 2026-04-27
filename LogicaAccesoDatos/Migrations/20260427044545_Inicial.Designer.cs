@@ -4,6 +4,7 @@ using LogicaAccesoDatos.EntityFramework;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LogicaAccesoDatos.Migrations
 {
     [DbContext(typeof(StellarMindsContext))]
-    partial class StellarMindsContextModelSnapshot : ModelSnapshot
+    [Migration("20260427044545_Inicial")]
+    partial class Inicial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,55 +24,6 @@ namespace LogicaAccesoDatos.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("StellarMinds.Entities.Equipo", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("CantDisp")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Discriminator")
-                        .IsRequired()
-                        .HasMaxLength(13)
-                        .HasColumnType("nvarchar(13)");
-
-                    b.Property<string>("Marca")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Modelo")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Equipos");
-
-                    b.HasDiscriminator<string>("Discriminator").HasValue("Equipo");
-
-                    b.UseTphMappingStrategy();
-                });
-
-            modelBuilder.Entity("StellarMinds.Entities.Observacion", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("Fecha")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Observaciones");
-                });
 
             modelBuilder.Entity("StellarMinds.Entities.Prestamo", b =>
                 {
@@ -123,71 +77,6 @@ namespace LogicaAccesoDatos.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Usuarios");
-                });
-
-            modelBuilder.Entity("StellarMinds.Entities.Camara", b =>
-                {
-                    b.HasBaseType("StellarMinds.Entities.Equipo");
-
-                    b.Property<decimal>("PixelSize")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<int>("Resolution")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TipoSensor")
-                        .HasColumnType("int");
-
-                    b.HasDiscriminator().HasValue("Camara");
-                });
-
-            modelBuilder.Entity("StellarMinds.Entities.Montura", b =>
-                {
-                    b.HasBaseType("StellarMinds.Entities.Equipo");
-
-                    b.Property<decimal>("CargaKG")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<bool>("GoTo")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("Tipo")
-                        .HasColumnType("int");
-
-                    b.HasDiscriminator().HasValue("Montura");
-                });
-
-            modelBuilder.Entity("StellarMinds.Entities.Ocular", b =>
-                {
-                    b.HasBaseType("StellarMinds.Entities.Equipo");
-
-                    b.Property<decimal>("Diametro")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal>("GradosVision")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.HasDiscriminator().HasValue("Ocular");
-                });
-
-            modelBuilder.Entity("StellarMinds.Entities.Telescopio", b =>
-                {
-                    b.HasBaseType("StellarMinds.Entities.Equipo");
-
-                    b.Property<decimal>("Apertura")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal>("DistanciaFocal")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal>("PesoKG")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("RelacionFocal")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasDiscriminator().HasValue("Telescopio");
                 });
 
             modelBuilder.Entity("StellarMinds.Entities.Usuario", b =>

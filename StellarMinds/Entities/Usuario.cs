@@ -26,7 +26,7 @@ namespace StellarMinds.Entities
 
         public Usuario(string nombre, string apellido, string telefono, string email, string username, string password, RolUsuario rol, string pais, string ciudad, string calle)
         {
-            Id = _id++;
+
             NombreCompleto = new UsuarioNombreCompleto(nombre, apellido);
             Telefono = telefono;
             Email = email;

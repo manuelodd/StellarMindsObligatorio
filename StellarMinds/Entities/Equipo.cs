@@ -12,9 +12,9 @@ namespace StellarMinds.Entities
 
         public Equipo()
         {
-            Id = _id++;
+
         }
-        public int Id { get; }
+        public int Id { get; set; }
         public string Marca { get; set; }
         public string Modelo { get; set; }
         public int CantDisp {  get; set; }
