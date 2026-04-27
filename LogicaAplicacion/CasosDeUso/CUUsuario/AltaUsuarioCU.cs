@@ -4,7 +4,6 @@ using DTOs.DTOs;
 using DTOs.Mappers;
 using LogicaAplicacion.InterfacesCasosDeUso;
 using StellarMinds.Entities;
-using StellarMinds.ValueObjects;
 
 namespace LogicaAplicacion.CasosDeUso.CUUsuario
 {

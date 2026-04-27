@@ -1,7 +1,6 @@
 ﻿using Dominio.ValueObjects;
 using StellarMinds.Enums;
 using StellarMinds.InterfacesDominio;
-using StellarMinds.ValueObjects;
 using System;
 using System.Collections.Generic;
 using System.Text;

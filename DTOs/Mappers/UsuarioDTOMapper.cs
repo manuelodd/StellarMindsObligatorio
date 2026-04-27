@@ -3,6 +3,7 @@ using StellarMinds.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Dominio;
 
 namespace DTOs.Mappers
 {
@@ -37,7 +38,7 @@ namespace DTOs.Mappers
                 Username = dto.Username,
                 Password = dto.Password,
                 Rol = dto.Rol,
-                Direccion = new StellarMinds.ValueObjects.UsuarioDireccion(dto.Pais, dto.Ciudad, dto.Calle)
+                Direccion = new Dominio.ValueObjects.UsuarioDireccion(dto.Pais, dto.Ciudad, dto.Calle)
             };
         }
     }

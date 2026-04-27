@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace StellarMinds.ValueObjects
+namespace Dominio.ValueObjects
 {
     //el owned indica al entity framework que la entidad es debil y que no cree una tabla en la db
     [Owned]
