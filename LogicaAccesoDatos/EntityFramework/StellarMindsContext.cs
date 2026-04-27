@@ -6,6 +6,7 @@ using System.Text;
 
 namespace LogicaAccesoDatos.EntityFramework
 {
+    //hola
     public class StellarMindsContext : DbContext
     {
         public DbSet<Usuario> Usuarios { get; set; }
