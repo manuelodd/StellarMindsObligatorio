@@ -1,4 +1,8 @@
-﻿using Dominio.InterfacesRepositorio;
+﻿using Dominio.Exceptions;
+using Dominio.InterfacesRepositorio;
+using DTOs.DTOs;
+using DTOs.Mappers;
+using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
 using StellarMinds.Entities;
 using System;
 using System.Collections.Generic;
@@ -19,6 +23,12 @@ namespace LogicaAccesoDatos.EntityFramework.Repositorios
             unUsuario.Validar();
             _context.Usuarios.Add(unUsuario);
             _context.SaveChanges(); 
+        }
+
+        public Usuario? FindByUsername(string username)
+        {
+            return _context.Usuarios
+                           .FirstOrDefault(usuario => usuario.Username == username);
         }
 
         public void Delete(int id)

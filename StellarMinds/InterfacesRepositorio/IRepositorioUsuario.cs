@@ -9,5 +9,6 @@ namespace Dominio.InterfacesRepositorio
 {
     public interface IRepositorioUsuario : IRepositorio<Usuario>
     {
+        public Usuario? FindByUsername(string username);
     }
 }

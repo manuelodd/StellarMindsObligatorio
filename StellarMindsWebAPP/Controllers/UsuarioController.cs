@@ -1,18 +1,19 @@
 ﻿using Dominio.InterfacesRepositorio;
 using DTOs.DTOs;
 using DTOs.Mappers;
-using LogicaAccesoDatos.RepositorioMemoria;
 using LogicaAplicacion.CasosDeUso.CUUsuario;
 using LogicaAplicacion.InterfacesCasosDeUso;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages;
+using StellarMinds.Entities;
 
 namespace StellarMindsWebAPP.Controllers
 {
     public class UsuarioController : Controller
     {
 
-
+        private ILoginUsuario loginU;
         private IAltaUsuario altaCU;
         private IListarUsuarios findAllCU;
 
@@ -23,8 +24,9 @@ namespace StellarMindsWebAPP.Controllers
             this.repo = repo;
         }
         */
-        public UsuarioController(IAltaUsuario altau, IListarUsuarios findAllCu)
+        public UsuarioController(ILoginUsuario loginu, IAltaUsuario altau, IListarUsuarios findAllCu)
         {
+            this.loginU = loginu;
             this.altaCU = altau;
             this.findAllCU = findAllCu;
             
@@ -38,6 +40,37 @@ namespace StellarMindsWebAPP.Controllers
         public ActionResult Index()
         {
             return View(findAllCU.Execute());
+        }
+
+        public IActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Login(string username, string password)
+        {
+            try
+            {
+                Usuario usuario = loginU.Execute(username, password);
+
+                // guardado de sesion de P2
+                HttpContext.Session.SetString("username", usuario.Username);
+                HttpContext.Session.SetString("rol", usuario.Rol.ToString());
+
+                return RedirectToAction("Index", "Usuario");
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Error = ex.Message;
+                return View();
+            }
+        }
+
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("Login");
         }
 
         // GET: UsuarioController1/Details/5
