@@ -10,7 +10,7 @@ using StellarMinds.Entities;
 
 namespace StellarMindsWebAPP.Controllers
 {
-    public class UsuarioController : Controller
+    public class UsuarioController : BaseController
     {
 
         private ILoginUsuario loginU;

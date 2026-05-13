@@ -5,7 +5,7 @@ using System.Diagnostics;
 
 namespace StellarMindsWebAPP.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
 
 
