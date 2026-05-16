@@ -80,6 +80,11 @@ namespace StellarMindsWebAPP.Controllers
         }
         public ActionResult Create()
         {
+            if (base.Rol() != "ADMINISTRADOR")
+            {
+                return RedirectToAction("Index", "Usuario");
+            }
+
             return View();
         }
 
@@ -88,6 +93,12 @@ namespace StellarMindsWebAPP.Controllers
         // GET: UsuarioController1/Create
         public ActionResult Create(UsuarioDTO dto)
         {
+            if (base.Rol() != "ADMINISTRADOR")
+            {
+                return RedirectToAction("Index", "Usuario");
+            }
+
+
             try
             {
 

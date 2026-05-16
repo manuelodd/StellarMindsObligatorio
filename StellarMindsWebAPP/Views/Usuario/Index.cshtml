@@ -7,9 +7,16 @@
 
 <h1>Index</h1>
 <a asp-controller="Usuario" asp-action="Logout">Logout</a> 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+
+
+@if (Context.Session.GetString("rol") == "ADMINISTRADOR")
+{
+    <a asp-controller="Usuario" asp-action="Create">
+        Crear Usuario
+    </a>
+}
+
+
 <table class="table">
     <thead>
         <tr>
