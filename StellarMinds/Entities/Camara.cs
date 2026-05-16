@@ -13,6 +13,6 @@ namespace StellarMinds.Entities
         public int Resolution { get; set; }
         public decimal PixelSize { get; set; }
 
-        
+        public Camara() { }
     }
 }

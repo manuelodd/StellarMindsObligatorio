@@ -20,9 +20,11 @@ namespace LogicaAccesoDatos.EntityFramework.Repositorios
         }
         public void Alta(Usuario unUsuario)
         {
+            
             unUsuario.Validar();
             _context.Usuarios.Add(unUsuario);
-            _context.SaveChanges(); 
+            _context.SaveChanges();
+            
         }
 
         public Usuario? FindByUsername(string username)
