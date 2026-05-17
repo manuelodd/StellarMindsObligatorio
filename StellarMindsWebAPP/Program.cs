@@ -1,7 +1,9 @@
 using Dominio.InterfacesRepositorio;
+using LogicaAccesoDatos.EntityFramework;
 using LogicaAccesoDatos.EntityFramework.Repositorios;
 using LogicaAplicacion.CasosDeUso.CUUsuario;
 using LogicaAplicacion.InterfacesCasosDeUso;
+using Microsoft.EntityFrameworkCore;
 
 namespace StellarMindsWebAPP
 {
@@ -35,8 +37,11 @@ namespace StellarMindsWebAPP
             builder.Services.AddScoped<IListarUsuarios, ListarUsuariosCU>();
             builder.Services.AddScoped<ILoginUsuario, LoginUsuarioCU>();
 
-
-
+            /*
+            builder.Services.AddDbContext<StellarMindsContext>(
+                    options => options.UseSqlServer(builder.Configuration.GetConnectionString("StellarMinds"))
+                    );
+            */
 
             var app = builder.Build();
 
