@@ -15,7 +15,7 @@ namespace LogicaAccesoDatos.EntityFramework.Repositorios
         {
             _context = context;
         }
-
+        /*
         public int EvaluarTipo(object equipo)
         {
             if (equipo is Telescopio) { return 1; }
@@ -24,6 +24,7 @@ namespace LogicaAccesoDatos.EntityFramework.Repositorios
             if (equipo is Ocular) { return 4; }
             return 0;
         }
+        */
 
         public void Alta(Equipo unEquipo)
         {

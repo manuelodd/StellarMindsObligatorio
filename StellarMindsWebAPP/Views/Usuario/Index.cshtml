@@ -1,6 +1,7 @@
-﻿@using StellarMinds.Entities
-<!-- IEnumerable<StellarMinds.Entities.Usuario>-->
-@model Equipo
+﻿@using DTOs.DTOs
+@using StellarMinds.Entities
+@model UsuarioDTO
+
 
 @{
     ViewData["Title"] = "Index";
@@ -29,13 +30,13 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Marca)
+                @Html.DisplayNameFor(model => model.Nombre)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Modelo)
+                @Html.DisplayNameFor(model => model.Apellido)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CantDisp)
+                @Html.DisplayNameFor(model => model.Telefono)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Email)
@@ -62,7 +63,7 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+@foreach (UsuarioDTO item in Model) {
         <tr>
                                     <td>
                 @Html.DisplayFor(modelItem => item.Nombre)
@@ -82,9 +83,10 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Password)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Rol)
-            </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Rol)
+                </td>
+            
                 <td>
                     @Html.DisplayFor(modelItem => item.Pais)
                 </td>

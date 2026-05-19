@@ -1,4 +1,6 @@
 ﻿using Dominio.InterfacesRepositorio;
+using DTOs.DTOs;
+using DTOs.Mappers;
 using LogicaAplicacion.InterfacesCasosDeUso;
 using StellarMinds.Entities;
 using System;
@@ -15,14 +17,16 @@ namespace LogicaAplicacion.CasosDeUso.CUEquipo
         {
             repositorio = repo;
         }
-        public List<Equipo> Execute()
+        public List<EquipoDTO> Execute()
         {
-            List<Equipo> equipos = null;
+            List<EquipoDTO> equipos = null;
+
             foreach(Equipo equipo in repositorio.FindAll())
             {
-                equipos.Add(equipo);
+                equipos.Add(EquipoDTOMapper.ToDto(equipo));
             }
             return equipos;
         }
+
     }
 }
