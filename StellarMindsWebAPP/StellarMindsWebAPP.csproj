@@ -27,4 +27,8 @@
     <ProjectReference Include="..\StellarMinds\Dominio.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\Equipo\" />
+  </ItemGroup>
+
 </Project>
