@@ -1,0 +1,140 @@
+﻿<body>
+
+    <h1>Create equipo</h1>
+
+<hr />
+<h2>Elija tipo de equipo</h2>
+
+    <select onchange="mostrarFormulario()" id="tipoEquipo">
+    <option value="telescopio">Telescopio</option>
+    <option value="montura">Montura</option>
+    <option value="camara">Camara</option>
+    <option value="ocular">Ocular</option>
+</select>
+
+        <form asp-action="CreateTelescopio" id="formTelescopio" style="display: none">
+                <label for="Marca" class="control-label">MARCA</label>
+                <input type="text" name="Marca" id="marca" class="form-control" />
+
+                <label for="Modelo" class="control-label">APELLIDO</label>
+                <input type="text" name="Modelo" id="modelo" class="form-control" />
+
+                <label for="CantDisp" class="control-label">CANTIDAD DISPONIBLE</label>
+                <input type="text" name="CantDisp" id="cantdisp" class="form-control" />
+
+                <label for="Apertura" class="control-label">APERTURA</label>
+                <input type="text" name="Apertura" id="apertura" class="form-control" />
+
+                <label for="RelacionFocal" class="control-label">RELACION FOCAL</label>
+                <input type="text" name="RelacionFocal" id="relacionfocal" class="form-control" />
+            
+            <label for="DistanciaFocal" class="control-label">DISTANCIA FOCAL</label>
+            <input type="text" name="DistanciaFocal" id="distanciafocal" class="form-control" />
+
+            <label for="PesoKG" class="control-label">PESO (KG)</label>
+            <input type="text" name="PesoKG" id="pesokg" class="form-control" />
+
+                <input type="submit" value="Create" class="btn btn-primary" />
+        </form>
+
+        <!--------------------------------------------------------------------------------->
+
+<form asp-action="CreateMontura" id="formMontura" style="display:none">
+
+    <label for="Marca" class="control-label">MARCA</label>
+    <input type="text" name="Marca" id="marcaMontura" class="form-control" />
+
+    <label for="Modelo" class="control-label">MODELO</label>
+    <input type="text" name="Modelo" id="modeloMontura" class="form-control" />
+
+    <label for="CantDisp" class="control-label">CANTIDAD DISPONIBLE</label>
+    <input type="text" name="CantDisp" id="cantdispMontura" class="form-control" />
+
+    <label for="Tipo" class="control-label">TIPO MONTAURA</label>
+    <select name="Tipo" id="tipoMontura" class="form-control">
+        <option value="0">Ecuatorial</option>
+        <option value="1">AltAzimutal</option>
+        <option value="2">Hibrida</option>
+    </select>
+
+    <label for="CargaKG" class="control-label">CARGA KG</label>
+    <input type="text" name="CargaKG" id="cargakg" class="form-control" />
+
+    <label for="GoTo" class="control-label">GOTO</label>
+    <input type="checkbox" name="GoTo" id="goto" />
+
+    <input type="submit" value="Create" class="btn btn-primary" />
+
+</form>
+
+<!--------------------------------------------------------------------------------->
+
+<form asp-action="CreateCamara" id="formCamara" style="display:none">
+
+    <label for="Marca" class="control-label">MARCA</label>
+    <input type="text" name="Marca" id="marcaCamara" class="form-control" />
+
+    <label for="Modelo" class="control-label">MODELO</label>
+    <input type="text" name="Modelo" id="modeloCamara" class="form-control" />
+
+    <label for="CantDisp" class="control-label">CANTIDAD DISPONIBLE</label>
+    <input type="text" name="CantDisp" id="cantdispCamara" class="form-control" />
+
+    <label for="TipoSensor" class="control-label">TIPO SENSOR</label>
+    <select name="TipoSensor" id="tiposensor" class="form-control">
+        <option value="0">CMOS</option>
+        <option value="1">CCD</option>
+    </select>
+
+    <label for="Resolution" class="control-label">RESOLUCION</label>
+    <input type="text" name="Resolution" id="resolution" class="form-control" />
+
+    <label for="PixelSize" class="control-label">PIXEL SIZE</label>
+    <input type="text" name="PixelSize" id="pixelsize" class="form-control" />
+
+    <input type="submit" value="Create" class="btn btn-primary" />
+
+</form>
+
+<!--------------------------------------------------------------------------------->
+
+<form asp-action="CreateOcular" id="formOcular" style="display:none">
+
+    <label for="Marca" class="control-label">MARCA</label>
+    <input type="text" name="Marca" id="marcaOcular" class="form-control" />
+
+    <label for="Modelo" class="control-label">MODELO</label>
+    <input type="text" name="Modelo" id="modeloOcular" class="form-control" />
+
+    <label for="CantDisp" class="control-label">CANTIDAD DISPONIBLE</label>
+    <input type="text" name="CantDisp" id="cantdispOcular" class="form-control" />
+
+    <label for="Diametro" class="control-label">DIAMETRO</label>
+    <input type="text" name="Diametro" id="diametro" class="form-control" />
+
+    <label for="GradosVision" class="control-label">GRADOS DE VISION</label>
+    <input type="text" name="GradosVision" id="gradosvision" class="form-control" />
+
+    <input type="submit" value="Create" class="btn btn-primary" />
+
+</form>
+
+
+
+    <script>
+            function mostrarFormulario() {
+                let valor = document.getElementById("tipoEquipo").value;
+
+                document.getElementById("formTelescopio").style.display = "none";
+                document.getElementById("formMontura").style.display = "none";
+                document.getElementById("formCamara").style.display = "none";
+                document.getElementById("formOcular").style.display = "none";
+
+                if (valor == "telescopio")  document.getElementById("formTelescopio").style.display = "block"; 
+                if (valor == "montura")     document.getElementById("formMontura").style.display = "block"; 
+                if (valor == "camara")      document.getElementById("formCamara").style.display = "block"; 
+                if (valor == "ocular")      document.getElementById("formOcular").style.display = "block"; 
+                console.log(valor);
+            }
+    </script>
+</body>

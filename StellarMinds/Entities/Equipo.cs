@@ -21,7 +21,6 @@ namespace StellarMinds.Entities
 
         public void Validar()
         {
-            throw new NotImplementedException();
         }
     }
 }

@@ -1,6 +1,7 @@
 using Dominio.InterfacesRepositorio;
 using LogicaAccesoDatos.EntityFramework;
 using LogicaAccesoDatos.EntityFramework.Repositorios;
+using LogicaAplicacion.CasosDeUso.CUEquipo;
 using LogicaAplicacion.CasosDeUso.CUUsuario;
 using LogicaAplicacion.InterfacesCasosDeUso;
 using Microsoft.EntityFrameworkCore;
@@ -31,13 +32,20 @@ namespace StellarMindsWebAPP
 
             // PROBANDO SIN EF - - -  -  - - > Cambiar RepositorioUsuario a RepositorioUsuarioEF despues
             builder.Services.AddScoped<IRepositorioUsuario, RepositorioUsuarioEF>();
+            builder.Services.AddScoped<IRepositorioEquipo, RepositorioEquipoEF>();
+
 
             //ini caos de uso
             builder.Services.AddScoped<IAltaUsuario, AltaUsuarioCU>();
             builder.Services.AddScoped<IListarUsuarios, ListarUsuariosCU>();
             builder.Services.AddScoped<ILoginUsuario, LoginUsuarioCU>();
 
-            
+            builder.Services.AddScoped<IAltaEquipo, AltaEquipoCU>();
+            builder.Services.AddScoped<IListarEquipos, ListarEquiposCU>();
+
+
+
+
             builder.Services.AddDbContext<StellarMindsContext>(
                     options => options.UseSqlServer(builder.Configuration.GetConnectionString("StellarMinds"))
                     );

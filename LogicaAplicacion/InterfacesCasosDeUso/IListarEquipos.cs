@@ -3,11 +3,10 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-
 namespace LogicaAplicacion.InterfacesCasosDeUso
 {
-    public interface IAltaEquipo
+    public interface IListarEquipos
     {
-        public void Execute(Equipo unEquipo);
+        public List<Equipo> Execute();
     }
 }

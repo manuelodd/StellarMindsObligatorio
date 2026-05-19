@@ -16,6 +16,13 @@
     </a>
 }
 
+@if (Context.Session.GetString("rol") == "ADMINISTRADOR")
+{
+    <a asp-controller="Equipo" asp-action="Create">
+        Crear Equipo
+    </a>
+}
+
 
 <table class="table">
     <thead>

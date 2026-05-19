@@ -1,4 +1,6 @@
 ﻿using Dominio.InterfacesRepositorio;
+using DTOs.DTOs;
+using DTOs.Mappers;
 using StellarMinds.Entities;
 using System;
 using System.Collections.Generic;
@@ -14,6 +16,14 @@ namespace LogicaAccesoDatos.EntityFramework.Repositorios
             _context = context;
         }
 
+        public int EvaluarTipo(object equipo)
+        {
+            if (equipo is Telescopio) { return 1; }
+            if (equipo is Montura) { return 2; }
+            if (equipo is Camara) { return 3; }
+            if (equipo is Ocular) { return 4; }
+            return 0;
+        }
 
         public void Alta(Equipo unEquipo)
         {
@@ -30,7 +40,7 @@ namespace LogicaAccesoDatos.EntityFramework.Repositorios
 
         public IEnumerable<Equipo> FindAll()
         {
-            throw new NotImplementedException();
+            return _context.Equipos;
         }
 
         public Equipo FindById(int id)
@@ -42,5 +52,7 @@ namespace LogicaAccesoDatos.EntityFramework.Repositorios
         {
             throw new NotImplementedException();
         }
+
+
     }
 }

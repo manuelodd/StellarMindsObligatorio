@@ -35,6 +35,7 @@ namespace LogicaAplicacion.CasosDeUso.CUUsuario
         public void Execute(UsuarioDTO dto)
         {
             repositorio.Alta(UsuarioDTOMapper.FromDTO(dto));
+            
         }
     }
 }
