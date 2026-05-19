@@ -8,7 +8,7 @@ namespace DTOs.Mappers
 {
     public class CamaraDTOMapper
     {
-        public static CamaraDTO ToDto(Camara unaCamara)
+        public static CamaraDTO ToDTO(Camara unaCamara)
         {
             return new CamaraDTO
             {

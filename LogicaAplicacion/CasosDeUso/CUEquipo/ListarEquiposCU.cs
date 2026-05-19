@@ -19,11 +19,11 @@ namespace LogicaAplicacion.CasosDeUso.CUEquipo
         }
         public List<EquipoDTO> Execute()
         {
-            List<EquipoDTO> equipos = null;
+            List<EquipoDTO> equipos = new List<EquipoDTO>();
 
             foreach(Equipo equipo in repositorio.FindAll())
             {
-                equipos.Add(EquipoDTOMapper.ToDto(equipo));
+                equipos.Add(EquipoDTOMapper.ToDTO(equipo));
             }
             return equipos;
         }

@@ -25,7 +25,7 @@ namespace LogicaAplicacion.CasosDeUso.CUUsuario
             List<UsuarioDTO> aRetornar = new List<UsuarioDTO>();
             foreach(Usuario unUsuario in repositorio.FindAll())
             {
-                aRetornar.Add(UsuarioDTOMapper.ToDto(unUsuario));
+                aRetornar.Add(UsuarioDTOMapper.ToDTO(unUsuario));
             }
             return aRetornar;
         }

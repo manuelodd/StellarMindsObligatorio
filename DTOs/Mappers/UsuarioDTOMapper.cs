@@ -9,7 +9,7 @@ namespace DTOs.Mappers
 {
     public class UsuarioDTOMapper
     {
-        public static UsuarioDTO ToDto(Usuario unUsuario)
+        public static UsuarioDTO ToDTO(Usuario unUsuario)
         {
             return new UsuarioDTO
             {

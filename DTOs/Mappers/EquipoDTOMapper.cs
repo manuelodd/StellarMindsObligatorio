@@ -8,7 +8,7 @@ namespace DTOs.Mappers
 {
     public class EquipoDTOMapper
     {
-        public static EquipoDTO ToDto(Equipo unEquipo)
+        public static EquipoDTO ToDTO(Equipo unEquipo)
         {
             string tipo = "";
             if (unEquipo is Telescopio) tipo = "Telescopio";

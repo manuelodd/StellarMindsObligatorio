@@ -8,7 +8,7 @@ namespace DTOs.Mappers
 {
     public class OcularDTOMapper
     {
-        public static OcularDTO ToDto(Ocular unOcular)
+        public static OcularDTO ToDTO(Ocular unOcular)
         {
             return new OcularDTO
             {

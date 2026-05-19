@@ -8,7 +8,7 @@ namespace DTOs.Mappers
 {
     public class MonturaDTOMapper
     {
-        public static MonturaDTO ToDto(Montura unaMontura)
+        public static MonturaDTO ToDTO(Montura unaMontura)
         {
             return new MonturaDTO
             {

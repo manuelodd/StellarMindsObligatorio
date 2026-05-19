@@ -22,7 +22,8 @@ namespace StellarMindsWebAPP.Controllers
         // GET: EquipoController
         public ActionResult Index()
         {
-            return View(findAllCU);
+            IEnumerable<EquipoDTO> listado = findAllCU.Execute();
+            return View(listado);
         }
 
         // GET: EquipoController/Details/5

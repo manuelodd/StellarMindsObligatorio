@@ -8,7 +8,7 @@ namespace DTOs.Mappers
 {
     public class TelescopioDTOMapper
     {
-        public static TelescopioDTO ToDto(Telescopio unTelescopio)
+        public static TelescopioDTO ToDTO(Telescopio unTelescopio)
         {
             return new TelescopioDTO
             {
