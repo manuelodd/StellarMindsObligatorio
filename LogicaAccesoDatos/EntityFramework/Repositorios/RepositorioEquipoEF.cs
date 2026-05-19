@@ -9,9 +9,9 @@ namespace LogicaAccesoDatos.EntityFramework.Repositorios
     public class RepositorioEquipoEF : IRepositorioEquipo
     {
         private StellarMindsContext _context;
-        public RepositorioEquipoEF()
+        public RepositorioEquipoEF(StellarMindsContext context)
         {
-            _context = new StellarMindsContext();
+            _context = context;
         }
 
 

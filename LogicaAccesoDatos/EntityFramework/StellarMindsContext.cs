@@ -22,11 +22,17 @@ namespace LogicaAccesoDatos.EntityFramework
         public DbSet<Ocular> Oculares { get; set; }
         public DbSet<Observacion> Observaciones { get; set; }
         
+
+        public StellarMindsContext(DbContextOptions optionsBuilder) : base (optionsBuilder)
+        { }
+
+        /*
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(
                 @"SERVER=(localdb)\MsSqlLocalDb;DATABASE=StellarMinds;Integrated Security=true;"
             );
         }
+        */
     }
 }

@@ -17,19 +17,12 @@ namespace StellarMindsWebAPP.Controllers
         private IAltaUsuario altaCU;
         private IListarUsuarios findAllCU;
 
-        /*
-        public UsuarioController(IRepositorioUsuario repo)
-        {
-            this.altaU = new AltaUsuarioCU(repo);
-            this.repo = repo;
-        }
-        */
+        
         public UsuarioController(ILoginUsuario loginu, IAltaUsuario altau, IListarUsuarios findAllCu)
         {
             this.loginU = loginu;
             this.altaCU = altau;
             this.findAllCU = findAllCu;
-            
         }
 
 
@@ -39,7 +32,8 @@ namespace StellarMindsWebAPP.Controllers
 
         public ActionResult Index()
         {
-            return View(findAllCU.Execute());
+            IEnumerable<UsuarioDTO> listado = findAllCU.Execute();
+            return View(listado);
         }
 
         public IActionResult Login()

@@ -3,5 +3,6 @@
   <Project Path="LogicaAccesoDatos/LogicaAccesoDatos.csproj" Id="0f2f4277-447f-496c-9445-98389c46d54f" />
   <Project Path="LogicaAplicacion/LogicaAplicacion.csproj" Id="f79e5c84-7e7a-44a6-bfe1-5e86cf6a7f9f" />
   <Project Path="StellarMinds/Dominio.csproj" />
+  <Project Path="StellarMindsWebApi/StellarMindsWebApi.csproj" Id="b01809ac-6825-47c0-b5f6-80dc12744a28" />
   <Project Path="StellarMindsWebAPP/StellarMindsWebAPP.csproj" Id="1c6f62cc-4185-4b0f-b23d-4b90be8e88d8" />
 </Solution>

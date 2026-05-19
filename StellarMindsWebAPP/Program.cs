@@ -37,11 +37,11 @@ namespace StellarMindsWebAPP
             builder.Services.AddScoped<IListarUsuarios, ListarUsuariosCU>();
             builder.Services.AddScoped<ILoginUsuario, LoginUsuarioCU>();
 
-            /*
+            
             builder.Services.AddDbContext<StellarMindsContext>(
                     options => options.UseSqlServer(builder.Configuration.GetConnectionString("StellarMinds"))
                     );
-            */
+            
 
             var app = builder.Build();
 

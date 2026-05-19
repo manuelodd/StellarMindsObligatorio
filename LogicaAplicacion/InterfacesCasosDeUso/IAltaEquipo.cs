@@ -6,6 +6,6 @@ namespace LogicaAplicacion.InterfacesCasosDeUso
 {
     public interface IAltaEquipo
     {
-        public void Execute(EquipoDTO equipodto);
+        public void Execute();
     }
 }

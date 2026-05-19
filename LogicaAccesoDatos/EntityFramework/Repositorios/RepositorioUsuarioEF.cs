@@ -14,9 +14,9 @@ namespace LogicaAccesoDatos.EntityFramework.Repositorios
     {
 
         private StellarMindsContext _context;
-        public RepositorioUsuarioEF()
+        public RepositorioUsuarioEF(StellarMindsContext context)
         {
-            _context = new StellarMindsContext();
+            _context = context;
         }
         public void Alta(Usuario unUsuario)
         {
