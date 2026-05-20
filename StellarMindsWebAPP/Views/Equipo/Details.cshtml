@@ -1,0 +1,58 @@
+﻿@using DTOs.DTOs
+@model EquipoDTO
+
+
+@if (Model is TelescopioDTO tele) { 
+    
+    <h3>Detalles del telescopio</h3>
+    <br />
+    <li>Número identificador: @tele.Id</li>
+    <li>Marca: @tele.Marca</li>
+    <li>Modelo: @tele.Modelo</li>
+    <li>Cantidad disponible: @tele.CantDisp</li>
+    <li>Apertura: @tele.Apertura</li>
+    <li>Relación focal: @tele.RelacionFocal</li>
+    <li>Distancia focal: @tele.Apertura</li>
+    <li>PesoKG: @tele.PesoKG</li>
+}
+
+@if (Model is MonturaDTO montu)
+{
+
+    <h3>Detalles de la montura</h3>
+    <br />
+    <li>Número identificador: @montu.Id</li>
+    <li>Marca: @montu.Marca</li>
+    <li>Modelo: @montu.Modelo</li>
+    <li>Cantidad disponible: @montu.CantDisp</li>
+    <li>Tipo: @montu.Tipo</li>
+    <li>Carga (kilogramos): @montu.CargaKG</li>
+    <li>GoTo: @montu.GoTo</li>
+}
+
+@if (Model is CamaraDTO cama)
+{
+
+    <h3>Detalles de la cámara</h3>
+    <br />
+    <li>Número identificador: @cama.Id</li>
+    <li>Marca: @cama.Marca</li>
+    <li>Modelo: @cama.Modelo</li>
+    <li>Cantidad disponible: @cama.CantDisp</li>
+    <li>Tipo de sensor: @cama.TipoSensor</li>
+    <li>Resolución: @cama.Resolution</li>
+    <li>GoTo: @cama.Resolution</li>
+}
+
+@if (Model is OcularDTO ocu)
+{
+
+    <h3>Detalles del ocular</h3>
+    <br />
+    <li>Número identificador: @ocu.Id</li>
+    <li>Marca: @ocu.Marca</li>
+    <li>Modelo: @ocu.Modelo</li>
+    <li>Cantidad disponible: @ocu.CantDisp</li>
+    <li>Tipo de sensor: @ocu.Diametro</li>
+    <li>Resolución: @ocu.GradosVision</li>
+}

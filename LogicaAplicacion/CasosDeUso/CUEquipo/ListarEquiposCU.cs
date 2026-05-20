@@ -23,7 +23,7 @@ namespace LogicaAplicacion.CasosDeUso.CUEquipo
 
             foreach(Equipo equipo in repositorio.FindAll())
             {
-                equipos.Add(EquipoDTOMapper.ToDTO(equipo));
+                equipos.Add(EquipoDTOMapper.ToListDTO(equipo));
             }
             return equipos;
         }

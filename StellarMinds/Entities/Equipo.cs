@@ -20,7 +20,7 @@ namespace StellarMinds.Entities
         public string Marca { get; set; }
         public string Modelo { get; set; }
         public int CantDisp {  get; set; }
-        public bool EnPrestamo { get; set; }
+        //public bool EnPrestamo { get; set; }
 
         public void Validar()
         {

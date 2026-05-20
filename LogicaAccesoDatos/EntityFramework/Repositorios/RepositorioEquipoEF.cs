@@ -44,6 +44,11 @@ namespace LogicaAccesoDatos.EntityFramework.Repositorios
             return _context.Equipos;
         }
 
+        public Equipo FindById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public Equipo FindEquipoPorID(int id)
         {
             return _context.Equipos.
@@ -51,10 +56,6 @@ namespace LogicaAccesoDatos.EntityFramework.Repositorios
                 .FirstOrDefault();
         }
 
-        public Equipo FindById(int id)
-        {
-            throw new NotImplementedException();
-        }
 
         public void Update(Equipo aActualizar)
         {

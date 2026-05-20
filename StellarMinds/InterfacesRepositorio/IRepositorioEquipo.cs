@@ -9,5 +9,6 @@ namespace Dominio.InterfacesRepositorio
 {
     public interface IRepositorioEquipo : IRepositorio<Equipo>
     {
+        public Equipo FindEquipoPorID(int id);
     }
 }
