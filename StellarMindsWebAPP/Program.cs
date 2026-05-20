@@ -42,6 +42,9 @@ namespace StellarMindsWebAPP
 
             builder.Services.AddScoped<IAltaEquipo, AltaEquipoCU>();
             builder.Services.AddScoped<IListarEquipos, ListarEquiposCU>();
+            builder.Services.AddScoped<IBuscarEquipoPorID, BuscarEquipoPorIDCU>();
+
+
 
 
 

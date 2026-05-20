@@ -10,12 +10,15 @@ namespace StellarMindsWebAPP.Controllers
     {
         private IAltaEquipo altaCU;
         private IListarEquipos findAllCU;
+        private IBuscarEquipoPorID buscarEquipoIDCU;
 
-        public EquipoController(IAltaEquipo altae, IListarEquipos findAllCu)
+
+        public EquipoController(IAltaEquipo altae, IListarEquipos findAllCu, IBuscarEquipoPorID buscarEquipoIDCu)
         {
           
             this.altaCU = altae;
             this.findAllCU = findAllCu;
+            this.buscarEquipoIDCU = buscarEquipoIDCu;
             
         }
 
@@ -26,16 +29,16 @@ namespace StellarMindsWebAPP.Controllers
             return View(listado);
         }
 
-        // GET: EquipoController/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
         // GET: EquipoController/Create
         public ActionResult Create()
         {
             return View();
+        }
+
+        public ActionResult Details(int id)
+        {
+            EquipoDTO equipo = buscarEquipoIDCU.Execute(id);
+            return View(equipo);
         }
 
         // POST: EquipoController/Create

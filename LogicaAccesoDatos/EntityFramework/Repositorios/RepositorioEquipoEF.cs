@@ -44,6 +44,13 @@ namespace LogicaAccesoDatos.EntityFramework.Repositorios
             return _context.Equipos;
         }
 
+        public Equipo FindEquipoPorID(int id)
+        {
+            return _context.Equipos.
+                Where(equipo => equipo.Id == id)
+                .FirstOrDefault();
+        }
+
         public Equipo FindById(int id)
         {
             throw new NotImplementedException();
