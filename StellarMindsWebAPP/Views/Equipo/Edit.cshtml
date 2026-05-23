@@ -1,0 +1,190 @@
+﻿@using DTOs.DTOs
+@using StellarMinds.Enums
+@model EquipoDTO
+
+@if(Model is TelescopioDTO){
+
+    @if (Model is TelescopioDTO tele)
+    {
+        <form asp-action="EditTelescopio" method="post">
+
+            @*oculto el id para saber a quie n editar en los Edits de controller*@
+            <input type="hidden" name="Id" value="@tele.Id" />
+
+            <label for="Marca" class="control-label">MARCA</label>
+            <input type="text" name="Marca" value="@tele.Marca" class="form-control" />
+
+            <label for="Modelo" class="control-label">MODELO</label>
+            <input type="text" name="Modelo" value="@tele.Modelo" class="form-control" />
+
+            <label for="CantDisp" class="control-label">CANTIDAD DISPONIBLE</label>
+            <input type="text" name="CantDisp" value="@tele.CantDisp" class="form-control" />
+
+            <label for="Apertura" class="control-label">APERTURA</label>
+            <input type="text" name="Apertura" value="@tele.Apertura" class="form-control" />
+
+            <label for="RelacionFocal" class="control-label">RELACION FOCAL</label>
+            <input type="text" name="RelacionFocal" value="@tele.RelacionFocal" class="form-control" />
+
+            <label for="DistanciaFocal" class="control-label">DISTANCIA FOCAL</label>
+            <input type="text" name="DistanciaFocal" value="@tele.DistanciaFocal" class="form-control" />
+
+            <label for="PesoKG" class="control-label">PESO (KG)</label>
+            <input type="text" name="PesoKG" value="@tele.PesoKG" class="form-control" />
+
+            <br />
+
+            <input type="submit" value="Guardar cambios" class="btn btn-primary" />
+
+        </form>
+    }
+}
+
+@if (Model is MonturaDTO montu)
+{
+    <form asp-action="EditMontura" method="post">
+
+        <input type="hidden" name="Id" value="@montu.Id" />
+
+        <label for="Marca" class="control-label">MARCA</label>
+        <input type="text" name="Marca" value="@montu.Marca" class="form-control" />
+
+        <label for="Modelo" class="control-label">MODELO</label>
+        <input type="text" name="Modelo" value="@montu.Modelo" class="form-control" />
+
+        <label for="CantDisp" class="control-label">CANTIDAD DISPONIBLE</label>
+        <input type="text" name="CantDisp" value="@montu.CantDisp" class="form-control" />
+
+        <label for="Tipo" class="control-label">TIPO DE MONTURA</label>
+        <select name="Tipo" class="form-control">
+
+            @if (montu.Tipo == TipoMontura.Ecuatorial)
+            {
+                <option value="0" selected>Ecuatorial</option>
+            }
+            else
+            {
+                <option value="0">Ecuatorial</option>
+            }
+
+            @if (montu.Tipo == TipoMontura.AltAzimutal)
+            {
+                <option value="1" selected>AltAzimutal</option>
+            }
+            else
+            {
+                <option value="1">AltAzimutal</option>
+            }
+
+            @if (montu.Tipo == TipoMontura.Hibrida)
+            {
+                <option value="2" selected>Hibrida</option>
+            }
+            else
+            {
+                <option value="2">Hibrida</option>
+            }
+
+        </select>
+
+        <label for="CargaKG" class="control-label">CARGA KG</label>
+        <input type="text" name="CargaKG" value="@montu.CargaKG" class="form-control" />
+
+        <label for="GoTo" class="control-label">GOTO</label>
+        <br />
+
+        @if (montu.GoTo)
+        {
+            <input type="checkbox" name="GoTo" checked />
+        }
+        else
+        {
+            <input type="checkbox" name="GoTo" />
+        }
+
+        <br />
+        <br />
+
+        <input type="submit" value="Guardar cambios" class="btn btn-primary" />
+
+    </form>
+}
+
+@if (Model is CamaraDTO cama)
+{
+    <form asp-action="EditCamara" method="post">
+
+        <input type="hidden" name="Id" value="@cama.Id" />
+
+        <label for="Marca" class="control-label">MARCA</label>
+        <input type="text" name="Marca" value="@cama.Marca" class="form-control" />
+
+        <label for="Modelo" class="control-label">MODELO</label>
+        <input type="text" name="Modelo" value="@cama.Modelo" class="form-control" />
+
+        <label for="CantDisp" class="control-label">CANTIDAD DISPONIBLE</label>
+        <input type="text" name="CantDisp" value="@cama.CantDisp" class="form-control" />
+
+        <label for="TipoSensor" class="control-label">TIPO SENSOR</label>
+        <select name="TipoSensor" class="form-control">
+
+            @if (cama.TipoSensor == TipoSensor.CMOS)
+            {
+                <option value="0" selected>CMOS</option>
+            }
+            else
+            {
+                <option value="0">CMOS</option>
+            }
+
+            @if (cama.TipoSensor == TipoSensor.CCD)
+            {
+                <option value="1" selected>CCD</option>
+            }
+            else
+            {
+                <option value="1">CCD</option>
+            }
+
+        </select>
+
+        <label for="Resolution" class="control-label">RESOLUCIÓN</label>
+        <input type="text" name="Resolution" value="@cama.Resolution" class="form-control" />
+
+        <label for="PixelSize" class="control-label">PIXEL SIZE</label>
+        <input type="text" name="PixelSize" value="@cama.PixelSize" class="form-control" />
+
+        <br />
+
+        <input type="submit" value="Guardar cambios" class="btn btn-primary" />
+
+    </form>
+}
+
+@if (Model is OcularDTO ocu)
+{
+    <form asp-action="EditOcular" method="post">
+
+        <input type="hidden" name="Id" value="@ocu.Id" />
+
+        <label for="Marca" class="control-label">MARCA</label>
+        <input type="text" name="Marca" value="@ocu.Marca" class="form-control" />
+
+        <label for="Modelo" class="control-label">MODELO</label>
+        <input type="text" name="Modelo" value="@ocu.Modelo" class="form-control" />
+
+        <label for="CantDisp" class="control-label">CANTIDAD DISPONIBLE</label>
+        <input type="text" name="CantDisp" value="@ocu.CantDisp" class="form-control" />
+
+        <label for="Diametro" class="control-label">DIÁMETRO</label>
+        <input type="text" name="Diametro" value="@ocu.Diametro" class="form-control" />
+
+        <label for="GradosVision" class="control-label">GRADOS DE VISIÓN</label>
+        <input type="text" name="GradosVision" value="@ocu.GradosVision" class="form-control" />
+
+        <br />
+
+        <input type="submit" value="Guardar cambios" class="btn btn-primary" />
+
+    </form>
+}

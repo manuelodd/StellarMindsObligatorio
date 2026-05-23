@@ -17,3 +17,5 @@ namespace DTOs.DTOs
         public decimal GradosVision { get; set; }
     }
 }
+
+

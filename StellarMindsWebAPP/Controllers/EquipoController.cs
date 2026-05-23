@@ -11,15 +11,17 @@ namespace StellarMindsWebAPP.Controllers
         private IAltaEquipo altaCU;
         private IListarEquipos findAllCU;
         private IBuscarEquipoPorID buscarEquipoIDCU;
+        private IEditarTelescopio editarTelescopioCU;
 
-
-        public EquipoController(IAltaEquipo altae, IListarEquipos findAllCu, IBuscarEquipoPorID buscarEquipoIDCu)
+        public EquipoController(IAltaEquipo altae, 
+                                IListarEquipos findAllCu, 
+                                IBuscarEquipoPorID buscarEquipoIDCu,
+                                IEditarTelescopio editarTelescopioCu)
         {
-          
             this.altaCU = altae;
             this.findAllCU = findAllCu;
             this.buscarEquipoIDCU = buscarEquipoIDCu;
-            
+            this.editarTelescopioCU = editarTelescopioCu;
         }
 
         // GET: EquipoController
@@ -41,7 +43,13 @@ namespace StellarMindsWebAPP.Controllers
             return View(equipo);
         }
 
-        // POST: EquipoController/Create
+        public ActionResult Edit(int id)
+        {
+            EquipoDTO dto = buscarEquipoIDCU.Execute(id);
+            return View(dto);
+        }
+
+        // - - - - - - - - - - - - - - - - - - - - - - - - -  CREATES - - - - - - - - - - - - - - - - - -  - - - - - -  - - - - -  - - -
         [HttpPost]
         public ActionResult CreateTelescopio(TelescopioDTO dto)
         {
@@ -74,13 +82,19 @@ namespace StellarMindsWebAPP.Controllers
 
         }
 
-        // GET: EquipoController/Edit/5
-        public ActionResult Edit(int id)
+        // - - - - - - - - - - - - - - - - - - - - - - - - -  EDITS - - - - - - - - - - - - - - - - - -  - - - - - -  - - - - -  - - -
+        [HttpPost]
+        public IActionResult EditTelescopio(TelescopioDTO dto)
         {
-            return View();
+            //editarTelescopioCU.Execute(dto);
+            editarTelescopioCU.Execute(dto);
+            return RedirectToAction(nameof(Index));
         }
 
-        // POST: EquipoController/Edit/5
+
+
+
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection)

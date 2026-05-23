@@ -56,6 +56,23 @@ namespace LogicaAccesoDatos.EntityFramework.Repositorios
                 .FirstOrDefault();
         }
 
+        public void EditTelescopio(Telescopio aEditar)
+        {
+            Telescopio tele = _context.Telescopios
+                .FirstOrDefault(t => t.Id == aEditar.Id);
+
+            if (aEditar != null)
+            {
+                tele.Marca = aEditar.Marca;
+                tele.Modelo = aEditar.Modelo;
+                tele.CantDisp = aEditar.CantDisp;
+                tele.Apertura = aEditar.Apertura;
+                tele.RelacionFocal = aEditar.RelacionFocal;
+                tele.DistanciaFocal = aEditar.DistanciaFocal;
+                tele.PesoKG = aEditar.PesoKG;
+                _context.SaveChanges();
+            }
+        }
 
         public void Update(Equipo aActualizar)
         {
