@@ -5,6 +5,7 @@ using LogicaAplicacion.CasosDeUso.CUEquipo;
 using LogicaAplicacion.CasosDeUso.CUUsuario;
 using LogicaAplicacion.InterfacesCasosDeUso;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.Blazor;
 
 namespace StellarMindsWebAPP
 {
@@ -47,6 +48,8 @@ namespace StellarMindsWebAPP
             builder.Services.AddScoped<IEditarMontura, EditarMonturaCU>();
             builder.Services.AddScoped<IEditarCamara, EditarCamaraCU>();
             builder.Services.AddScoped<IEditarOcular, EditarOcularCU>();
+            builder.Services.AddScoped<IDeleteEquipo, DeleteEquipoCU>();
+
 
 
 

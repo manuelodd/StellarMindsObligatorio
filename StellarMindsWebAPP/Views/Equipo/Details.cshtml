@@ -1,7 +1,7 @@
 ﻿@using DTOs.DTOs
 @model EquipoDTO
 
-<a asp-controller="Equipo" asp-action="Delete">Eliminar equipo</a>
+<a asp-controller="Equipo" asp-action="Delete" asp-route-id="@Model.Id">Eliminar equipo</a>
 
 @if (Model is TelescopioDTO tele) { 
     

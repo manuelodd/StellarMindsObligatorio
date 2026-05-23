@@ -15,6 +15,8 @@ namespace StellarMindsWebAPP.Controllers
         private IEditarMontura editarMonturaCU;
         private IEditarCamara editarCamaraCU;
         private IEditarOcular editarOcularCU;
+        private IDeleteEquipo deleteEquipoCU;
+
 
 
         public EquipoController(IAltaEquipo altae, 
@@ -23,7 +25,8 @@ namespace StellarMindsWebAPP.Controllers
                                 IEditarTelescopio editarTelescopioCu,
                                 IEditarMontura editarMonturaCu,
                                 IEditarCamara editarCamaraCu,
-                                IEditarOcular editarOcularCu)
+                                IEditarOcular editarOcularCu,
+                                IDeleteEquipo deleteEquipoCu)
         {
             this.altaCU = altae;
             this.findAllCU = findAllCu;
@@ -32,6 +35,7 @@ namespace StellarMindsWebAPP.Controllers
             this.editarMonturaCU = editarMonturaCu;
             this.editarCamaraCU = editarCamaraCu;
             this.editarOcularCU = editarOcularCu;
+            this.deleteEquipoCU = deleteEquipoCu;
         }
 
         // GET: EquipoController
@@ -45,6 +49,12 @@ namespace StellarMindsWebAPP.Controllers
         public ActionResult Create()
         {
             return View();
+        }
+
+        public ActionResult Delete(int id)
+        {
+            deleteEquipoCU.Execute(id);
+            return RedirectToAction(nameof(Index));
         }
 
         public ActionResult Details(int id)
@@ -139,11 +149,7 @@ namespace StellarMindsWebAPP.Controllers
             }
         }
 
-        // GET: EquipoController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
+        
 
         // POST: EquipoController/Delete/5
         [HttpPost]

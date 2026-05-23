@@ -36,7 +36,13 @@ namespace LogicaAccesoDatos.EntityFramework.Repositorios
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            Equipo equipo = _context.Equipos.
+                                            Where(e => e.Id == id)
+                                            .FirstOrDefault();
+            if (!equipo.EnPrestamo) {
+                _context.Equipos.Remove(equipo);
+                _context.SaveChanges();
+            }
         }
 
         public IEnumerable<Equipo> FindAll()
