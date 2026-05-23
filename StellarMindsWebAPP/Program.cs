@@ -44,6 +44,9 @@ namespace StellarMindsWebAPP
             builder.Services.AddScoped<IListarEquipos, ListarEquiposCU>();
             builder.Services.AddScoped<IBuscarEquipoPorID, BuscarEquipoPorIDCU>();
             builder.Services.AddScoped<IEditarTelescopio, EditarTelescopioCU>();
+            builder.Services.AddScoped<IEditarMontura, EditarMonturaCU>();
+            builder.Services.AddScoped<IEditarCamara, EditarCamaraCU>();
+            builder.Services.AddScoped<IEditarOcular, EditarOcularCU>();
 
 
 

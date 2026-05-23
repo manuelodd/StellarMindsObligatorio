@@ -11,5 +11,9 @@ namespace Dominio.InterfacesRepositorio
     {
         public Equipo FindEquipoPorID(int id);
         public void EditTelescopio(Telescopio tele);
+        public void EditMontura(Montura montu);
+        public void EditCamara(Camara cama);
+        public void EditOcular(Ocular ocu);
+
     }
 }

@@ -12,16 +12,26 @@ namespace StellarMindsWebAPP.Controllers
         private IListarEquipos findAllCU;
         private IBuscarEquipoPorID buscarEquipoIDCU;
         private IEditarTelescopio editarTelescopioCU;
+        private IEditarMontura editarMonturaCU;
+        private IEditarCamara editarCamaraCU;
+        private IEditarOcular editarOcularCU;
+
 
         public EquipoController(IAltaEquipo altae, 
                                 IListarEquipos findAllCu, 
                                 IBuscarEquipoPorID buscarEquipoIDCu,
-                                IEditarTelescopio editarTelescopioCu)
+                                IEditarTelescopio editarTelescopioCu,
+                                IEditarMontura editarMonturaCu,
+                                IEditarCamara editarCamaraCu,
+                                IEditarOcular editarOcularCu)
         {
             this.altaCU = altae;
             this.findAllCU = findAllCu;
             this.buscarEquipoIDCU = buscarEquipoIDCu;
             this.editarTelescopioCU = editarTelescopioCu;
+            this.editarMonturaCU = editarMonturaCu;
+            this.editarCamaraCU = editarCamaraCu;
+            this.editarOcularCU = editarOcularCu;
         }
 
         // GET: EquipoController
@@ -91,7 +101,27 @@ namespace StellarMindsWebAPP.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-
+        [HttpPost]
+        public IActionResult EditMontura(MonturaDTO dto)
+        {
+            //editarTelescopioCU.Execute(dto);
+            editarMonturaCU.Execute(dto);
+            return RedirectToAction(nameof(Index));
+        }
+        [HttpPost]
+        public IActionResult EditCamara(CamaraDTO dto)
+        {
+            //editarTelescopioCU.Execute(dto);
+            editarCamaraCU.Execute(dto);
+            return RedirectToAction(nameof(Index));
+        }
+        [HttpPost]
+        public IActionResult EditOcular(OcularDTO dto)
+        {
+            //editarTelescopioCU.Execute(dto);
+            editarOcularCU.Execute(dto);
+            return RedirectToAction(nameof(Index));
+        }
 
 
 

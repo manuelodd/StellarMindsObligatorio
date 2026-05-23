@@ -74,11 +74,64 @@ namespace LogicaAccesoDatos.EntityFramework.Repositorios
             }
         }
 
+        public void EditMontura(Montura aEditar)
+        {
+            Montura montu = _context.Monturas
+                .FirstOrDefault(t => t.Id == aEditar.Id);
+
+            if (montu != null)
+            {
+                montu.Marca = aEditar.Marca;
+                montu.Modelo = aEditar.Modelo;
+                montu.CantDisp = aEditar.CantDisp;
+                montu.Tipo = aEditar.Tipo;
+                montu.CargaKG = aEditar.CargaKG;
+                montu.GoTo = aEditar.GoTo;
+                _context.SaveChanges();
+            }
+        }
+
+        public void EditCamara(Camara aEditar)
+        {
+            Camara cama = _context.Suscripciones
+                .FirstOrDefault(t => t.Id == aEditar.Id);
+
+            if (cama != null)
+            {
+                cama.Marca = aEditar.Marca;
+                cama.Modelo = aEditar.Modelo;
+                cama.CantDisp = aEditar.CantDisp;
+                cama.TipoSensor = aEditar.TipoSensor;
+                cama.Resolution = aEditar.Resolution;
+                cama.PixelSize = aEditar.PixelSize;
+                _context.SaveChanges();
+            }
+        }
+
+        public void EditOcular(Ocular aEditar)
+        {
+            Ocular ocu = _context.Oculares
+                .FirstOrDefault(t => t.Id == aEditar.Id);
+
+            if (ocu != null)
+            {
+                ocu.Marca = aEditar.Marca;
+                ocu.Modelo = aEditar.Modelo;
+                ocu.CantDisp = aEditar.CantDisp;
+                ocu.Diametro = aEditar.Diametro;
+                ocu.GradosVision = aEditar.GradosVision;
+                _context.SaveChanges();
+            }
+        }
+
+
+
+
+
+
         public void Update(Equipo aActualizar)
         {
             throw new NotImplementedException();
         }
-
-
     }
 }
