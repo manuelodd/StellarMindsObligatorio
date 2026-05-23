@@ -65,6 +65,7 @@ namespace LogicaAccesoDatos.EntityFramework.Repositorios
             {
                 tele.Marca = aEditar.Marca;
                 tele.Modelo = aEditar.Modelo;
+                tele.EnPrestamo = aEditar.EnPrestamo;
                 tele.CantDisp = aEditar.CantDisp;
                 tele.Apertura = aEditar.Apertura;
                 tele.RelacionFocal = aEditar.RelacionFocal;
@@ -83,6 +84,7 @@ namespace LogicaAccesoDatos.EntityFramework.Repositorios
             {
                 montu.Marca = aEditar.Marca;
                 montu.Modelo = aEditar.Modelo;
+                montu.EnPrestamo = aEditar.EnPrestamo;
                 montu.CantDisp = aEditar.CantDisp;
                 montu.Tipo = aEditar.Tipo;
                 montu.CargaKG = aEditar.CargaKG;
@@ -93,13 +95,14 @@ namespace LogicaAccesoDatos.EntityFramework.Repositorios
 
         public void EditCamara(Camara aEditar)
         {
-            Camara cama = _context.Suscripciones
+            Camara cama = _context.Camaras
                 .FirstOrDefault(t => t.Id == aEditar.Id);
 
             if (cama != null)
             {
                 cama.Marca = aEditar.Marca;
                 cama.Modelo = aEditar.Modelo;
+                cama.EnPrestamo= aEditar.EnPrestamo;
                 cama.CantDisp = aEditar.CantDisp;
                 cama.TipoSensor = aEditar.TipoSensor;
                 cama.Resolution = aEditar.Resolution;
@@ -117,6 +120,7 @@ namespace LogicaAccesoDatos.EntityFramework.Repositorios
             {
                 ocu.Marca = aEditar.Marca;
                 ocu.Modelo = aEditar.Modelo;
+                ocu.EnPrestamo = aEditar.EnPrestamo;
                 ocu.CantDisp = aEditar.CantDisp;
                 ocu.Diametro = aEditar.Diametro;
                 ocu.GradosVision = aEditar.GradosVision;

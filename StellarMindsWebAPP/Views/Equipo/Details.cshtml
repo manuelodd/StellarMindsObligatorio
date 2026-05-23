@@ -1,6 +1,7 @@
 ﻿@using DTOs.DTOs
 @model EquipoDTO
 
+<a asp-controller="Equipo" asp-action="Delete">Eliminar equipo</a>
 
 @if (Model is TelescopioDTO tele) { 
     
@@ -9,6 +10,7 @@
     <li>Número identificador: @tele.Id</li>
     <li>Marca: @tele.Marca</li>
     <li>Modelo: @tele.Modelo</li>
+    <li>En préstamo: @tele.EnPrestamo</li>
     <li>Cantidad disponible: @tele.CantDisp</li>
     <li>Apertura: @tele.Apertura</li>
     <li>Relación focal: @tele.RelacionFocal</li>
@@ -24,6 +26,7 @@
     <li>Número identificador: @montu.Id</li>
     <li>Marca: @montu.Marca</li>
     <li>Modelo: @montu.Modelo</li>
+    <li>En préstamo: @montu.EnPrestamo</li>
     <li>Cantidad disponible: @montu.CantDisp</li>
     <li>Tipo: @montu.Tipo</li>
     <li>Carga (kilogramos): @montu.CargaKG</li>
@@ -38,6 +41,7 @@
     <li>Número identificador: @cama.Id</li>
     <li>Marca: @cama.Marca</li>
     <li>Modelo: @cama.Modelo</li>
+    <li>En préstamo: @cama.EnPrestamo</li>
     <li>Cantidad disponible: @cama.CantDisp</li>
     <li>Tipo de sensor: @cama.TipoSensor</li>
     <li>Resolución: @cama.Resolution</li>
@@ -52,6 +56,7 @@
     <li>Número identificador: @ocu.Id</li>
     <li>Marca: @ocu.Marca</li>
     <li>Modelo: @ocu.Modelo</li>
+    <li>En préstamo: @ocu.EnPrestamo</li>
     <li>Cantidad disponible: @ocu.CantDisp</li>
     <li>Tipo de sensor: @ocu.Diametro</li>
     <li>Resolución: @ocu.GradosVision</li>

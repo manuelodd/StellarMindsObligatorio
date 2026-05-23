@@ -18,7 +18,7 @@ namespace LogicaAccesoDatos.EntityFramework
         public DbSet<Equipo> Equipos { get; set; }
         public DbSet<Telescopio> Telescopios { get; set; }
         public DbSet<Montura> Monturas { get; set; }
-        public DbSet<Camara> Suscripciones { get; set; } // cambiar
+        public DbSet<Camara> Camaras { get; set; } // cambiar
         public DbSet<Ocular> Oculares { get; set; }
         public DbSet<Observacion> Observaciones { get; set; }
         

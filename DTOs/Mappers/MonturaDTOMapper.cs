@@ -3,6 +3,7 @@ using StellarMinds.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Xml;
 
 namespace DTOs.Mappers
 {
@@ -15,6 +16,7 @@ namespace DTOs.Mappers
                 Id = unaMontura.Id,
                 Marca = unaMontura.Marca,
                 Modelo = unaMontura.Modelo,
+                EnPrestamo = unaMontura.EnPrestamo,
                 CantDisp = unaMontura.CantDisp,
                 Tipo = unaMontura.Tipo,
                 CargaKG = unaMontura.CargaKG,
@@ -29,6 +31,7 @@ namespace DTOs.Mappers
                 Id = dto.Id,
                 Marca = dto.Marca,
                 Modelo = dto.Modelo,
+                EnPrestamo = dto.EnPrestamo,
                 CantDisp = dto.CantDisp,
                 Tipo = dto.Tipo,
                 CargaKG = dto.CargaKG,
