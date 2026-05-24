@@ -26,21 +26,19 @@ namespace StellarMindsWebAPP
                 options.Cookie.IsEssential = true;
             });
 
-            // ini repos
-
-            //cambio RepositorioUsuario a RepositorioUsuarioEF para utilizar la base de datos
 
 
-            // PROBANDO SIN EF - - -  -  - - > Cambiar RepositorioUsuario a RepositorioUsuarioEF despues
+            builder.Services.AddDbContext<StellarMindsContext>(
+            options => options.UseSqlServer(builder.Configuration.GetConnectionString("StellarMinds"))
+            );
+            //ini repositorios
             builder.Services.AddScoped<IRepositorioUsuario, RepositorioUsuarioEF>();
             builder.Services.AddScoped<IRepositorioEquipo, RepositorioEquipoEF>();
-
-
-            //ini caos de uso
+            //ini casos de uso USUARIOS
             builder.Services.AddScoped<IAltaUsuario, AltaUsuarioCU>();
             builder.Services.AddScoped<IListarUsuarios, ListarUsuariosCU>();
             builder.Services.AddScoped<ILoginUsuario, LoginUsuarioCU>();
-
+            //ini casos de uso EQUIPOS
             builder.Services.AddScoped<IAltaEquipo, AltaEquipoCU>();
             builder.Services.AddScoped<IListarEquipos, ListarEquiposCU>();
             builder.Services.AddScoped<IBuscarEquipoPorID, BuscarEquipoPorIDCU>();
@@ -49,16 +47,6 @@ namespace StellarMindsWebAPP
             builder.Services.AddScoped<IEditarCamara, EditarCamaraCU>();
             builder.Services.AddScoped<IEditarOcular, EditarOcularCU>();
             builder.Services.AddScoped<IDeleteEquipo, DeleteEquipoCU>();
-
-
-
-
-
-
-            builder.Services.AddDbContext<StellarMindsContext>(
-                    options => options.UseSqlServer(builder.Configuration.GetConnectionString("StellarMinds"))
-                    );
-            
 
             var app = builder.Build();
 

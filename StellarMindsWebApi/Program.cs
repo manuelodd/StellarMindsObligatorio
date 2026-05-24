@@ -2,6 +2,7 @@
 using Dominio.InterfacesRepositorio;
 using LogicaAccesoDatos.EntityFramework;
 using LogicaAccesoDatos.EntityFramework.Repositorios;
+using LogicaAplicacion.CasosDeUso.CUEquipo;
 using LogicaAplicacion.CasosDeUso.CUUsuario;
 using LogicaAplicacion.InterfacesCasosDeUso;
 using Microsoft.EntityFrameworkCore;
@@ -23,19 +24,25 @@ namespace StellarMindsWebApi
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddOpenApi();
 
-            //Inicializar repos/CU antes de buildear
-
+            builder.Services.AddDbContext<StellarMindsContext>(
+            options => options.UseSqlServer(builder.Configuration.GetConnectionString("StellarMinds"))
+            );
+            //ini repositorios
             builder.Services.AddScoped<IRepositorioUsuario, RepositorioUsuarioEF>();
-
-            //ini caos de uso
+            builder.Services.AddScoped<IRepositorioEquipo, RepositorioEquipoEF>();
+            //ini casos de uso USUARIOS
             builder.Services.AddScoped<IAltaUsuario, AltaUsuarioCU>();
             builder.Services.AddScoped<IListarUsuarios, ListarUsuariosCU>();
             builder.Services.AddScoped<ILoginUsuario, LoginUsuarioCU>();
-
-
-            builder.Services.AddDbContext<StellarMindsContext>(
-                    options => options.UseSqlServer(builder.Configuration.GetConnectionString("StellarMinds"))
-                    );
+            //ini casos de uso EQUIPOS
+            builder.Services.AddScoped<IAltaEquipo, AltaEquipoCU>();
+            builder.Services.AddScoped<IListarEquipos, ListarEquiposCU>();
+            builder.Services.AddScoped<IBuscarEquipoPorID, BuscarEquipoPorIDCU>();
+            builder.Services.AddScoped<IEditarTelescopio, EditarTelescopioCU>();
+            builder.Services.AddScoped<IEditarMontura, EditarMonturaCU>();
+            builder.Services.AddScoped<IEditarCamara, EditarCamaraCU>();
+            builder.Services.AddScoped<IEditarOcular, EditarOcularCU>();
+            builder.Services.AddScoped<IDeleteEquipo, DeleteEquipoCU>();
 
             var app = builder.Build();
 
