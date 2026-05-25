@@ -12,10 +12,10 @@ namespace DTOs.DTOs
         public DateTime FechaInicio { get; set; }
         public DateTime FechaFin { get; set; }
         public EstadoPrestamo Estado { get; set; }
-        public Telescopio Telescopio { get; set; } = null;
-        public Montura Montura { get; set; } = null;
-        public Camara Camara { get; set; } = null;
-        public Ocular Ocular { get; set; } = null;
+        public int? Telescopio { get; set; } = null;
+        public int? Montura { get; set; } = null;
+        public int? Camara { get; set; } = null;
+        public int? Ocular { get; set; } = null;
 
     }
 }

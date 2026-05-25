@@ -12,10 +12,10 @@ namespace StellarMinds.Entities
         public DateTime FechaInicio { get; set; }
         public DateTime FechaFin {  get; set; }
         public EstadoPrestamo Estado {  get; set; }
-        public Telescopio Telescopio { get; set; } = null;
-        public Montura Montura { get; set; } = null;
-        public Camara Camara { get; set; } = null;
-        public Ocular Ocular { get; set; } = null;
+        public int? TelescopioID { get; set; } = null;
+        public int? MonturaID { get; set; } = null;
+        public int? CamaraID { get; set; } = null;
+        public int? OcularID { get; set; } = null;
 
         public Prestamo() 
         { 
