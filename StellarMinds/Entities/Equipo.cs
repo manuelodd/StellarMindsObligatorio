@@ -8,8 +8,6 @@ namespace StellarMinds.Entities
 {
     public class Equipo : IValidable
     {
-        private static int _id = 0;
-
 
         public Equipo()
         {

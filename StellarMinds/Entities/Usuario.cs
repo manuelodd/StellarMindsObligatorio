@@ -10,8 +10,6 @@ namespace StellarMinds.Entities
 {
     public class Usuario : IValidable
     {
-
-        private static int _id = 0;
         public int Id { get; set; }
         public UsuarioNombreCompleto NombreCompleto { get; set; }
         public string Telefono { get; set; }

@@ -7,7 +7,6 @@ namespace StellarMinds.Entities
 {
     public class Observacion : IValidable
     {
-        private static int _id = 0;
         public int Id { get; set; }
         public DateTime Fecha { get; set; }
 
