@@ -2,6 +2,7 @@ using Dominio.InterfacesRepositorio;
 using LogicaAccesoDatos.EntityFramework;
 using LogicaAccesoDatos.EntityFramework.Repositorios;
 using LogicaAplicacion.CasosDeUso.CUEquipo;
+using LogicaAplicacion.CasosDeUso.CUPrestamo;
 using LogicaAplicacion.CasosDeUso.CUUsuario;
 using LogicaAplicacion.InterfacesCasosDeUso;
 using Microsoft.EntityFrameworkCore;
@@ -34,6 +35,7 @@ namespace StellarMindsWebAPP
             //ini repositorios
             builder.Services.AddScoped<IRepositorioUsuario, RepositorioUsuarioEF>();
             builder.Services.AddScoped<IRepositorioEquipo, RepositorioEquipoEF>();
+            builder.Services.AddScoped<IRepositorioPrestamo, RepositorioPrestamoEF>();
             //ini casos de uso USUARIOS
             builder.Services.AddScoped<IAltaUsuario, AltaUsuarioCU>();
             builder.Services.AddScoped<IListarUsuarios, ListarUsuariosCU>();
@@ -47,6 +49,8 @@ namespace StellarMindsWebAPP
             builder.Services.AddScoped<IEditarCamara, EditarCamaraCU>();
             builder.Services.AddScoped<IEditarOcular, EditarOcularCU>();
             builder.Services.AddScoped<IDeleteEquipo, DeleteEquipoCU>();
+            //ini casos de uso PRESTAMOS
+            builder.Services.AddScoped<IListarPrestamos, ListarPrestamosCU>();
 
             var app = builder.Build();
 

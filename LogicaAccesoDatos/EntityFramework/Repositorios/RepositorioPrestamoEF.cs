@@ -27,7 +27,7 @@ namespace LogicaAccesoDatos.EntityFramework.Repositorios
 
         public IEnumerable<Prestamo> FindAll()
         {
-            throw new NotImplementedException();
+            return _context.Prestamos;
         }
 
         public Prestamo FindById(int id)
