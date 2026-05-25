@@ -1,14 +1,22 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using DTOs.DTOs;
+using LogicaAplicacion.InterfacesCasosDeUso;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace StellarMindsWebAPP.Controllers
 {
     public class PrestamoController : BaseController
     {
-        // GET: PrestamoController
+        private IListarPrestamos listarPrestamosCU;
+
+        public PrestamoController(IListarPrestamos listarPrestamosCu)
+        {
+            this.listarPrestamosCU = listarPrestamosCu;
+        }
         public ActionResult Index()
         {
-            return View();
+            List<PrestamoDTO> lista = listarPrestamosCU.Execute();
+            return View(lista);
         }
 
         // GET: PrestamoController/Details/5
