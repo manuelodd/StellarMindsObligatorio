@@ -14,7 +14,9 @@ namespace StellarMindsWebApi.Controllers
         private IAltaUsuario altaCU;
         private IListarUsuarios findAllCU;
 
-        public UsuarioController(ILoginUsuario loginu, IAltaUsuario altau, IListarUsuarios findAllCu)
+        public UsuarioController    (ILoginUsuario loginu, 
+                                    IAltaUsuario altau, 
+                                    IListarUsuarios findAllCu)
         {
             this.loginU = loginu;
             this.altaCU = altau;
