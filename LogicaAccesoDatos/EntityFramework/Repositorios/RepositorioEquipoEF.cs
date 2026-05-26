@@ -50,6 +50,26 @@ namespace LogicaAccesoDatos.EntityFramework.Repositorios
             return _context.Equipos;
         }
 
+        public IEnumerable<Equipo> FindAllTelescopios()
+        {
+            return _context.Telescopios;
+        }
+
+        public IEnumerable<Equipo> FindAllMonturas()
+        {
+            return _context.Monturas;
+        }
+
+        public IEnumerable<Equipo> FindAllCamaras()
+        {
+            return _context.Camaras;
+        }
+
+        public IEnumerable<Equipo> FindAllOculares()
+        {
+            return _context.Oculares;
+        }
+
         public Equipo FindById(int id)
         {
             throw new NotImplementedException();

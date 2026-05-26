@@ -25,10 +25,10 @@ namespace DTOs.Mappers
                     FechaInicio = unPrestamo.FechaInicio,
                     FechaFin = unPrestamo.FechaFin,
                     Estado = unPrestamo.Estado,
-                    Telescopio = unPrestamo.Telescopio,
-                    Montura = unPrestamo.Montura,
-                    Camara = unPrestamo.Camara,
-                    Ocular = unPrestamo.Ocular
+                    TelescopioID = unPrestamo.TelescopioID,
+                    MonturaID = unPrestamo.MonturaID,
+                    CamaraID = unPrestamo.CamaraID,
+                    OcularID = unPrestamo.OcularID
                 };
             }
         public static Prestamo FromDTO(PrestamoDTO dto)
@@ -39,10 +39,10 @@ namespace DTOs.Mappers
                 FechaInicio = dto.FechaInicio,
                 FechaFin = dto.FechaFin,
                 Estado = dto.Estado,
-                Telescopio = dto.Telescopio,
-                Montura = dto.Montura,
-                Camara = dto.Camara,
-                Ocular = dto.Ocular
+                TelescopioID = dto.TelescopioID,
+                MonturaID = dto.MonturaID,
+                CamaraID = dto.CamaraID,
+                OcularID = dto.OcularID
             };
         }
     }

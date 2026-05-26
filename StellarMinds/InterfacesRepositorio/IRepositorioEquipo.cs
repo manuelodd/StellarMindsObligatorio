@@ -10,6 +10,10 @@ namespace Dominio.InterfacesRepositorio
     public interface IRepositorioEquipo : IRepositorio<Equipo>
     {
         public Equipo FindEquipoPorID(int id);
+        public IEnumerable<Equipo> FindAllTelescopios();
+        public IEnumerable<Equipo> FindAllMonturas();
+        public IEnumerable<Equipo> FindAllCamaras();
+        public IEnumerable<Equipo> FindAllOculares();
         public void EditTelescopio(Telescopio tele);
         public void EditMontura(Montura montu);
         public void EditCamara(Camara cama);
