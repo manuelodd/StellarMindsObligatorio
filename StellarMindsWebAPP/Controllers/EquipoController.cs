@@ -10,6 +10,12 @@ namespace StellarMindsWebAPP.Controllers
     {
         private IAltaEquipo altaCU;
         private IListarEquipos findAllCU;
+        /*
+        private IListarTelescopios findAllTelCU;
+        private IListarMonturas findAllMonCU;
+        private IListarCamaras findAllCamCU;
+        private IListarOculares findAllOcuCU;
+        */
         private IBuscarEquipoPorID buscarEquipoIDCU;
         private IEditarTelescopio editarTelescopioCU;
         private IEditarMontura editarMonturaCU;
@@ -26,16 +32,28 @@ namespace StellarMindsWebAPP.Controllers
                                 IEditarMontura editarMonturaCu,
                                 IEditarCamara editarCamaraCu,
                                 IEditarOcular editarOcularCu,
-                                IDeleteEquipo deleteEquipoCu)
+                                IDeleteEquipo deleteEquipoCu
+                                /*
+                                IListarTelescopios findAllTelCu,
+                                IListarMonturas findAllMonCu,
+                                IListarCamaras findAllCamCu,
+                                IListarOculares findAllOcuCu*/)
         {
             this.altaCU = altae;
             this.findAllCU = findAllCu;
+            /*
+            this.findAllTelCU = findAllTelCu;
+            this.findAllMonCU = findAllMonCu;
+            this.findAllCamCU = findAllCamCu;
+            this.findAllOcuCU = findAllOcuCu;
+            */
             this.buscarEquipoIDCU = buscarEquipoIDCu;
             this.editarTelescopioCU = editarTelescopioCu;
             this.editarMonturaCU = editarMonturaCu;
             this.editarCamaraCU = editarCamaraCu;
             this.editarOcularCU = editarOcularCu;
             this.deleteEquipoCU = deleteEquipoCu;
+            
         }
 
         // GET: EquipoController

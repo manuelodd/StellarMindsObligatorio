@@ -8,10 +8,23 @@ namespace StellarMindsWebAPP.Controllers
     public class PrestamoController : BaseController
     {
         private IListarPrestamos listarPrestamosCU;
+        private IListarTelescopios findAllTelCU;
+        private IListarMonturas findAllMonCU;
+        private IListarCamaras findAllCamCU;
+        private IListarOculares findAllOcuCU;
 
-        public PrestamoController(IListarPrestamos listarPrestamosCu)
+        public PrestamoController   (IListarPrestamos listarPrestamosCu,
+                                    IListarTelescopios findAllTelCu,
+                                    IListarMonturas findAllMonCu,
+                                    IListarCamaras findAllCamCu,
+                                    IListarOculares findAllOcuCu
+                                    )
         {
             this.listarPrestamosCU = listarPrestamosCu;
+            this.findAllTelCU = findAllTelCu;
+            this.findAllMonCU = findAllMonCu;
+            this.findAllCamCU = findAllCamCu;
+            this.findAllOcuCU = findAllOcuCu;
         }
         public ActionResult Index()
         {
