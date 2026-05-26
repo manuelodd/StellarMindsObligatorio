@@ -43,6 +43,10 @@ namespace StellarMindsWebAPP
             //ini casos de uso EQUIPOS
             builder.Services.AddScoped<IAltaEquipo, AltaEquipoCU>();
             builder.Services.AddScoped<IListarEquipos, ListarEquiposCU>();
+            builder.Services.AddScoped<IListarTelescopios, ListarTelescopiosCU>();
+            builder.Services.AddScoped<IListarMonturas, ListarMonturasCU>();
+            builder.Services.AddScoped<IListarCamaras, ListarCamarasCU>();
+            builder.Services.AddScoped<IListarOculares, ListarOcularesCU>();
             builder.Services.AddScoped<IBuscarEquipoPorID, BuscarEquipoPorIDCU>();
             builder.Services.AddScoped<IEditarTelescopio, EditarTelescopioCU>();
             builder.Services.AddScoped<IEditarMontura, EditarMonturaCU>();
