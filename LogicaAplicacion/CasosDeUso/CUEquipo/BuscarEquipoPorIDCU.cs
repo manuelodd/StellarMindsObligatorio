@@ -19,7 +19,7 @@ namespace LogicaAplicacion.CasosDeUso.CUEquipo
         }
         public EquipoDTO Execute(int id)
         {
-            Equipo equipo = repositorio.FindEquipoPorID(id);
+            Equipo equipo = repositorio.FindById(id);
             return EquipoDTOMapper.ToDetailDTO(equipo);
         }
     }
