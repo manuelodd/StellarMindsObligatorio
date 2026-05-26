@@ -7,6 +7,6 @@ namespace LogicaAplicacion.InterfacesCasosDeUso
 {
     public interface IListarOculares
     {
-        public IEnumerable<IListarOculares> Execute();
+        public IEnumerable<OcularDTO> Execute();
     }
 }
