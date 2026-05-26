@@ -1,25 +1,31 @@
-﻿using DTOs.DTOs;
+﻿using Dominio.Exceptions;
+using DTOs.AuxiliarViewmodel;
+using DTOs.DTOs;
 using LogicaAplicacion.InterfacesCasosDeUso;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 
 namespace StellarMindsWebAPP.Controllers
 {
     public class PrestamoController : BaseController
     {
+        private IAltaPrestamo altaCU;
         private IListarPrestamos listarPrestamosCU;
         private IListarTelescopios findAllTelCU;
         private IListarMonturas findAllMonCU;
         private IListarCamaras findAllCamCU;
         private IListarOculares findAllOcuCU;
 
-        public PrestamoController   (IListarPrestamos listarPrestamosCu,
+        public PrestamoController   (IAltaPrestamo altaCu,
+                                    IListarPrestamos listarPrestamosCu,
                                     IListarTelescopios findAllTelCu,
                                     IListarMonturas findAllMonCu,
                                     IListarCamaras findAllCamCu,
                                     IListarOculares findAllOcuCu
                                     )
         {
+            this.altaCU = altaCu;
             this.listarPrestamosCU = listarPrestamosCu;
             this.findAllTelCU = findAllTelCu;
             this.findAllMonCU = findAllMonCu;
@@ -41,21 +47,37 @@ namespace StellarMindsWebAPP.Controllers
         // GET: PrestamoController/Create
         public ActionResult Create()
         {
-            return View();
+            PrestamoAltaViewmodel vm = new PrestamoAltaViewmodel();
+            vm.Telescopios = findAllTelCU.Execute();
+            vm.Monturas = findAllMonCU.Execute();
+            vm.Camaras = findAllCamCU.Execute();
+            vm.Oculares = findAllOcuCU.Execute();
+            return View(vm);
         }
 
         // POST: PrestamoController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(PrestamoDTO dto)
         {
             try
             {
+                altaCU.Execute(dto);
                 return RedirectToAction(nameof(Index));
             }
-            catch
+            catch (InvalidPrestamo ex)
             {
-                return View();
+                //creo denuevo el vm para retener los datos
+                PrestamoAltaViewmodel vm = new PrestamoAltaViewmodel();
+
+                vm.Telescopios = findAllTelCU.Execute();
+                vm.Monturas = findAllMonCU.Execute();
+                vm.Camaras = findAllCamCU.Execute();
+                vm.Oculares = findAllOcuCU.Execute();
+
+                ViewBag.Error = ex.Message;
+
+                return View(vm);
             }
         }
 

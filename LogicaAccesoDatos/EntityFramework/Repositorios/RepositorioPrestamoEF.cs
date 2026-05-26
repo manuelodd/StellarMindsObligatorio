@@ -1,4 +1,6 @@
-﻿using Dominio.InterfacesRepositorio;
+﻿using Dominio.Exceptions;
+using Dominio.InterfacesRepositorio;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using StellarMinds.Entities;
 using System;
 using System.Collections.Generic;
@@ -17,7 +19,9 @@ namespace LogicaAccesoDatos.EntityFramework.Repositorios
 
         public void Alta(Prestamo aAgregar)
         {
-            throw new NotImplementedException();
+                aAgregar.Validar();
+                _context.Prestamos.Add(aAgregar);
+                _context.SaveChanges();
         }
 
         public void Delete(int id)

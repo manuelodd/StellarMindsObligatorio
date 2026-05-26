@@ -1,4 +1,5 @@
-﻿using DTOs.DTOs;
+﻿using Dominio.InterfacesRepositorio;
+using DTOs.DTOs;
 using StellarMinds.Entities;
 using System;
 using System.Collections.Generic;
@@ -25,12 +26,15 @@ namespace DTOs.Mappers
                     FechaInicio = unPrestamo.FechaInicio,
                     FechaFin = unPrestamo.FechaFin,
                     Estado = unPrestamo.Estado,
-                    TelescopioID = unPrestamo.TelescopioID,
-                    MonturaID = unPrestamo.MonturaID,
-                    CamaraID = unPrestamo.CamaraID,
-                    OcularID = unPrestamo.OcularID
+                    TelescopioID = unPrestamo.Telescopio.Id,
+                    MonturaID = unPrestamo.Montura.Id,
+                    CamaraID = unPrestamo.Camara.Id,
+                    OcularID = unPrestamo.Ocular.Id
                 };
             }
+
+        
+        /*
         public static Prestamo FromDTO(PrestamoDTO dto)
         {
             return new Prestamo
@@ -39,11 +43,12 @@ namespace DTOs.Mappers
                 FechaInicio = dto.FechaInicio,
                 FechaFin = dto.FechaFin,
                 Estado = dto.Estado,
-                TelescopioID = dto.TelescopioID,
-                MonturaID = dto.MonturaID,
-                CamaraID = dto.CamaraID,
-                OcularID = dto.OcularID
+                Telescopio = dto.TelescopioID,
+                Montura = dto.MonturaID,
+                Camara = dto.CamaraID,
+                Ocular = dto.OcularID
             };
+        */
         }
     }
-    }
+    

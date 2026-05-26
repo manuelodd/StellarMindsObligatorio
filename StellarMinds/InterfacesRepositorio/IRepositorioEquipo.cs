@@ -9,7 +9,11 @@ namespace Dominio.InterfacesRepositorio
 {
     public interface IRepositorioEquipo : IRepositorio<Equipo>
     {
-        public Equipo FindEquipoPorID(int id);
+        public Telescopio FindTeleById(int id);
+        public Montura FindMontuById(int id);
+        public Camara FindCamaById(int id);
+        public Ocular FindOcuById(int id);
+
         public IEnumerable<Equipo> FindAllTelescopios();
         public IEnumerable<Equipo> FindAllMonturas();
         public IEnumerable<Equipo> FindAllCamaras();

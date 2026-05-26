@@ -1,7 +1,12 @@
 ﻿@using DTOs.DTOs
 @model IEnumerable<PrestamoDTO>
 
-
+    @if (Context.Session.GetString("rol") == "ADMINISTRADOR")
+{
+    <a asp-controller="Prestamo" asp-action="Create">
+        Crear prestamo
+    </a>
+}
 <table class="table">
     <thead>
         <tr>
@@ -18,16 +23,16 @@
                 @Html.DisplayNameFor(model => model.Estado)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Telescopio)
+                @Html.DisplayNameFor(model => model.TelescopioID)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Montura)
+                @Html.DisplayNameFor(model => model.MonturaID)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Camara)
+                @Html.DisplayNameFor(model => model.CamaraID)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Ocular)
+                @Html.DisplayNameFor(model => model.OcularID)
             </th>
             
             <th></th>
@@ -50,17 +55,17 @@
                     @Html.DisplayFor(modelItem => item.Estado)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Telescopio.Id)
+                    @Html.DisplayFor(modelItem => item.TelescopioID)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Montura.Id)
+                    @Html.DisplayFor(modelItem => item.MonturaID)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Camara.Id)
+                    @Html.DisplayFor(modelItem => item.CamaraID)
                 </td>
 
                 <td>
-                    @Html.DisplayFor(modelItem => item.Ocular.Id)
+                    @Html.DisplayFor(modelItem => item.OcularID)
                 </td>
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |

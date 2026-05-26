@@ -54,6 +54,7 @@ namespace StellarMindsWebAPP
             builder.Services.AddScoped<IEditarOcular, EditarOcularCU>();
             builder.Services.AddScoped<IDeleteEquipo, DeleteEquipoCU>();
             //ini casos de uso PRESTAMOS
+            builder.Services.AddScoped<IAltaPrestamo, AltaPrestamoCU>();
             builder.Services.AddScoped<IListarPrestamos, ListarPrestamosCU>();
 
             var app = builder.Build();

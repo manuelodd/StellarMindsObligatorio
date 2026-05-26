@@ -1,0 +1,87 @@
+﻿@using DTOs.AuxiliarViewmodel
+@using DTOs.DTOs
+
+@model PrestamoAltaViewmodel
+
+<form asp-action="Create" method="post">
+
+    <label for="FechaInicio">Fecha inicio</label>
+    <input type="date" name="FechaInicio" class="form-control" />
+
+    <label for="FechaFin">Fecha fin</label>
+    <input type="date" name="FechaFin" class="form-control" />
+
+    <br />
+
+    <label for="TelescopioID">Telescopio</label>
+    <select name="TelescopioID" class="form-control">
+
+        <option value="">Seleccione un telescopio</option>
+
+        @foreach (TelescopioDTO tele in Model.Telescopios)
+        {
+            <option value="@tele.Id">
+                @tele.Id - @tele.Marca @tele.Modelo
+            </option>
+        }
+
+    </select>
+
+    <br />
+
+    <label for="MonturaID">Montura</label>
+    <select name="MonturaID" class="form-control">
+
+        <option value="">Seleccione una montura</option>
+
+        @foreach (MonturaDTO montu in Model.Monturas)
+        {
+            <option value="@montu.Id">
+                @montu.Id - @montu.Marca @montu.Modelo
+            </option>
+        }
+
+    </select>
+
+    <br />
+
+    <label for="CamaraID">Camara</label>
+    <select name="CamaraID" class="form-control">
+
+        <option value="">Sin cámara</option>
+
+        @foreach (CamaraDTO cama in Model.Camaras)
+        {
+            <option value="@cama.Id">
+                @cama.Id - @cama.Marca @cama.Modelo
+            </option>
+        }
+
+    </select>
+
+    <br />
+
+    <label for="OcularID">Ocular</label>
+    <select name="OcularID" class="form-control">
+
+        <option value="">Sin ocular</option>
+
+        @foreach (OcularDTO ocu in Model.Oculares)
+        {
+            <option value="@ocu.Id">
+                @ocu.Id - @ocu.Marca @ocu.Modelo
+            </option>
+        }
+
+    </select>
+
+    <br />
+
+    <input type="submit" value="Create" class="btn btn-primary" />
+
+</form>
+
+@if(ViewBag.Error != null)
+{
+    <p>@ViewBag.Error</p>
+}

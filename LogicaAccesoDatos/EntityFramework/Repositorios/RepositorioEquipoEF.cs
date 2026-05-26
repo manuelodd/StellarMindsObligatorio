@@ -72,12 +72,35 @@ namespace LogicaAccesoDatos.EntityFramework.Repositorios
 
         public Equipo FindById(int id)
         {
-            throw new NotImplementedException();
+            return _context.Equipos.
+                Where(equipo => equipo.Id == id)
+                .FirstOrDefault();
         }
 
-        public Equipo FindEquipoPorID(int id)
+        public Telescopio FindTeleById(int id)
         {
-            return _context.Equipos.
+            return _context.Telescopios.
+                Where(equipo => equipo.Id == id)
+                .FirstOrDefault();
+        }
+
+        public Montura FindMontuById(int id)
+        {
+            return _context.Monturas.
+                Where(equipo => equipo.Id == id)
+                .FirstOrDefault();
+        }
+
+        public Camara FindCamaById(int id)
+        {
+            return _context.Camaras.
+                Where(equipo => equipo.Id == id)
+                .FirstOrDefault();
+        }
+
+        public Ocular FindOcuById(int id)
+        {
+            return _context.Oculares.
                 Where(equipo => equipo.Id == id)
                 .FirstOrDefault();
         }

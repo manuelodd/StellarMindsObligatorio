@@ -25,6 +25,13 @@
     </a>
 }
 
+@if (Context.Session.GetString("rol") == "ADMINISTRADOR")
+{
+    <a asp-controller="Prestamo" asp-action="Index">
+        Ver Prestamos
+    </a>
+}
+
 
 <table class="table">
     <thead>

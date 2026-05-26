@@ -13,10 +13,10 @@ namespace StellarMinds.Entities
         public DateTime FechaInicio { get; set; }
         public DateTime FechaFin { get; set; }
         public EstadoPrestamo Estado { get; set; }
-        public int? TelescopioID { get; set; } = null;
-        public int? MonturaID { get; set; } = null;
-        public int? CamaraID { get; set; } = null;
-        public int? OcularID { get; set; } = null;
+        public Telescopio Telescopio { get; set; }
+        public Montura Montura { get; set; }
+        public Camara? Camara { get; set; } = null;
+        public Ocular? Ocular { get; set; } = null;
 
         public Prestamo()
         {
@@ -26,9 +26,14 @@ namespace StellarMinds.Entities
 
         public void Validar()
         {
-            if (CamaraID == null && OcularID == null)
+            if (Camara == null && Ocular == null)
             {
                 throw new InvalidPrestamo("El préstamo debe incluir una cámara u ocular");
+            }
+
+            if (Montura.CargaKG < Telescopio.PesoKG)
+            {
+                throw new InvalidPrestamo("El peso del telescopio excede la capacidad de la montura");
             }
         }
     }
