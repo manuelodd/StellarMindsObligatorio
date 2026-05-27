@@ -34,5 +34,38 @@ namespace LogicaAccesoDatos.EntityFramework
             );
         }
         */
+
+        protected override void OnModelCreating(
+       ModelBuilder modelBuilder)
+        {
+            //que EF trabaje normal (ejecute la configuracion default de dbcontext), despues yo agrego mis modificaciones
+            base.OnModelCreating(modelBuilder);
+
+            //"voy a configurar la entidad prestamo"
+            modelBuilder.Entity<Prestamo>()
+                //prestamo tiene UNA Relacion con telescsopio
+                .HasOne(p => p.Telescopio)
+                //no existe navegacion del otro lado, (por ej, telescopio no tiene public List<Prestamo> Prestamos) INTERPRETA QUE VARIOS PRESTAMOS PUEDEN
+                //TENER EL MISMO TELESCOPIO
+                .WithMany()
+                //si se borra el telescopio, no hagas nada automatico, por defecto EF hace cascade delete, si se borra el telescopio tmb borra prestamos
+                //que lo incluyan
+                .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<Prestamo>()
+                .HasOne(p => p.Montura)
+                .WithMany()
+                .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<Prestamo>()
+                .HasOne(p => p.Camara)
+                .WithMany()
+                .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<Prestamo>()
+                .HasOne(p => p.Ocular)
+                .WithMany()
+                .OnDelete(DeleteBehavior.NoAction);
+        }
     }
 }
