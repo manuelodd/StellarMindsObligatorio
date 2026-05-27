@@ -39,7 +39,7 @@ namespace LogicaAccesoDatos.EntityFramework.Repositorios
             Equipo equipo = _context.Equipos.
                                             Where(e => e.Id == id)
                                             .FirstOrDefault();
-            if (!equipo.EnPrestamo) {
+            if (equipo != null) {
                 _context.Equipos.Remove(equipo);
                 _context.SaveChanges();
             }

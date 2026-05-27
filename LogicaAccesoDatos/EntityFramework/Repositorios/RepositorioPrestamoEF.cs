@@ -1,5 +1,6 @@
 ﻿using Dominio.Exceptions;
 using Dominio.InterfacesRepositorio;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using StellarMinds.Entities;
 using System;
@@ -31,7 +32,11 @@ namespace LogicaAccesoDatos.EntityFramework.Repositorios
 
         public IEnumerable<Prestamo> FindAll()
         {
-            return _context.Prestamos;
+            return _context.Prestamos
+                            .Include(p => p.Telescopio)
+                            .Include(p => p.Montura)
+                            .Include(p => p.Camara)
+                            .Include(p => p.Ocular);
         }
 
         public Prestamo FindById(int id)
