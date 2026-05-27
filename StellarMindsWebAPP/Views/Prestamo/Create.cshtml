@@ -14,7 +14,7 @@
     <br />
 
     <label for="TelescopioID">Telescopio</label>
-    <select name="TelescopioID" class="form-control">
+    <select name="TelescopioID" class="form-control" onchange="verificarDispTele()">
 
         <option value="">Seleccione un telescopio</option>
 
@@ -26,6 +26,7 @@
         }
 
     </select>
+    <p id="mensaje"></p>
 
     <br />
 
@@ -85,3 +86,31 @@
 {
     <p>@ViewBag.Error</p>
 }
+
+<script>
+
+    async function verificarDispTele() {
+        let id =
+            document.getElementById(
+                "telescopioSelect").value;
+
+        let response =
+            await fetch(
+                `https://localhost:7249/api/equipos/${id}`);
+
+        let disponible = await response.json();
+
+        let mensaje =
+            document.getElementById("mensaje");
+
+        if (disponible) {
+            mensaje.innerHTML =
+                "Equipo disponible";
+        }
+        else {
+            mensaje.innerHTML =
+                "Equipo NO disponible";
+        }
+    }
+
+</script>
