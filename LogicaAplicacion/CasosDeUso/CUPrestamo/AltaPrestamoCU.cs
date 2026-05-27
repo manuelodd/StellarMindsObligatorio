@@ -48,6 +48,12 @@ namespace LogicaAplicacion.CasosDeUso.CUPrestamo
                 Ocular = ocu
             };
 
+            prestamo.Validar();
+            tele.CantDisp--;
+            montu.CantDisp--;
+            if (cam != null) cam.CantDisp--;
+            if (ocu != null) ocu.CantDisp--;
+
             repositorioPrestamo.Alta(prestamo);
         }
     }
