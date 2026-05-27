@@ -1,4 +1,5 @@
-﻿using DTOs.DTOs;
+﻿using Dominio.InterfacesRepositorio;
+using DTOs.DTOs;
 using LogicaAplicacion.InterfacesCasosDeUso;
 using Microsoft.AspNetCore.Mvc;
 using StellarMinds.Entities;
@@ -11,6 +12,7 @@ namespace StellarMindsWebApi.Controllers
     [ApiController]
     public class EquipoController : ControllerBase
     {
+        private IRepositorioEquipo repositorio;
         private IAltaEquipo altaCU;
         private IListarEquipos findAllCU;
         private IBuscarEquipoPorID buscarEquipoIDCU;
@@ -20,7 +22,8 @@ namespace StellarMindsWebApi.Controllers
         private IEditarOcular editarOcularCU;
         private IDeleteEquipo deleteEquipoCU;
 
-        public EquipoController(IAltaEquipo altae,
+        public EquipoController(IRepositorioEquipo repo,
+                                IAltaEquipo altae,
                                 IListarEquipos findAllCu,
                                 IBuscarEquipoPorID buscarEquipoIDCu,
                                 IEditarTelescopio editarTelescopioCu,
@@ -29,6 +32,7 @@ namespace StellarMindsWebApi.Controllers
                                 IEditarOcular editarOcularCu,
                                 IDeleteEquipo deleteEquipoCu)
         {
+            repositorio = repo;
             this.altaCU = altae;
             this.findAllCU = findAllCu;
             this.buscarEquipoIDCU = buscarEquipoIDCu;
@@ -42,10 +46,11 @@ namespace StellarMindsWebApi.Controllers
 
         // GET: EquipoController
         [HttpGet("{id}")]
-        public bool Disponible(int id)
+        public IActionResult Disponible(int id)
         {
-            EquipoDTO equipo = buscarEquipoIDCU.Execute(id);
-            return !equipo.EnPrestamo;
+            Equipo equipo = repositorio.FindById(id);
+            bool disponible = equipo.CantDisp > 0;
+            return Ok(disponible);
         }
 
         // GET: api/<EquipoController>
