@@ -52,22 +52,30 @@ namespace LogicaAccesoDatos.EntityFramework.Repositorios
 
         public IEnumerable<Equipo> FindAllTelescopios()
         {
-            return _context.Telescopios;
+            return _context.Telescopios
+                                        .Where(t => t.CantDisp > 0)
+                                        .ToList();
         }
 
         public IEnumerable<Equipo> FindAllMonturas()
         {
-            return _context.Monturas;
+            return _context.Monturas
+                                        .Where(m => m.CantDisp > 0)
+                                        .ToList();
         }
 
         public IEnumerable<Equipo> FindAllCamaras()
         {
-            return _context.Camaras;
+            return _context.Camaras
+                                        .Where(c => c.CantDisp > 0)
+                                        .ToList();
         }
 
         public IEnumerable<Equipo> FindAllOculares()
         {
-            return _context.Oculares;
+            return _context.Oculares
+                                        .Where(o => o.CantDisp > 0)
+                                        .ToList();
         }
 
         public Equipo FindById(int id)
