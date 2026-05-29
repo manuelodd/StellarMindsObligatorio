@@ -20,6 +20,20 @@ namespace StellarMindsWebApi
 
             // Add services to the container.
 
+            //cors
+            
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("MiPolitica",
+                    policy =>
+                    {
+                        policy.AllowAnyOrigin()
+                              .AllowAnyHeader()
+                              .AllowAnyMethod();
+                    });
+            });
+            
+
             builder.Services.AddControllers();
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddOpenApi();
@@ -56,9 +70,13 @@ namespace StellarMindsWebApi
             }
 
             app.UseHttpsRedirection();
+            
+            //cors
+            app.UseCors("MiPolitica");
 
             app.UseAuthorization();
 
+        
 
             app.MapControllers();
 

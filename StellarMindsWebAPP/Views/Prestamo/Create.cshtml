@@ -14,7 +14,7 @@
     <br />
 
     <label for="TelescopioID">Telescopio</label>
-    <select name="TelescopioID" class="form-control" onchange="verificarDispTele()">
+    <select id="telescopioSelect" name="TelescopioID" class="form-control" onchange="verificarDispTele()">
 
         <option value="">Seleccione un telescopio</option>
 
@@ -96,7 +96,7 @@
 
         let response =
             await fetch(
-                `https://localhost:7249/api/equipos/${id}`);
+                `http://localhost:5077/api/equipo/${id}`);
 
         let disponible = await response.json();
 
