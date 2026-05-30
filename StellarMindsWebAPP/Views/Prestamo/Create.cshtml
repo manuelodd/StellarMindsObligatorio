@@ -88,29 +88,18 @@
 }
 
 <script>
-
     async function verificarDispTele() {
-        let id =
-            document.getElementById(
-                "telescopioSelect").value;
 
-        let response =
-            await fetch(
-                `http://localhost:5077/api/equipo/${id}`);
-
+        let id = document.getElementById("telescopioSelect").value;
+        let response =await fetch(`http://localhost:5077/api/equipo/${id}`);
         let disponible = await response.json();
 
-        let mensaje =
-            document.getElementById("mensaje");
-
+        let mensaje =document.getElementById("mensaje");
         if (disponible) {
-            mensaje.innerHTML =
-                "Equipo disponible";
+            mensaje.innerHTML = "Equipo disponible";
         }
         else {
-            mensaje.innerHTML =
-                "Equipo NO disponible";
+            mensaje.innerHTML = "Equipo NO disponible";
         }
     }
-
 </script>
