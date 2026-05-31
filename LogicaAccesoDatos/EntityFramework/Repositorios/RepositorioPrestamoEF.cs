@@ -36,6 +36,7 @@ namespace LogicaAccesoDatos.EntityFramework.Repositorios
                 if(prestamo.Camara != null) { prestamo.Camara.CantDisp++; }
                 if(prestamo.Ocular != null) { prestamo.Ocular.CantDisp++; }
                 prestamo.Estado = StellarMinds.Enums.EstadoPrestamo.DEVUELTO;
+                _context.SaveChanges();
             }
         }
 
