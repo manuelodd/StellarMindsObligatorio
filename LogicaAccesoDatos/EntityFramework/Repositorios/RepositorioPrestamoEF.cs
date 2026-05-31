@@ -25,9 +25,18 @@ namespace LogicaAccesoDatos.EntityFramework.Repositorios
                 _context.SaveChanges();
         }
 
+        // not really a deletion
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            Prestamo prestamo = FindById(id);
+            if(prestamo.Estado != StellarMinds.Enums.EstadoPrestamo.DEVUELTO) 
+            {
+                prestamo.Telescopio.CantDisp++;
+                prestamo.Montura.CantDisp++;
+                if(prestamo.Camara != null) { prestamo.Camara.CantDisp++; }
+                if(prestamo.Ocular != null) { prestamo.Ocular.CantDisp++; }
+                prestamo.Estado = StellarMinds.Enums.EstadoPrestamo.DEVUELTO;
+            }
         }
 
         public IEnumerable<Prestamo> FindAll()
@@ -41,7 +50,9 @@ namespace LogicaAccesoDatos.EntityFramework.Repositorios
 
         public Prestamo FindById(int id)
         {
-            throw new NotImplementedException();
+            return _context.Prestamos
+                            .Where(p => p.Id == id)
+                            .FirstOrDefault();
         }
 
         public void Update(Prestamo aActualizar)

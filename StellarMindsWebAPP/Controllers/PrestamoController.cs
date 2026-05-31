@@ -16,13 +16,15 @@ namespace StellarMindsWebAPP.Controllers
         private IListarMonturas findAllMonCU;
         private IListarCamaras findAllCamCU;
         private IListarOculares findAllOcuCU;
+        private IReturnPrestamo returnCU;
 
         public PrestamoController   (IAltaPrestamo altaCu,
                                     IListarPrestamos listarPrestamosCu,
                                     IListarTelescopios findAllTelCu,
                                     IListarMonturas findAllMonCu,
                                     IListarCamaras findAllCamCu,
-                                    IListarOculares findAllOcuCu
+                                    IListarOculares findAllOcuCu,
+                                    IReturnPrestamo returnCu
                                     )
         {
             this.altaCU = altaCu;
@@ -31,6 +33,7 @@ namespace StellarMindsWebAPP.Controllers
             this.findAllMonCU = findAllMonCu;
             this.findAllCamCU = findAllCamCu;
             this.findAllOcuCU = findAllOcuCu;
+            this.returnCU = returnCu;
         }
         public ActionResult Index()
         {
@@ -79,6 +82,12 @@ namespace StellarMindsWebAPP.Controllers
 
                 return View(vm);
             }
+        }
+
+        public ActionResult Return(int id)
+        {
+            returnCU.Execute(id);
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: PrestamoController/Edit/5
