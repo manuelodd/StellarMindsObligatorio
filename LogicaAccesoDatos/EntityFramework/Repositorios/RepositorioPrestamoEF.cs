@@ -30,13 +30,13 @@ namespace LogicaAccesoDatos.EntityFramework.Repositorios
         public void Delete(int id)
         {
             Prestamo prestamo = FindById(id);
-            if(prestamo.Estado == StellarMinds.Enums.EstadoPrestamo.EN_PRESTAMO) 
+            if(prestamo.Estado == EstadoPrestamo.EN_PRESTAMO) 
             {
                 prestamo.Telescopio.CantDisp++;
                 prestamo.Montura.CantDisp++;
                 if(prestamo.Camara != null) { prestamo.Camara.CantDisp++; }
                 if(prestamo.Ocular != null) { prestamo.Ocular.CantDisp++; }
-                prestamo.Estado = StellarMinds.Enums.EstadoPrestamo.DEVUELTO;
+                prestamo.Estado = EstadoPrestamo.DEVUELTO;
                 _context.SaveChanges();
             }
         }
@@ -44,6 +44,7 @@ namespace LogicaAccesoDatos.EntityFramework.Repositorios
         public IEnumerable<Prestamo> FindAll()
         {
             return _context.Prestamos
+                            .Include(p => p.Socio)
                             .Include(p => p.Telescopio)
                             .Include(p => p.Montura)
                             .Include(p => p.Camara)
@@ -55,6 +56,7 @@ namespace LogicaAccesoDatos.EntityFramework.Repositorios
         {
             return _context.Prestamos
                             .Where(p => p.Id == id)
+                            .Include(p => p.Socio)
                             .Include(p => p.Telescopio)
                             .Include(p => p.Montura)
                             .Include(p => p.Camara)
