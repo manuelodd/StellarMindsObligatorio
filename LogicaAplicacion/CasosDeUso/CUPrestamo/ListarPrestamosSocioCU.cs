@@ -2,6 +2,7 @@
 using DTOs.DTOs;
 using DTOs.Mappers;
 using LogicaAplicacion.InterfacesCasosDeUso;
+using StellarMinds.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -21,11 +22,10 @@ namespace LogicaAplicacion.CasosDeUso.CUPrestamo
         {
             List<PrestamoDTO> lista = new List<PrestamoDTO>();
 
-            foreach (Presta p in repositorio.FindPrestamosActivosSocio(socioId))
+            foreach (Prestamo pres in repositorio.FindPrestamosSocio(socioId))
             {
-                lista.Add(PrestamoDTOMapper.ToDTO(p));
+                lista.Add(PrestamoDTOMapper.ToDTO(pres));
             }
-
             return lista;
         }
     }
