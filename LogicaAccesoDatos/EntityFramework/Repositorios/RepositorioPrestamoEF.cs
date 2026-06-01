@@ -3,6 +3,7 @@ using Dominio.InterfacesRepositorio;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using StellarMinds.Entities;
+using StellarMinds.Enums;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -59,6 +60,15 @@ namespace LogicaAccesoDatos.EntityFramework.Repositorios
                             .Include(p => p.Camara)
                             .Include(p => p.Ocular)
                             .FirstOrDefault();
+        }
+
+        public IEnumerable<Prestamo> FindPrestamosSocio(int socioId)
+        {
+            return _context.Prestamos
+                .Where(p =>
+                    p.Socio.Id == socioId &&
+                    p.Estado == EstadoPrestamo.EN_PRESTAMO)
+                .ToList();
         }
 
         public void Update(Prestamo aActualizar)
