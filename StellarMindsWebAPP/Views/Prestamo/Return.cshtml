@@ -1,1 +1,31 @@
-﻿
+﻿@using DTOs.AuxiliarViewmodel
+@using DTOs.DTOs
+@model PrestamoDevolucionViewmodel
+
+<form method="post">
+<select name="socioId">
+    @foreach(UsuarioDTO usu in Model.Socios)
+    {
+        <option value="@usu.Id">
+            @usu.Username + @usu.Email
+        </option>
+    }
+</select>
+
+<input type="submit" value="Seleccionar"/>
+</form>
+
+<form method="post" asp-action="Return4Real">
+
+    <select name="PrestamoId">
+        @foreach (PrestamoDTO pres in Model.Prestamos)
+        {
+            <option value="@pres.Id">
+                Préstamo @pres.Id
+            </option>
+        }
+    </select>
+
+    <input type="submit" value="Devolver" />
+
+</form>

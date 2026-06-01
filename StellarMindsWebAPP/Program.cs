@@ -57,6 +57,8 @@ namespace StellarMindsWebAPP
             builder.Services.AddScoped<IAltaPrestamo, AltaPrestamoCU>();
             builder.Services.AddScoped<IListarPrestamos, ListarPrestamosCU>();
             builder.Services.AddScoped<IReturnPrestamo, ReturnPrestamoCU>();
+            builder.Services.AddScoped<IListarPrestamosSocio, ListarPrestamosSocioCU>();
+
 
 
             var app = builder.Build();
