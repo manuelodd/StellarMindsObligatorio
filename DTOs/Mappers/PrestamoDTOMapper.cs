@@ -20,17 +20,18 @@ namespace DTOs.Mappers
         {
             public static PrestamoDTO ToDTO(Prestamo unPrestamo)
             {
-                return new PrestamoDTO
-                {
-                    Id = unPrestamo.Id,
-                    FechaInicio = unPrestamo.FechaInicio,
-                    FechaFin = unPrestamo.FechaFin,
-                    Estado = unPrestamo.Estado,
-                    TelescopioID = unPrestamo.Telescopio.Id,
-                    MonturaID = unPrestamo.Montura.Id,
-                    CamaraID = unPrestamo.Camara.Id,
-                    OcularID = unPrestamo.Ocular.Id
-                };
+            return new PrestamoDTO
+            {
+                Id = unPrestamo.Id,
+                SocioId = unPrestamo.Socio.Id,
+                FechaInicio = unPrestamo.FechaInicio,
+                FechaFin = unPrestamo.FechaFin,
+                Estado = unPrestamo.Estado,
+                TelescopioID = unPrestamo.Telescopio.Id,
+                MonturaID = unPrestamo.Montura.Id,
+                CamaraID = unPrestamo.Camara.Id,
+                OcularID = unPrestamo.Ocular.Id
+            };
             }
 
 
