@@ -14,12 +14,15 @@ namespace LogicaAplicacion.CasosDeUso.CUPrestamo
     {
         private IRepositorioPrestamo repositorioPrestamo;
         private IRepositorioEquipo repositorioEquipo;
+        private IRepositorioUsuario repositorioUsuario;
 
         public AltaPrestamoCU(IRepositorioPrestamo repo, 
-                              IRepositorioEquipo repoE)
+                              IRepositorioEquipo repoE,
+                              IRepositorioUsuario repoU)
         {
             repositorioPrestamo = repo;
             repositorioEquipo = repoE;
+            repositorioUsuario = repoU;
         }
 
         public void Execute(PrestamoDTO dto)
@@ -37,8 +40,11 @@ namespace LogicaAplicacion.CasosDeUso.CUPrestamo
                 ocu = repositorioEquipo.FindOcuById(dto.OcularID);
             }
 
+            Usuario socio = repositorioUsuario.FindById(dto.SocioId);
+
             Prestamo prestamo = new Prestamo
             {
+                Socio = socio,
                 FechaInicio = dto.FechaInicio,
                 FechaFin = dto.FechaFin,
                 Estado = EstadoPrestamo.EN_PRESTAMO,

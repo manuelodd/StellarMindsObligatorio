@@ -13,5 +13,4 @@ namespace DTOs.AuxiliarViewmodel
             public IEnumerable<UsuarioDTO> Socios { get; set; }
             public IEnumerable<PrestamoDTO> Prestamos { get; set; }
         }
-    
 }
