@@ -5,6 +5,7 @@ using LogicaAplicacion.InterfacesCasosDeUso;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
+using StellarMinds.Entities;
 
 namespace StellarMindsWebAPP.Controllers
 {
@@ -115,6 +116,14 @@ namespace StellarMindsWebAPP.Controllers
             vm.Socios = listarUsuariosCU.Execute();
             vm.Prestamos = listarPrestamosSocioCU.Execute(socioid);
             return View(vm);
+        }
+
+        [HttpPost]
+        public IActionResult Return4Real(int prestamoid)
+        {
+            returnCU.Execute(prestamoid);
+
+            return RedirectToAction(nameof(Index));
         }
         // GET: PrestamoController/Edit/5
         public ActionResult Edit(int id)
