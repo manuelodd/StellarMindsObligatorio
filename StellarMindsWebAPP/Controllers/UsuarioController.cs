@@ -51,6 +51,7 @@ namespace StellarMindsWebAPP.Controllers
                 // guardado de sesion de P2
                 HttpContext.Session.SetString("username", usuario.Username);
                 HttpContext.Session.SetString("rol", usuario.Rol.ToString());
+                HttpContext.Session.SetInt32("id", usuario.Id);
 
                 return RedirectToAction("Index", "Usuario");
             }

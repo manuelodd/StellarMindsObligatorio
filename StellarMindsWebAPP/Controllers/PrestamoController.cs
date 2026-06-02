@@ -4,6 +4,7 @@ using DTOs.DTOs;
 using LogicaAplicacion.InterfacesCasosDeUso;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.FindSymbols;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using StellarMinds.Entities;
 
@@ -20,9 +21,10 @@ namespace StellarMindsWebAPP.Controllers
         private IReturnPrestamo returnCU;
         private IListarUsuarios listarUsuariosCU;
         private IListarPrestamosSocio listarPrestamosSocioCU;
+        private IFindUsuById findUsuByID;
 
 
-        public PrestamoController   (IAltaPrestamo altaCu,
+        public PrestamoController(IAltaPrestamo altaCu,
                                     IListarPrestamos listarPrestamosCu,
                                     IListarTelescopios findAllTelCu,
                                     IListarMonturas findAllMonCu,
@@ -30,7 +32,8 @@ namespace StellarMindsWebAPP.Controllers
                                     IListarOculares findAllOcuCu,
                                     IReturnPrestamo returnCu,
                                     IListarUsuarios listarUsuariosCu,
-                                    IListarPrestamosSocio listarPrestamosSocioCu
+                                    IListarPrestamosSocio listarPrestamosSocioCu,
+                                    IFindUsuById findUsuById
                                     )
         {
             this.altaCU = altaCu;
@@ -42,6 +45,7 @@ namespace StellarMindsWebAPP.Controllers
             this.returnCU = returnCu;
             this.listarUsuariosCU = listarUsuariosCu;
             this.listarPrestamosSocioCU = listarPrestamosSocioCu;
+            this.findUsuByID = findUsuById;
         }
         public ActionResult Index()
         {
@@ -74,7 +78,7 @@ namespace StellarMindsWebAPP.Controllers
         {
             try
             {
-                altaCU.Execute(dto);
+                altaCU.Execute(dto, HttpContext.Session.GetInt32("id").Value);
                 return RedirectToAction(nameof(Index));
             }
             catch (InvalidPrestamo ex)
@@ -123,7 +127,7 @@ namespace StellarMindsWebAPP.Controllers
         [HttpPost]
         public IActionResult Return4Real(int prestamoid)
         {
-            returnCU.Execute(prestamoid);
+            returnCU.Execute(prestamoid, HttpContext.Session.GetInt32("id").Value);
 
             return RedirectToAction(nameof(Index));
         }

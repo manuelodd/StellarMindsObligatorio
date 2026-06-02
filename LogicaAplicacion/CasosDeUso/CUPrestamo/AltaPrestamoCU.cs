@@ -25,7 +25,7 @@ namespace LogicaAplicacion.CasosDeUso.CUPrestamo
             repositorioUsuario = repoU;
         }
 
-        public void Execute(PrestamoDTO dto)
+        public void Execute(PrestamoDTO dto, int coordinador)
         {
             Telescopio tele = repositorioEquipo.FindTeleById(dto.TelescopioID);
             Montura montu = repositorioEquipo.FindMontuById(dto.MonturaID);
@@ -62,6 +62,8 @@ namespace LogicaAplicacion.CasosDeUso.CUPrestamo
             if (ocu != null) ocu.CantDisp--;
 
             repositorioPrestamo.Alta(prestamo);
+
+
         }
     }
 }

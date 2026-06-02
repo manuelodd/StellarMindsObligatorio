@@ -14,7 +14,7 @@ namespace LogicaAplicacion.CasosDeUso.CUPrestamo
         {
             repositorio = repo;
         }
-        public void Execute(int id)
+        public void Execute(int id, int coordinador)
         {
             repositorio.Devolver(id);
         }

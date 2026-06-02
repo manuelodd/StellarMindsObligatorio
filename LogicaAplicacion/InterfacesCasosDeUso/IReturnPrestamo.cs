@@ -6,6 +6,6 @@ namespace LogicaAplicacion.InterfacesCasosDeUso
 {
     public interface IReturnPrestamo
     {
-        public void Execute(int id);
+        public void Execute(int id, int coordinador);
     }
 }

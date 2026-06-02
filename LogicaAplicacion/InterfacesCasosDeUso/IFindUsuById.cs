@@ -1,12 +1,13 @@
 ﻿using DTOs.DTOs;
+using StellarMinds.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace LogicaAplicacion.InterfacesCasosDeUso
 {
-    public interface IAltaPrestamo
+    public interface IFindUsuById
     {
-        public void Execute(PrestamoDTO dto, int coordinador);
+        public UsuarioDTO Execute(int id);
     }
 }

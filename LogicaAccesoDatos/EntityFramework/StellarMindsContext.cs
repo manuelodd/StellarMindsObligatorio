@@ -1,4 +1,5 @@
-﻿using Dominio.ValueObjects;
+﻿using Dominio.Entities;
+using Dominio.ValueObjects;
 using Microsoft.EntityFrameworkCore;
 using StellarMinds.Entities;
 using System;
@@ -21,6 +22,7 @@ namespace LogicaAccesoDatos.EntityFramework
         public DbSet<Camara> Camaras { get; set; } // cambiar
         public DbSet<Ocular> Oculares { get; set; }
         public DbSet<Observacion> Observaciones { get; set; }
+        public DbSet<AuditoriaPrestamo> AuditoriaPrestamo { get; set; }
         
 
         public StellarMindsContext(DbContextOptions optionsBuilder) : base (optionsBuilder)
