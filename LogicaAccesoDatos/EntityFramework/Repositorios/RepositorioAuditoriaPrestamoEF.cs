@@ -1,17 +1,23 @@
 ﻿using Dominio.Entities;
+using Dominio.InterfacesRepositorio;
 using StellarMinds.InterfacesRepositorio;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using static StellarMinds.InterfacesRepositorio.IRepositorio;
 
 namespace LogicaAccesoDatos.EntityFramework.Repositorios
 {
-    public class RepositorioAuditoriaPrestamoEF : IRepositorio<AuditoriaPrestamo>
+    public class RepositorioAuditoriaPrestamoEF : IRepositorioAuditoriaPrestamo
     {
+        private StellarMindsContext _context;
+        public RepositorioAuditoriaPrestamoEF(StellarMindsContext context)
+        {
+            _context = context;
+        }
         public void Alta(AuditoriaPrestamo aAgregar)
         {
-            
+            _context.Add(aAgregar);
+            _context.SaveChanges();
         }
 
         public void Delete(int id)
