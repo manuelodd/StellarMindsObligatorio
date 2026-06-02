@@ -63,6 +63,7 @@ namespace StellarMindsWebAPP.Controllers
             vm.Monturas = findAllMonCU.Execute();
             vm.Camaras = findAllCamCU.Execute();
             vm.Oculares = findAllOcuCU.Execute();
+            vm.Usuarios = listarUsuariosCU.Execute();
             return View(vm);
         }
 
@@ -85,6 +86,7 @@ namespace StellarMindsWebAPP.Controllers
                 vm.Monturas = findAllMonCU.Execute();
                 vm.Camaras = findAllCamCU.Execute();
                 vm.Oculares = findAllOcuCU.Execute();
+                vm.Usuarios = listarUsuariosCU.Execute();
 
                 ViewBag.Error = ex.Message;
 

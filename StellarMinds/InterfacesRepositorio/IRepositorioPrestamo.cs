@@ -10,5 +10,6 @@ namespace Dominio.InterfacesRepositorio
     public interface IRepositorioPrestamo : IRepositorio<Prestamo>
     {
         public IEnumerable<Prestamo> FindPrestamosSocio(int socioId);
+        public void Devolver(int id);
     }
 }

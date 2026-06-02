@@ -16,7 +16,7 @@ namespace LogicaAplicacion.CasosDeUso.CUPrestamo
         }
         public void Execute(int id)
         {
-            repositorio.Delete(id);
+            repositorio.Devolver(id);
         }
     }
 }

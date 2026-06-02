@@ -11,6 +11,17 @@
     <label for="FechaFin">Fecha fin</label>
     <input type="date" name="FechaFin" class="form-control" />
 
+    <label for="SocioID">Socio</label>
+    <select id="socioSelect" name="SocioID" class="form-control">
+        <option value="Seleccione socio">Seleccione a un socio</option>
+        @foreach(UsuarioDTO usu in Model.Usuarios)
+            {
+                <option value="@usu.Id">
+                    @usu.Id - @usu.Username
+                </option>
+            }
+        </select>
+
     <br />
 
     <label for="TelescopioID">Telescopio</label>

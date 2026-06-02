@@ -29,8 +29,8 @@ namespace DTOs.Mappers
                 Estado = unPrestamo.Estado,
                 TelescopioID = unPrestamo.Telescopio.Id,
                 MonturaID = unPrestamo.Montura.Id,
-                CamaraID = unPrestamo.Camara.Id,
-                OcularID = unPrestamo.Ocular.Id
+                CamaraID = unPrestamo.Camara?.Id,
+                OcularID = unPrestamo.Ocular?.Id
             };
             }
 

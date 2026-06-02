@@ -33,11 +33,12 @@ namespace LogicaAplicacion.CasosDeUso.CUPrestamo
             Ocular ocu = null;
 
             if (dto.CamaraID != null)   {   
-                cam = repositorioEquipo.FindCamaById(dto.CamaraID);
+                // value extrae el entero de el nulleable 
+                cam = repositorioEquipo.FindCamaById(dto.CamaraID.Value);
             }
 
             if (dto.OcularID != null)   {
-                ocu = repositorioEquipo.FindOcuById(dto.OcularID);
+                ocu = repositorioEquipo.FindOcuById(dto.OcularID.Value);
             }
 
             Usuario socio = repositorioUsuario.FindById(dto.SocioId);

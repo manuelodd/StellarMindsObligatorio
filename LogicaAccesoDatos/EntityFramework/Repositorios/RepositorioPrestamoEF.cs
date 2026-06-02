@@ -26,21 +26,19 @@ namespace LogicaAccesoDatos.EntityFramework.Repositorios
                 _context.SaveChanges();
         }
 
-        // not really a deletion
-        public void Delete(int id)
+        public void Devolver(int id)
         {
             Prestamo prestamo = FindById(id);
-            if(prestamo.Estado == EstadoPrestamo.EN_PRESTAMO) 
+            if (prestamo.Estado == EstadoPrestamo.EN_PRESTAMO)
             {
                 prestamo.Telescopio.CantDisp++;
                 prestamo.Montura.CantDisp++;
-                if(prestamo.Camara != null) { prestamo.Camara.CantDisp++; }
-                if(prestamo.Ocular != null) { prestamo.Ocular.CantDisp++; }
+                if (prestamo.Camara != null) { prestamo.Camara.CantDisp++; }
+                if (prestamo.Ocular != null) { prestamo.Ocular.CantDisp++; }
                 prestamo.Estado = EstadoPrestamo.DEVUELTO;
                 _context.SaveChanges();
             }
         }
-
         public IEnumerable<Prestamo> FindAll()
         {
             return _context.Prestamos
@@ -70,10 +68,19 @@ namespace LogicaAccesoDatos.EntityFramework.Repositorios
                 .Where(p =>
                     p.Socio.Id == socioId &&
                     p.Estado == EstadoPrestamo.EN_PRESTAMO)
+                .Include(p => p.Telescopio)
+                .Include(p => p.Montura)
+                .Include(p => p.Camara)
+                .Include(p => p.Ocular)
                 .ToList();
         }
 
         public void Update(Prestamo aActualizar)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete(int id)
         {
             throw new NotImplementedException();
         }

@@ -15,8 +15,8 @@ namespace DTOs.DTOs
         public EstadoPrestamo Estado { get; set; }
         public int TelescopioID { get; set; }
         public int MonturaID { get; set; } 
-        public int CamaraID { get; set; }
-        public int OcularID { get; set; }
+        public int? CamaraID { get; set; }
+        public int? OcularID { get; set; }
 
     }
 }
