@@ -1,6 +1,8 @@
-﻿using Dominio.Exceptions;
+﻿using Dominio.Entities;
+using Dominio.Exceptions;
 using Dominio.InterfacesRepositorio;
 using DTOs.DTOs;
+using LogicaAplicacion.CasosDeUso.CUUsuario;
 using LogicaAplicacion.InterfacesCasosDeUso;
 using StellarMinds.Entities;
 using StellarMinds.Enums;
@@ -15,14 +17,17 @@ namespace LogicaAplicacion.CasosDeUso.CUPrestamo
         private IRepositorioPrestamo repositorioPrestamo;
         private IRepositorioEquipo repositorioEquipo;
         private IRepositorioUsuario repositorioUsuario;
+        private IRepositorioAuditoriaPrestamo repositorioAuditoriaPrestamo;
 
         public AltaPrestamoCU(IRepositorioPrestamo repo, 
                               IRepositorioEquipo repoE,
-                              IRepositorioUsuario repoU)
+                              IRepositorioUsuario repoU,
+                              IRepositorioAuditoriaPrestamo repoA)
         {
             repositorioPrestamo = repo;
             repositorioEquipo = repoE;
             repositorioUsuario = repoU;
+            repositorioAuditoriaPrestamo = repoA;
         }
 
         public void Execute(PrestamoDTO dto, int coordinador)
@@ -63,7 +68,26 @@ namespace LogicaAplicacion.CasosDeUso.CUPrestamo
 
             repositorioPrestamo.Alta(prestamo);
 
+            AuditoriaPrestamo auditoria = new AuditoriaPrestamo
+            {
+                Fecha = DateTime.Now,
+                Accion = "CREACIÓN",
+                PrestamoId = prestamo.Id,
+                Prestamo = prestamo,
+                CoordinadorId = coordinador,
+                Coordinador = repositorioUsuario.FindById(coordinador),
+            };
 
+            repositorioAuditoriaPrestamo.Alta(auditoria);
+
+
+            /*        public int Id { get; set; }
+        public DateTime Fecha { get; set; }
+        public string Accion { get; set; } = string.Empty;
+        public int PrestamoId { get; set; }
+        public int CoordinadorId { get; set; }
+        public Prestamo Prestamo { get; set; }
+        public Usuario Coordinador { get; set; }*/
         }
     }
 }

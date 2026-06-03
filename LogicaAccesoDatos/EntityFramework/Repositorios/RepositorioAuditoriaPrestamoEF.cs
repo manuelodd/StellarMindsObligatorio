@@ -1,5 +1,6 @@
 ﻿using Dominio.Entities;
 using Dominio.InterfacesRepositorio;
+using Microsoft.EntityFrameworkCore;
 using StellarMinds.InterfacesRepositorio;
 using System;
 using System.Collections.Generic;
@@ -27,7 +28,10 @@ namespace LogicaAccesoDatos.EntityFramework.Repositorios
 
         public IEnumerable<AuditoriaPrestamo> FindAll()
         {
-            throw new NotImplementedException();
+            return _context.AuditoriaPrestamo
+                                            .Include(a => a.Coordinador)
+                                            .Include(a => a.Prestamo)
+                                            .ToList();
         }
 
         public AuditoriaPrestamo FindById(int id)

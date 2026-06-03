@@ -36,6 +36,7 @@ namespace StellarMindsWebAPP
             builder.Services.AddScoped<IRepositorioUsuario, RepositorioUsuarioEF>();
             builder.Services.AddScoped<IRepositorioEquipo, RepositorioEquipoEF>();
             builder.Services.AddScoped<IRepositorioPrestamo, RepositorioPrestamoEF>();
+            builder.Services.AddScoped<IRepositorioAuditoriaPrestamo, RepositorioAuditoriaPrestamoEF>();
             //ini casos de uso USUARIOS
             builder.Services.AddScoped<IAltaUsuario, AltaUsuarioCU>();
             builder.Services.AddScoped<IListarUsuarios, ListarUsuariosCU>();
