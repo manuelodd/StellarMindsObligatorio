@@ -68,6 +68,29 @@ namespace LogicaAccesoDatos.EntityFramework
                 .HasOne(p => p.Ocular)
                 .WithMany()
                 .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<Prestamo>()
+                .HasOne(p => p.Socio)
+                .WithMany()
+                .HasForeignKey(a => a.SocioId)
+                .OnDelete(DeleteBehavior.NoAction);
+
+
+            //especificar on delete de auditoria prestamo
+            modelBuilder.Entity<AuditoriaPrestamo>()
+                .HasOne(a => a.Coordinador)
+                .WithMany()
+                .HasForeignKey(a => a.CoordinadorId)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<AuditoriaPrestamo>()
+                .HasOne(a => a.Prestamo)
+                .WithMany()
+                .HasForeignKey(a => a.PrestamoId)
+                .OnDelete(DeleteBehavior.NoAction);
+
+
+
         }
     }
 }
