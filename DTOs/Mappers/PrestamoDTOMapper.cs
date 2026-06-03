@@ -23,7 +23,7 @@ namespace DTOs.Mappers
             return new PrestamoDTO
             {
                 Id = unPrestamo.Id,
-                SocioId = unPrestamo.Socio.Id,
+                SocioId = unPrestamo.SocioId,
                 FechaInicio = unPrestamo.FechaInicio,
                 FechaFin = unPrestamo.FechaFin,
                 Estado = unPrestamo.Estado,

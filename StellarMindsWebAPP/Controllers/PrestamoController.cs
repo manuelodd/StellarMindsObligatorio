@@ -78,7 +78,7 @@ namespace StellarMindsWebAPP.Controllers
         {
             try
             {
-                altaCU.Execute(dto, HttpContext.Session.GetInt32("id").Value);
+                altaCU.Execute(dto, idLogeado());
                 return RedirectToAction(nameof(Index));
             }
             catch (InvalidPrestamo ex)
@@ -127,7 +127,7 @@ namespace StellarMindsWebAPP.Controllers
         [HttpPost]
         public IActionResult Return4Real(int prestamoid)
         {
-            returnCU.Execute(prestamoid, HttpContext.Session.GetInt32("id").Value);
+            returnCU.Execute(prestamoid, idLogeado());
 
             return RedirectToAction(nameof(Index));
         }

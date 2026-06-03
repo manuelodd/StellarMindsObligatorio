@@ -11,12 +11,15 @@ namespace StellarMindsWebAPP.Controllers
 
         private IListarPrestamosSocio listarPrestamosSocioCU;
         private IListarObjetosCelestes listarObjetosCelestesCU;
+        private IAltaObservacion altaObservacionCU;
 
         public ObservacionController(IListarPrestamosSocio listPresSocioCu,
-                                     IListarObjetosCelestes listarObjetosCelestesCu)
+                                     IListarObjetosCelestes listarObjetosCelestesCu,
+                                     IAltaObservacion altaObservacionCu)
         {
             this.listarPrestamosSocioCU = listPresSocioCu;
             this.listarObjetosCelestesCU = listarObjetosCelestesCu;
+            this.altaObservacionCU = altaObservacionCu;
         }
 
 
@@ -46,14 +49,8 @@ namespace StellarMindsWebAPP.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(ObservacionDTO dto)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            altaObservacionCU.Execute(dto);
+            return RedirectToAction("Index", "Usuario");
         }
 
         // GET: ObservacionController/Edit/5
