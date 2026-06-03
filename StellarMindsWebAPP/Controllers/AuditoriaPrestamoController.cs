@@ -6,13 +6,13 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace StellarMindsWebAPP.Controllers
 {
-    public class AuditoriaController : BaseController
+    public class AuditoriaPrestamoController : BaseController
     {
         private IListarAuditoriasPrestamo listAllAudisCU;
 
-        public AuditoriaController(IListarAuditoriasPrestamo listAllAudisCu)
+        public AuditoriaPrestamoController(IListarAuditoriasPrestamo listAllAudisCu)
         {
-            this.listAllAudisCU = listAllAudisCU;
+            this.listAllAudisCU = listAllAudisCu;
         }
 
 
