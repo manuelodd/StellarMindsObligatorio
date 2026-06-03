@@ -17,6 +17,8 @@ namespace DTOs.Mappers
                 Fecha = observacion.Fecha,
                 PrestamoId = observacion.PrestamoId,
                 ObjetoCelesteId = observacion.ObjetoCelesteId,
+                Indicador = "ToDo",
+                Detalle = "ToDo"
             };
         }
 
@@ -28,7 +30,9 @@ namespace DTOs.Mappers
                 Fecha = dto.Fecha,
                 PrestamoId = dto.PrestamoId,
                 ObjetoCelesteId = dto.ObjetoCelesteId,
-            }
+                Indicador = "ToDo",
+                Detalle = "ToDo"
+            };
         }
     }
 }
