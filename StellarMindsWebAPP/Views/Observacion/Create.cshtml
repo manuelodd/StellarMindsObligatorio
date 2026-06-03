@@ -1,8 +1,37 @@
 ﻿@using DTOs.AuxiliarViewmodel
+@using DTOs.DTOs
 
 @model ObservacionAltaViewmodel
 
-<select name="">
+<form method="post">
 
+    <label for="Fecha">Fecha</label>
+    <input id="Fecha" name="Fecha" type="date" />
 
+<label for="PrestamoId">Préstamo</label>
+<select name="PrestamoId">
+    <option value="">Seleccione préstamo</option>
+
+    @foreach(PrestamoDTO prestamo in Model.Prestamos)
+    {
+        <option value="@prestamo.Id">
+            Prestamo @prestamo.Id - Socio @prestamo.SocioId
+        </option>
+    }
 </select>
+
+<label for="ObjetoCelesteId">Objeto celeste</label>
+<select name="ObjetoCelesteId">
+    <option value="">Seleccione objeto celeste</option>
+
+    @foreach (ObjetoCelesteDTO objeto in Model.ObjetosCelestes)
+    {
+        <option value="@objeto.Id">
+            @objeto.Id - @objeto.Nombre - @objeto.Tipo
+        </option>
+    }
+</select>
+
+<input type="submit" value="Programar observación"/>
+
+</form>
