@@ -1,4 +1,5 @@
-﻿using StellarMinds.InterfacesDominio;
+﻿using Dominio.Entities;
+using StellarMinds.InterfacesDominio;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,11 +10,14 @@ namespace StellarMinds.Entities
     {
         public int Id { get; set; }
         public DateTime Fecha { get; set; }
+        public int PrestamoId { get; set; }
+        public int ObjetoCelesteId { get; set; }
+        public Prestamo Prestamo { get; set; }
+        public ObjetoCeleste ObjetoCeleste { get; set; }
+        public string Indicador { get; set; }
+        public string Detalle { get; set; }
 
-        public Observacion()
-        {
 
-        }
 
         public void Validar()
         {
