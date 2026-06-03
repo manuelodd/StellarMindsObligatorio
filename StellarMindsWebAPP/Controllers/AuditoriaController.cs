@@ -1,15 +1,25 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Dominio.InterfacesRepositorio;
+using LogicaAplicacion.InterfacesCasosDeUso;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace StellarMindsWebAPP.Controllers
 {
     public class AuditoriaController : BaseController
     {
+        private IListarAuditoriasPrestamo listAllAudisCU;
+
+        public AuditoriaController(IListarAuditoriasPrestamo listAllAudisCu)
+        {
+            this.listAllAudisCU = listAllAudisCU;
+        }
+
+
         // GET: AuditoriaController
         public ActionResult Index()
         {
 
-            View();
+            return View(listAllAudisCU);
         }
 
         // GET: AuditoriaController/Details/5

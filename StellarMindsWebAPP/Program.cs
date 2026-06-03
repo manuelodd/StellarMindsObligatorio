@@ -1,6 +1,7 @@
 using Dominio.InterfacesRepositorio;
 using LogicaAccesoDatos.EntityFramework;
 using LogicaAccesoDatos.EntityFramework.Repositorios;
+using LogicaAplicacion.CasosDeUso.CUAuditoriaPrestamo;
 using LogicaAplicacion.CasosDeUso.CUEquipo;
 using LogicaAplicacion.CasosDeUso.CUPrestamo;
 using LogicaAplicacion.CasosDeUso.CUUsuario;
@@ -60,6 +61,8 @@ namespace StellarMindsWebAPP
             builder.Services.AddScoped<IListarPrestamos, ListarPrestamosCU>();
             builder.Services.AddScoped<IReturnPrestamo, ReturnPrestamoCU>();
             builder.Services.AddScoped<IListarPrestamosSocio, ListarPrestamosSocioCU>();
+            //ini casos de uso AUDITORIAS PRESTAMO
+            builder.Services.AddScoped<IListarAuditoriasPrestamo, ListarAuditoriasPrestamoCU>();
 
 
 
