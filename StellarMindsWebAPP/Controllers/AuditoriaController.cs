@@ -1,4 +1,5 @@
 ﻿using Dominio.InterfacesRepositorio;
+using DTOs.DTOs;
 using LogicaAplicacion.InterfacesCasosDeUso;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -18,8 +19,8 @@ namespace StellarMindsWebAPP.Controllers
         // GET: AuditoriaController
         public ActionResult Index()
         {
-
-            return View(listAllAudisCU);
+            List<AuditoriaPrestamoDTO> lista = listAllAudisCU.Execute();
+            return View(lista);
         }
 
         // GET: AuditoriaController/Details/5
