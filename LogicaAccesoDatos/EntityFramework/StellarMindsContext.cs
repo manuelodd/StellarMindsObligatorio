@@ -90,7 +90,19 @@ namespace LogicaAccesoDatos.EntityFramework
                 .HasForeignKey(a => a.PrestamoId)
                 .OnDelete(DeleteBehavior.NoAction);
 
+            //on delete observacion
 
+            modelBuilder.Entity<Observacion>()
+                .HasOne(o => o.Prestamo)
+                .WithMany()
+                .HasForeignKey(o => o.PrestamoId)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<Observacion>()
+                .HasOne(o => o.ObjetoCeleste)
+                .WithMany()
+                .HasForeignKey(o => o.ObjetoCelesteId)
+                .OnDelete(DeleteBehavior.NoAction);
 
         }
     }

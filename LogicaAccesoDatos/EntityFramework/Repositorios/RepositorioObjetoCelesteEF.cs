@@ -31,7 +31,9 @@ namespace LogicaAccesoDatos.EntityFramework.Repositorios
 
         public ObjetoCeleste FindById(int id)
         {
-            throw new NotImplementedException();
+            return _context.ObjetosCelestes
+                                        .Where(oc => oc.Id == id)
+                                        .FirstOrDefault();
         }
 
         public void Update(ObjetoCeleste aActualizar)

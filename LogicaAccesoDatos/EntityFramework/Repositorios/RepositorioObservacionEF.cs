@@ -15,7 +15,8 @@ namespace LogicaAccesoDatos.EntityFramework.Repositorios
         }
         public void Alta(Observacion aAgregar)
         {
-            throw new NotImplementedException();
+            _context.Observaciones.Add(aAgregar);
+            _context.SaveChanges();
         }
 
         public void Delete(int id)
