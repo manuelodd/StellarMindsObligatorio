@@ -32,6 +32,13 @@
     </a>
 }
 
+@if (Context.Session.GetString("rol") == "ADMINISTRADOR")
+{
+    <a asp-controller="Observacion" asp-action="Create">
+        Programar observación
+    </a>
+}
+
 
 <table class="table">
     <thead>

@@ -8,6 +8,11 @@ namespace LogicaAccesoDatos.EntityFramework.Repositorios
 {
     public class RepositorioObservacionEF : IRepositorioObservacion
     {
+        private StellarMindsContext _context;
+        public RepositorioObservacionEF(StellarMindsContext context)
+        {
+            _context = context;
+        }
         public void Alta(Observacion aAgregar)
         {
             throw new NotImplementedException();

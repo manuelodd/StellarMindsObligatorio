@@ -8,6 +8,11 @@ namespace LogicaAccesoDatos.EntityFramework.Repositorios
 {
     public class RepositorioObjetoCelesteEF : IRepositorioObjetoCeleste
     {
+        private StellarMindsContext _context;
+        public RepositorioObjetoCelesteEF(StellarMindsContext context)
+        {
+            _context = context;
+        }
         public void Alta(ObjetoCeleste aAgregar)
         {
             throw new NotImplementedException();
@@ -20,7 +25,8 @@ namespace LogicaAccesoDatos.EntityFramework.Repositorios
 
         public IEnumerable<ObjetoCeleste> FindAll()
         {
-            throw new NotImplementedException();
+            return _context.ObjetosCelestes
+                                        .ToList();
         }
 
         public ObjetoCeleste FindById(int id)

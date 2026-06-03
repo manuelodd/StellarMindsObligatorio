@@ -1,4 +1,5 @@
-﻿using DTOs.DTOs;
+﻿using DTOs.AuxiliarViewmodel;
+using DTOs.DTOs;
 using LogicaAplicacion.InterfacesCasosDeUso;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -8,11 +9,14 @@ namespace StellarMindsWebAPP.Controllers
     public class ObservacionController : BaseController
     {
 
-        private IListarPrestamosSocio listPresSocioCU;
+        private IListarPrestamosSocio listarPrestamosSocioCU;
+        private IListarObjetosCelestes listarObjetosCelestesCU;
 
-        public ObservacionController(IListarPrestamosSocio listPresSocioCu)
+        public ObservacionController(IListarPrestamosSocio listPresSocioCu,
+                                     IListarObjetosCelestes listarObjetosCelestesCu)
         {
-            this.listPresSocioCU = listPresSocioCu;
+            this.listarPrestamosSocioCU = listPresSocioCu;
+            this.listarObjetosCelestesCU = listarObjetosCelestesCu;
         }
 
 
@@ -31,8 +35,10 @@ namespace StellarMindsWebAPP.Controllers
         // GET: ObservacionController/Create
         public ActionResult Create()
         {
-            List<PrestamoDTO> listado = listPresSocioCU.Execute(idLogeado());
-            return View(listado);
+            ObservacionAltaViewmodel vm = new ObservacionAltaViewmodel();
+            vm.Prestamos = listarPrestamosSocioCU.Execute(idLogeado());
+            vm.ObjetosCelestes = listarObjetosCelestesCU.Execute();
+            return View(vm);
         }
 
         // POST: ObservacionController/Create

@@ -3,6 +3,7 @@ using LogicaAccesoDatos.EntityFramework;
 using LogicaAccesoDatos.EntityFramework.Repositorios;
 using LogicaAplicacion.CasosDeUso.CUAuditoriaPrestamo;
 using LogicaAplicacion.CasosDeUso.CUEquipo;
+using LogicaAplicacion.CasosDeUso.CUObjetoCeleste;
 using LogicaAplicacion.CasosDeUso.CUPrestamo;
 using LogicaAplicacion.CasosDeUso.CUUsuario;
 using LogicaAplicacion.InterfacesCasosDeUso;
@@ -38,6 +39,8 @@ namespace StellarMindsWebAPP
             builder.Services.AddScoped<IRepositorioEquipo, RepositorioEquipoEF>();
             builder.Services.AddScoped<IRepositorioPrestamo, RepositorioPrestamoEF>();
             builder.Services.AddScoped<IRepositorioAuditoriaPrestamo, RepositorioAuditoriaPrestamoEF>();
+            builder.Services.AddScoped<IRepositorioObservacion, RepositorioObservacionEF>();
+            builder.Services.AddScoped<IRepositorioObjetoCeleste, RepositorioObjetoCelesteEF>();
             //ini casos de uso USUARIOS
             builder.Services.AddScoped<IAltaUsuario, AltaUsuarioCU>();
             builder.Services.AddScoped<IListarUsuarios, ListarUsuariosCU>();
@@ -63,7 +66,8 @@ namespace StellarMindsWebAPP
             builder.Services.AddScoped<IListarPrestamosSocio, ListarPrestamosSocioCU>();
             //ini casos de uso AUDITORIAS PRESTAMO
             builder.Services.AddScoped<IListarAuditoriasPrestamo, ListarAuditoriasPrestamoCU>();
-
+            //ini casos de uso OBJETOS CELESTES
+            builder.Services.AddScoped<IListarObjetosCelestes, ListarObjetosCelestesCU>();
 
 
             var app = builder.Build();
