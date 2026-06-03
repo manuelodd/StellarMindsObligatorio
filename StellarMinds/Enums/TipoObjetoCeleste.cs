@@ -4,7 +4,7 @@ using System.Text;
 
 namespace StellarMinds.Enums
 {
-    public enum TipoCuerpoCeleste
+    public enum TipoObjetoCeleste
     {
         PLANETA,
         GALAXIA,

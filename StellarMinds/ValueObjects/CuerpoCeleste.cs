@@ -12,7 +12,7 @@ namespace Dominio.ValueObjects
     {
         
         public string Nombre { get; set; }
-        public TipoCuerpoCeleste Tipo {  get; set; }
+        public TipoObjetoCeleste Tipo {  get; set; }
         public decimal MagnitudAparente { get; set; }
 
         public void Validar()
