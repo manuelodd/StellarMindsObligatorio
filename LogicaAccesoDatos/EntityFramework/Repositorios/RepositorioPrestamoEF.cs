@@ -75,6 +75,13 @@ namespace LogicaAccesoDatos.EntityFramework.Repositorios
                 .ToList();
         }
 
+        public IEnumerable<Prestamo> FindPrestamosSocioEntreFechas(int socioId, int mes, int anio)
+        {
+            return _context.Prestamos
+                .Where(p => p.SocioId == socioId && p.FechaInicio.Month == mes && p.FechaInicio.Year == anio)
+                .ToList();
+        }
+
         public void Update(Prestamo aActualizar)
         {
             throw new NotImplementedException();
@@ -84,5 +91,7 @@ namespace LogicaAccesoDatos.EntityFramework.Repositorios
         {
             throw new NotImplementedException();
         }
+
+
     }
 }

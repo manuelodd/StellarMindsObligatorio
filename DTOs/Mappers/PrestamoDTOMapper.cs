@@ -27,6 +27,7 @@ namespace DTOs.Mappers
                 FechaInicio = unPrestamo.FechaInicio,
                 FechaFin = unPrestamo.FechaFin,
                 Estado = unPrestamo.Estado,
+                Atrasado = unPrestamo.Estado == StellarMinds.Enums.EstadoPrestamo.EN_PRESTAMO && DateTime.Now > unPrestamo.FechaFin,
                 TelescopioID = unPrestamo.Telescopio.Id,
                 MonturaID = unPrestamo.Montura.Id,
                 CamaraID = unPrestamo.Camara?.Id,
@@ -34,8 +35,6 @@ namespace DTOs.Mappers
             };
             }
 
-
-        
         /*
         public static Prestamo FromDTO(PrestamoDTO dto)
         {

@@ -65,6 +65,7 @@ namespace StellarMindsWebAPP
             builder.Services.AddScoped<IListarPrestamos, ListarPrestamosCU>();
             builder.Services.AddScoped<IReturnPrestamo, ReturnPrestamoCU>();
             builder.Services.AddScoped<IListarPrestamosSocio, ListarPrestamosSocioCU>();
+            builder.Services.AddScoped<IListarPrestamosSocioEntreFechas, ListarPrestamosSocioEntreFechasCU>();
             //ini casos de uso AUDITORIAS PRESTAMO
             builder.Services.AddScoped<IListarAuditoriasPrestamo, ListarAuditoriasPrestamoCU>();
             //ini casos de uso OBJETOS CELESTES
