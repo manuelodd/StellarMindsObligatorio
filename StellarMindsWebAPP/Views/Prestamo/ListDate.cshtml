@@ -1,27 +1,30 @@
 ﻿@using DTOs.DTOs
+
 @model IEnumerable<PrestamoDTO>
 
-    @if (Context.Session.GetString("rol") == "ADMINISTRADOR")
-{
-    <a asp-controller="Prestamo" asp-action="Create">
-        Crear prestamo
-    </a>
-    <a asp-controller="Prestamo" asp-action="Return">
-        Realizar devolución
-    </a>
-    <a asp-controller="Prestamo" asp-action="ListDate">
-        Ver mis préstamos
-    </a>
-    <a asp-controller="AuditoriaPrestamo" asp-action="Index">
-        Auditoria de prestamos
-    </a>
-}
+
+<form method="post">
+
+    <label for="Mes">Ingrese mes: </label>
+    <input id="Mes" type="number" name="mes" min="1" max="12" />
+
+    <label for="Anio">Ingrese anio: </label>
+    <input id="Anio" type="number" name="anio" />
+
+    <input type="submit" value="Buscar" />
+
+</form>
+
+
 <table class="table">
     <thead>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Id)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Atrasado)
+             </th>
             <th>
                 @Html.DisplayNameFor(model => model.FechaInicio)
             </th>
@@ -43,7 +46,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.OcularID)
             </th>
-            
+
             <th></th>
         </tr>
     </thead>
@@ -53,6 +56,9 @@
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Atrasado)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.FechaInicio)
@@ -72,14 +78,8 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.CamaraID)
                 </td>
-
                 <td>
                     @Html.DisplayFor(modelItem => item.OcularID)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Return", "Return", new { id=item.Id })
                 </td>
             </tr>
         }
