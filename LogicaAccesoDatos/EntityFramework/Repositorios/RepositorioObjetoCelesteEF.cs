@@ -36,6 +36,20 @@ namespace LogicaAccesoDatos.EntityFramework.Repositorios
                                         .FirstOrDefault();
         }
 
+        public IEnumerable<RankingObjetoCelesteDTO> RankingObjetos()
+        {
+            return _context.Observaciones
+                .GroupBy(o => o.ObjetoCeleste)
+                .Select(g => new RankingObjetoCelesteDTO
+                {
+                    Nombre = g.Key.Nombre,
+                    Tipo = g.Key.Tipo,
+                    CantidadObservaciones = g.Count()
+                })
+                .OrderByDescending(x => x.CantidadObservaciones)
+                .ToList();
+        }
+
         public void Update(ObjetoCeleste aActualizar)
         {
             throw new NotImplementedException();
