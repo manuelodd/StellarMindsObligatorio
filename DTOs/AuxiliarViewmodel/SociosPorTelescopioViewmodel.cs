@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DTOs.AuxiliarViewmodel
 {
-    public class SociosPorTelescopioViewModel
+    public class SociosPorTelescopioViewmodel
     {
         public IEnumerable<TelescopioDTO> Telescopios { get; set; }
         public IEnumerable<UsuarioDTO> Socios { get; set; }

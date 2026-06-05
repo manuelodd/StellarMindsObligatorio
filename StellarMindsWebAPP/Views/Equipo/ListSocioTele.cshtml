@@ -1,0 +1,42 @@
+﻿@using DTOs.AuxiliarViewmodel
+@using DTOs.DTOs
+
+
+@model SociosPorTelescopioViewmodel
+
+
+<form method="post">
+
+    <select name="telescopioId">
+
+        @foreach (var tele in Model.Telescopios)
+        {
+            <option value="@tele.Id">
+                @tele.Marca - @tele.Modelo
+            </option>
+        }
+
+    </select>
+
+    <input type="submit" value="Buscar" />
+
+</form>
+
+@if (Model.Socios.Any())
+{
+    <table class="table">
+
+        @foreach (UsuarioDTO socio in Model.Socios)
+        {
+            <tr>
+                <td>@socio.Nombre</td>
+                <td>@socio.Email</td>
+            </tr>
+        }
+
+    </table>
+}
+else
+{
+    <p>Este telescopio aún no se ha prestado.</p>
+}

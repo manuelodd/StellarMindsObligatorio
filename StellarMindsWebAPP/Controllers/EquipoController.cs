@@ -1,8 +1,11 @@
-﻿using DTOs.DTOs;
+﻿using DTOs.AuxiliarViewmodel;
+using DTOs.DTOs;
 using DTOs.Mappers;
+using LogicaAplicacion.CasosDeUso.CUEquipo;
 using LogicaAplicacion.InterfacesCasosDeUso;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Build.Framework;
 
 namespace StellarMindsWebAPP.Controllers
 {
@@ -22,6 +25,8 @@ namespace StellarMindsWebAPP.Controllers
         private IEditarCamara editarCamaraCU;
         private IEditarOcular editarOcularCU;
         private IDeleteEquipo deleteEquipoCU;
+        private IListarTelescopiosToList listarTelescopiosToListCU;
+        private IListarSociosByTelescopio listarSociosByTelescopioCU; 
 
 
 
@@ -32,7 +37,9 @@ namespace StellarMindsWebAPP.Controllers
                                 IEditarMontura editarMonturaCu,
                                 IEditarCamara editarCamaraCu,
                                 IEditarOcular editarOcularCu,
-                                IDeleteEquipo deleteEquipoCu
+                                IDeleteEquipo deleteEquipoCu,
+                                IListarTelescopiosToList listarTelescopiosToListCu,
+                                IListarSociosByTelescopio listarSociosByTelescopioCu
                                 /*
                                 IListarTelescopios findAllTelCu,
                                 IListarMonturas findAllMonCu,
@@ -53,14 +60,35 @@ namespace StellarMindsWebAPP.Controllers
             this.editarCamaraCU = editarCamaraCu;
             this.editarOcularCU = editarOcularCu;
             this.deleteEquipoCU = deleteEquipoCu;
+            this.listarTelescopiosToListCU = listarTelescopiosToListCu;
+            this.listarSociosByTelescopioCU = listarSociosByTelescopioCu;
             
         }
 
         // GET: EquipoController
-        public ActionResult Index()
+        public IActionResult Index()
         {
             IEnumerable<EquipoDTO> listado = findAllCU.Execute();
             return View(listado);
+        }
+
+        public IActionResult ListSocioTele()
+        {
+            SociosPorTelescopioViewmodel vm = new SociosPorTelescopioViewmodel();
+
+            vm.Telescopios = listarTelescopiosToListCU.Execute();
+            vm.Socios = new List<UsuarioDTO>();
+            return View(vm);
+        }
+
+        [HttpPost]
+        public IActionResult ListSocioTele(int telescopioId)
+        {
+            SociosPorTelescopioViewmodel vm = new SociosPorTelescopioViewmodel();
+
+            vm.Telescopios = listarTelescopiosToListCU.Execute();
+            vm.Socios = listarSociosByTelescopioCU.Execute(telescopioId);
+            return View(vm);
         }
 
         // GET: EquipoController/Create

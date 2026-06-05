@@ -15,6 +15,7 @@ namespace Dominio.InterfacesRepositorio
         public Ocular FindOcuById(int id);
 
         public IEnumerable<Equipo> FindAllTelescopios();
+        public IEnumerable<Equipo> FindAllTelescopiosToList();
         public IEnumerable<Equipo> FindAllMonturas();
         public IEnumerable<Equipo> FindAllCamaras();
         public IEnumerable<Equipo> FindAllOculares();
