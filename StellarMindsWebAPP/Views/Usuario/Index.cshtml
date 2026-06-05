@@ -39,6 +39,13 @@
     </a>
 }
 
+@if (Context.Session.GetString("rol") == "ADMINISTRADOR")
+{
+    <a asp-controller="Observacion" asp-action="RankingObjetosCelestes">
+        Ver ranking de objetos celestes
+    </a>
+}
+
 
 <table class="table">
     <thead>

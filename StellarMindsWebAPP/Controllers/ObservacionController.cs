@@ -12,14 +12,17 @@ namespace StellarMindsWebAPP.Controllers
         private IListarPrestamosSocio listarPrestamosSocioCU;
         private IListarObjetosCelestes listarObjetosCelestesCU;
         private IAltaObservacion altaObservacionCU;
+        private IRankObjetosCelestes rankObjetosCelestesCU;
 
         public ObservacionController(IListarPrestamosSocio listPresSocioCu,
                                      IListarObjetosCelestes listarObjetosCelestesCu,
+                                     IRankObjetosCelestes rankObjetosCelestesCu,
                                      IAltaObservacion altaObservacionCu)
         {
             this.listarPrestamosSocioCU = listPresSocioCu;
             this.listarObjetosCelestesCU = listarObjetosCelestesCu;
             this.altaObservacionCU = altaObservacionCu;
+            this.rankObjetosCelestesCU = rankObjetosCelestesCu;
         }
 
 
@@ -33,6 +36,12 @@ namespace StellarMindsWebAPP.Controllers
         public ActionResult Details(int id)
         {
             return View();
+        }
+
+        public IActionResult RankingObjetosCelestes()
+        {
+            List<RankObjetosCelestesDTO> listado = rankObjetosCelestesCU.Execute();
+            return View(listado);
         }
 
         // GET: ObservacionController/Create

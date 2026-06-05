@@ -1,4 +1,5 @@
 ﻿using Dominio.InterfacesRepositorio;
+using Microsoft.EntityFrameworkCore;
 using StellarMinds.Entities;
 using System;
 using System.Collections.Generic;
@@ -26,7 +27,10 @@ namespace LogicaAccesoDatos.EntityFramework.Repositorios
 
         public IEnumerable<Observacion> FindAll()
         {
-            throw new NotImplementedException();
+            return _context.Observaciones
+                                    .Include(o => o.Prestamo)
+                                    .Include(o => o.ObjetoCeleste)
+                                    .ToList();
         }
 
         public Observacion FindById(int id)

@@ -72,6 +72,7 @@ namespace StellarMindsWebAPP
             builder.Services.AddScoped<IListarAuditoriasPrestamo, ListarAuditoriasPrestamoCU>();
             //ini casos de uso OBJETOS CELESTES
             builder.Services.AddScoped<IListarObjetosCelestes, ListarObjetosCelestesCU>();
+            builder.Services.AddScoped<IRankObjetosCelestes, RankObjetosCelestesCU>();
             //ini casos de uso OBSERVACIONES
             builder.Services.AddScoped<IAltaObservacion, AltaObservacionCU>();
 
