@@ -21,6 +21,8 @@ namespace StellarMindsWebAPP.Controllers
         private IReturnPrestamo returnCU;
         private IListarUsuarios listarUsuariosCU;
         private IListarPrestamosSocio listarPrestamosSocioCU;
+        private IListarPrestamosSocioEntreFechas listarPrestamosSocioEntreFechasCU;
+
         private IFindUsuById findUsuByID;
 
 
@@ -33,7 +35,8 @@ namespace StellarMindsWebAPP.Controllers
                                     IReturnPrestamo returnCu,
                                     IListarUsuarios listarUsuariosCu,
                                     IListarPrestamosSocio listarPrestamosSocioCu,
-                                    IFindUsuById findUsuById
+                                    IFindUsuById findUsuById,
+                                    IListarPrestamosSocioEntreFechas listarPrestamosSocioEntreFechasCu
                                     )
         {
             this.altaCU = altaCu;
@@ -46,10 +49,23 @@ namespace StellarMindsWebAPP.Controllers
             this.listarUsuariosCU = listarUsuariosCu;
             this.listarPrestamosSocioCU = listarPrestamosSocioCu;
             this.findUsuByID = findUsuById;
+            this.listarPrestamosSocioEntreFechasCU = listarPrestamosSocioEntreFechasCu;
         }
         public ActionResult Index()
         {
             List<PrestamoDTO> lista = listarPrestamosCU.Execute();
+            return View(lista);
+        }
+
+        public ActionResult ListDate()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ListDate(int mes, int anio)
+        {
+            List<PrestamoDTO> lista = listarPrestamosSocioEntreFechasCU.Execute(idLogeado(), mes, anio);
             return View(lista);
         }
 

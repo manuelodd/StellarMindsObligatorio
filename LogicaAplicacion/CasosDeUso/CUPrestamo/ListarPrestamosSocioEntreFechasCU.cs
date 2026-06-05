@@ -22,7 +22,7 @@ namespace LogicaAplicacion.CasosDeUso.CUPrestamo
         {
             List<PrestamoDTO> listado = new List<PrestamoDTO>();
 
-            foreach (Prestamo prestamo in repositorio.FindPrestamosSocioEntreFechas(socioId,mes,anio))
+            foreach (Prestamo prestamo in repositorio.FindPrestamosSocioEntreFechas(socioId, mes, anio))
             {
                 listado.Add(PrestamoDTOMapper.ToDTO(prestamo));
             }
