@@ -57,6 +57,12 @@ namespace LogicaAccesoDatos.EntityFramework.Repositorios
                                         .ToList();
         }
 
+        public IEnumerable<Equipo> FindAllTelescopiosToList()
+        {
+            return _context.Telescopios
+                                        .ToList();
+        }
+
         public IEnumerable<Equipo> FindAllMonturas()
         {
             return _context.Monturas

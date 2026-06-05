@@ -33,6 +33,16 @@ namespace LogicaAccesoDatos.EntityFramework.Repositorios
                            .FirstOrDefault(usuario => usuario.Username == username);
         }
 
+        public IEnumerable<Usuario> FindSociosPorTelescopio(int telescopioId)
+        {
+            return _context.Prestamos
+                            .Where(p => p.Telescopio.Id == telescopioId)
+                            .Select(p => p.Socio)
+                            .Distinct()
+                            .OrderByDescending(s => s.NombreCompleto.Nombre)
+                            .ToList();
+        }
+
         public void Delete(int id)
         {
             throw new NotImplementedException();

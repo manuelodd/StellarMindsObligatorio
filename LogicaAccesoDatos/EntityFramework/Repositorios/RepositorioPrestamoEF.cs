@@ -86,6 +86,8 @@ namespace LogicaAccesoDatos.EntityFramework.Repositorios
                 .ToList();
         }
 
+        
+
         public void Update(Prestamo aActualizar)
         {
             throw new NotImplementedException();
