@@ -9,6 +9,5 @@ namespace Dominio.InterfacesRepositorio
 {
     public interface IRepositorioObjetoCeleste : IRepositorio<ObjetoCeleste>
     {
-        public IEnumerable<ObjetoCeleste> RankingObjetos();
     }
 }
