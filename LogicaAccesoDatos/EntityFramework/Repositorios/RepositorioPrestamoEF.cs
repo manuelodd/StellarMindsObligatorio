@@ -79,6 +79,10 @@ namespace LogicaAccesoDatos.EntityFramework.Repositorios
         {
             return _context.Prestamos
                 .Where(p => p.SocioId == socioId && p.FechaInicio.Month == mes && p.FechaInicio.Year == anio)
+                .Include(p => p.Telescopio)
+                .Include(p => p.Montura)
+                .Include(p => p.Camara)
+                .Include(p => p.Ocular)
                 .ToList();
         }
 

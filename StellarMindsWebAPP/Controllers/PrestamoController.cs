@@ -59,7 +59,7 @@ namespace StellarMindsWebAPP.Controllers
 
         public ActionResult ListDate()
         {
-            return View();
+            return View(new List<PrestamoDTO>());
         }
 
         [HttpPost]
