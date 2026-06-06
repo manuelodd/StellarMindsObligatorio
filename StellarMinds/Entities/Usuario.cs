@@ -50,11 +50,11 @@ namespace StellarMinds.Entities
             if (string.IsNullOrEmpty(Password))
                 throw new InvalidUser("Password no puede ser vacío.");
             if (string.IsNullOrEmpty(Direccion.Pais))
-                throw new InvalidUser("Email no puede ser vacío.");
+                throw new InvalidUser("Pais no puede ser vacío.");
             if (string.IsNullOrEmpty(Direccion.Ciudad))
-                throw new InvalidUser("Email no puede ser vacío.");
+                throw new InvalidUser("Ciudad no puede ser vacía.");
             if (string.IsNullOrEmpty(Direccion.Calle))
-                throw new InvalidUser("Email no puede ser vacío.");
+                throw new InvalidUser("Calle no puede ser vacía.");
             if (Password.Length < 8)
                 throw new InvalidUser("La contraseña debe tener al menos 8 caracteres.");
             
@@ -64,10 +64,10 @@ namespace StellarMinds.Entities
             bool simb = false;
 
             foreach (char c in Password){
-                if  (char.IsUpper(c))        mayus = true;
-                else if (char.IsLower(c))   minus = true;
-                else if (char.IsDigit(c))numb = true;
-                else simb = true;
+                if  (char.IsUpper(c))           mayus = true;
+                else if (char.IsLower(c))       minus = true;
+                else if (char.IsDigit(c))       numb = true;
+                else                            simb = true;
             }
 
             if (!mayus)
