@@ -12,15 +12,18 @@ namespace StellarMindsWebAPP.Controllers
         private IListarAuditoriasPrestamo listAllAudisCU;
         private IListarCoordinadores listAllCoordinadoresCU;
         private IListarAuditoriasByCoordinador listAllAudisByCoordinadorCU;
+        private IFindAuditoriaById findAuditoriaByIdCU;
 
 
         public AuditoriaPrestamoController  (IListarAuditoriasPrestamo listAllAudisCu, 
                                             IListarCoordinadores listAllCoordinadoresCu,
-                                            IListarAuditoriasByCoordinador listAllAudisByCoordinadorCu)
+                                            IListarAuditoriasByCoordinador listAllAudisByCoordinadorCu,
+                                            IFindAuditoriaById findAuditoriaByIdCu)
         {
             this.listAllAudisCU = listAllAudisCu;
             this.listAllCoordinadoresCU = listAllCoordinadoresCu;
             this.listAllAudisByCoordinadorCU = listAllAudisByCoordinadorCu;
+            this.findAuditoriaByIdCU = findAuditoriaByIdCu;
         }
 
 
@@ -50,7 +53,8 @@ namespace StellarMindsWebAPP.Controllers
         // GET: AuditoriaController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            AuditoriaPrestamoDTO audi = findAuditoriaByIdCU.Execute(id);
+            return View(audi);
         }
 
         // GET: AuditoriaController/Create

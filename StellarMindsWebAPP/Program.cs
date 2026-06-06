@@ -73,6 +73,7 @@ namespace StellarMindsWebAPP
             //ini casos de uso AUDITORIAS PRESTAMO
             builder.Services.AddScoped<IListarAuditoriasPrestamo, ListarAuditoriasPrestamoCU>();
             builder.Services.AddScoped<IListarAuditoriasByCoordinador, ListarAuditoriasByCoordinadorCU>();
+            builder.Services.AddScoped<IFindAuditoriaById, FindAuditoriaById>();
 
             //ini casos de uso OBJETOS CELESTES
             builder.Services.AddScoped<IListarObjetosCelestes, ListarObjetosCelestesCU>();

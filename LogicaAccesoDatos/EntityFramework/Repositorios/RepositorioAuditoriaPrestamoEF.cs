@@ -46,7 +46,11 @@ namespace LogicaAccesoDatos.EntityFramework.Repositorios
 
         public AuditoriaPrestamo FindById(int id)
         {
-            throw new NotImplementedException();
+            return _context.AuditoriaPrestamo
+                                            .Where(a => a.Id == id)
+                                            .Include(a => a.Prestamo)
+                                            .Include(a => a.Coordinador)
+                                            .FirstOrDefault();
         }
 
         public void Update(AuditoriaPrestamo aActualizar)
