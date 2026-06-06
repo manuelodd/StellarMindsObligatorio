@@ -28,15 +28,20 @@ namespace StellarMinds.Entities
 
         public void Validar()
         {
+            if (Socio == null)
+                throw new InvalidPrestamo("Debe elegir un socio.");
             if (Camara == null && Ocular == null)
-            {
-                throw new InvalidPrestamo("El préstamo debe incluir una cámara u ocular");
-            }
-
+                throw new InvalidPrestamo("El préstamo debe incluir una cámara u ocular.");
+            if (Telescopio == null)
+                throw new InvalidPrestamo("Debe elegir un telescopio.");
+            if (Montura == null)
+                throw new InvalidPrestamo("Debe elegir una montura.");
             if (Montura.CargaKG < Telescopio.PesoKG)
-            {
-                throw new InvalidPrestamo("El peso del telescopio excede la capacidad de la montura");
-            }
+                throw new InvalidPrestamo("El peso del telescopio excede la capacidad de la montura.");
+            if (FechaInicio > FechaFin)
+                throw new InvalidPrestamo("La fecha de inicio no puede ser mayor a la de fin.");
+            if (Camara != null && Montura.Tipo != TipoMontura.Ecuatorial && Montura.Tipo != TipoMontura.Hibrida)
+                throw new InvalidPrestamo("Para astrofotografía la montura debe ser ecuatorial o híbrida.");
         }
     }
 }

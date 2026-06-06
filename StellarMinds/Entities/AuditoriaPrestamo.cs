@@ -1,6 +1,7 @@
 ﻿using StellarMinds.Entities;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace Dominio.Entities
@@ -14,5 +15,7 @@ namespace Dominio.Entities
         public int CoordinadorId { get; set; }
         public Prestamo Prestamo { get; set; }
         public Usuario Coordinador { get; set; }
+
+        
     }
 }
