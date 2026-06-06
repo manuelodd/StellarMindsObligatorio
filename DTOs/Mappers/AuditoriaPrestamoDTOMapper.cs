@@ -18,6 +18,8 @@ namespace DTOs.Mappers
                 Accion = unaAudi.Accion,
                 CoordinadorId = unaAudi.CoordinadorId,
                 PrestamoId = unaAudi.PrestamoId,
+                SocioId = unaAudi.Prestamo.SocioId,
+                SocioNombre = unaAudi.Prestamo.Socio.NombreCompleto.Nombre + " " + unaAudi.Prestamo.Socio.NombreCompleto.Apellido,
             };
         }
     }

@@ -4,6 +4,8 @@
 
 @model ListarAuditoriasPorCoordinadorViewmodel
 
+<p>Coordinador recibido: @ViewBag.Test</p>
+
 <form method="post">
     <label for="coordinadorId">Busqueda por coordinador</label>
     <select name="coordinadorId" id="coordinadorId">
@@ -55,11 +57,16 @@
                     <td>@item.PrestamoId</td>
                     <td>@item.CoordinadorId</td>
                     <td>
-                        <a asp-controller="AuditoriaPrestamo"
+
+                        <a asp-controller="Prestamo"
                            asp-action="Details"
-                           asp-route-id="@item.Id">
+                           asp-route-id="@item.PrestamoId">
                             Ver préstamo
                         </a>
+
+
+
+
                     </td>
                 </tr>
             }

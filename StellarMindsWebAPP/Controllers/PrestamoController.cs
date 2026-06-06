@@ -22,6 +22,7 @@ namespace StellarMindsWebAPP.Controllers
         private IListarUsuarios listarUsuariosCU;
         private IListarPrestamosSocio listarPrestamosSocioCU;
         private IListarPrestamosSocioEntreFechas listarPrestamosSocioEntreFechasCU;
+        private IFindPrestamoById findPrestamoByIdCU;
 
         private IFindUsuById findUsuByID;
 
@@ -36,7 +37,9 @@ namespace StellarMindsWebAPP.Controllers
                                     IListarUsuarios listarUsuariosCu,
                                     IListarPrestamosSocio listarPrestamosSocioCu,
                                     IFindUsuById findUsuById,
-                                    IListarPrestamosSocioEntreFechas listarPrestamosSocioEntreFechasCu
+                                    IListarPrestamosSocioEntreFechas listarPrestamosSocioEntreFechasCu,
+                                    IFindPrestamoById findPrestamoByIdCu
+            
                                     )
         {
             this.altaCU = altaCu;
@@ -50,6 +53,7 @@ namespace StellarMindsWebAPP.Controllers
             this.listarPrestamosSocioCU = listarPrestamosSocioCu;
             this.findUsuByID = findUsuById;
             this.listarPrestamosSocioEntreFechasCU = listarPrestamosSocioEntreFechasCu;
+            this.findPrestamoByIdCU = findPrestamoByIdCu;
         }
         public ActionResult Index()
         {
@@ -72,7 +76,7 @@ namespace StellarMindsWebAPP.Controllers
         // GET: PrestamoController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            return View(findPrestamoByIdCU.Execute(id));
         }
 
         // GET: PrestamoController/Create

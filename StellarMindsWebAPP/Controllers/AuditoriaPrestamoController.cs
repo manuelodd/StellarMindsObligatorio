@@ -44,9 +44,12 @@ namespace StellarMindsWebAPP.Controllers
         [HttpPost]
         public IActionResult FilterByCoordinador(int coordinadorId)
         {
+            ViewBag.Test = coordinadorId;
+
             ListarAuditoriasPorCoordinadorViewmodel vm = new ListarAuditoriasPorCoordinadorViewmodel();
             vm.Coordinadores = listAllCoordinadoresCU.Execute();
             vm.Auditorias = listAllAudisByCoordinadorCU.Execute(coordinadorId);
+            
             return View(vm);
         }
 

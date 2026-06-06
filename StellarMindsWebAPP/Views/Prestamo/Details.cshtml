@@ -1,0 +1,28 @@
+﻿@using DTOs.DTOs
+
+@model PrestamoDTO
+
+<h2>Detalles del Préstamo</h2>
+
+<ul>
+    <li><strong>Id:</strong> @Model.Id</li>
+    <li><strong>Socio:</strong> @Model.SocioId</li>
+    <li><strong>Fecha Inicio:</strong> @Model.FechaInicio</li>
+    <li><strong>Fecha Fin:</strong> @Model.FechaFin</li>
+    <li><strong>Estado:</strong> @Model.Estado</li>
+    <li><strong>Atrasado:</strong> @Model.Atrasado</li>
+    <li><strong>Telescopio:</strong> @Model.TelescopioID</li>
+    <li><strong>Montura:</strong> @Model.MonturaID</li>
+
+    <li>
+        <strong>Cámara:</strong>
+        @(Model.CamaraID.HasValue ? Model.CamaraID.ToString() : "No incluye")
+    </li>
+
+    <li>
+        <strong>Ocular:</strong>
+        @(Model.OcularID.HasValue ? Model.OcularID.ToString() : "No incluye")
+    </li>
+</ul>
+
+<a asp-action="Index">Volver</a>

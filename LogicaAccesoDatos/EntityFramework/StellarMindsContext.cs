@@ -76,7 +76,6 @@ namespace LogicaAccesoDatos.EntityFramework
                 .HasForeignKey(a => a.SocioId)
                 .OnDelete(DeleteBehavior.NoAction);
 
-
             //especificar on delete de auditoria prestamo
             modelBuilder.Entity<AuditoriaPrestamo>()
                 .HasOne(a => a.Coordinador)

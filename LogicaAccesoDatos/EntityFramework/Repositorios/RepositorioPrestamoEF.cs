@@ -68,6 +68,7 @@ namespace LogicaAccesoDatos.EntityFramework.Repositorios
                 .Where(p =>
                     p.Socio.Id == socioId &&
                     p.Estado == EstadoPrestamo.EN_PRESTAMO)
+                .Include(p => p.Socio)
                 .Include(p => p.Telescopio)
                 .Include(p => p.Montura)
                 .Include(p => p.Camara)
@@ -79,6 +80,7 @@ namespace LogicaAccesoDatos.EntityFramework.Repositorios
         {
             return _context.Prestamos
                 .Where(p => p.SocioId == socioId && p.FechaInicio.Month == mes && p.FechaInicio.Year == anio)
+                .Include(p => p.Socio)
                 .Include(p => p.Telescopio)
                 .Include(p => p.Montura)
                 .Include(p => p.Camara)

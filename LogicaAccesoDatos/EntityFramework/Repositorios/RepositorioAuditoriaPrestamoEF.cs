@@ -32,6 +32,7 @@ namespace LogicaAccesoDatos.EntityFramework.Repositorios
                                             .Where(a => a.CoordinadorId == coordinadorId)
                                             .Include(a => a.Coordinador)
                                             .Include(a => a.Prestamo)
+                                                .ThenInclude(p => p.Socio)
                                             .ToList();
         }
 
@@ -40,6 +41,7 @@ namespace LogicaAccesoDatos.EntityFramework.Repositorios
             return _context.AuditoriaPrestamo
                                             .Include(a => a.Coordinador)
                                             .Include(a => a.Prestamo)
+                                                .ThenInclude(p => p.Socio)
                                             .ToList();
         }
         
@@ -48,8 +50,9 @@ namespace LogicaAccesoDatos.EntityFramework.Repositorios
         {
             return _context.AuditoriaPrestamo
                                             .Where(a => a.Id == id)
-                                            .Include(a => a.Prestamo)
                                             .Include(a => a.Coordinador)
+                                            .Include(a => a.Prestamo)
+                                                .ThenInclude(p => p.Socio)
                                             .FirstOrDefault();
         }
 
