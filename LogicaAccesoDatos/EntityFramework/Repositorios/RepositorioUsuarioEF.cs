@@ -43,6 +43,13 @@ namespace LogicaAccesoDatos.EntityFramework.Repositorios
                             .ToList();
         }
 
+        public IEnumerable<Usuario> FindCoordinadores()
+        {
+            return _context.Usuarios
+                                    .Where(u => u.Rol == StellarMinds.Enums.RolUsuario.COORDINADOR)
+                                    .ToList();
+        }
+
         public void Delete(int id)
         {
             throw new NotImplementedException();
