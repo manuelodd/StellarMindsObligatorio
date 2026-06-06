@@ -1,13 +1,11 @@
-﻿@using DTOs.DTOs
-
+﻿
+@using DTOs.DTOs
 
 @model IEnumerable<AuditoriaPrestamoDTO>
 
-    <form>
+<h2>Auditoría de Préstamos</h2>
 
-        
-
-    </form>
+<a asp-controller="AuditoriaPrestamo" asp-action="FilterByCoordinador">Ver auditoria filtrado por coordinador</a>
 
 
 <table class="table">
@@ -23,13 +21,15 @@
                 @Html.DisplayNameFor(model => model.Accion)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CoordinadorId)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.PrestamoId)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CoordinadorId)
+            </th>
+            <th></th>
         </tr>
     </thead>
+
     <tbody>
         @foreach (AuditoriaPrestamoDTO item in Model)
         {
@@ -44,10 +44,16 @@
                     @Html.DisplayFor(modelItem => item.Accion)
                 </td>
                 <td>
+                    @Html.DisplayFor(modelItem => item.PrestamoId)
+                </td>
+                <td>
                     @Html.DisplayFor(modelItem => item.CoordinadorId)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.PrestamoId)
+                    <a asp-action="Details"
+                       asp-route-id="@item.Id">
+                        Detalles
+                    </a>
                 </td>
             </tr>
         }

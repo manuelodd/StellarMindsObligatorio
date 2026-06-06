@@ -9,6 +9,7 @@ namespace Dominio.InterfacesRepositorio
 {
     public interface IRepositorioAuditoriaPrestamo : IRepositorio<AuditoriaPrestamo>
     {
-        public IEnumerable<AuditoriaPrestamo> Execute();
+        //public IEnumerable<AuditoriaPrestamo> Execute();
+        public IEnumerable<AuditoriaPrestamo> FindAllbyCoordinador(int coordinadorId);
     }
 }

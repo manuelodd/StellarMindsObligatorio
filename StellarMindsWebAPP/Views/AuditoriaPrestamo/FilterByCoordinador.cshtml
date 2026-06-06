@@ -1,0 +1,22 @@
+﻿@using DTOs.AuxiliarViewmodel
+@using DTOs.DTOs
+
+
+@model ListarAuditoriasPorCoordinadorViewmodel
+
+<form method="post">
+    <label for="coordinadorId">Busqueda por coordinador</label>
+    <select>
+        <option value="">
+            Seleccione a un coordinador
+        </option>
+        @foreach (UsuarioDTO usu in Model.Coordinadores)
+        {
+            <option value="@usu.Id">
+                @usu.Id - @usu.Nombre - @usu.Apellido
+            </option>
+        }
+    </select>
+
+    <input type="submit" value="Filtrar" />
+</form>

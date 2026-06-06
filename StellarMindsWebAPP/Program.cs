@@ -48,6 +48,8 @@ namespace StellarMindsWebAPP
             builder.Services.AddScoped<ILoginUsuario, LoginUsuarioCU>();
             builder.Services.AddScoped<IFindUsuById, FindUsuByIdCU>();
             builder.Services.AddScoped<IListarSociosByTelescopio, ListarSociosByTelescopioCU>();
+            builder.Services.AddScoped<IListarCoordinadores, ListarCoordinadoresCU>();
+
             //ini casos de uso EQUIPOS
             builder.Services.AddScoped<IAltaEquipo, AltaEquipoCU>();
             builder.Services.AddScoped<IListarEquipos, ListarEquiposCU>();
@@ -70,6 +72,8 @@ namespace StellarMindsWebAPP
             builder.Services.AddScoped<IListarPrestamosSocioEntreFechas, ListarPrestamosSocioEntreFechasCU>();
             //ini casos de uso AUDITORIAS PRESTAMO
             builder.Services.AddScoped<IListarAuditoriasPrestamo, ListarAuditoriasPrestamoCU>();
+            builder.Services.AddScoped<IListarAuditoriasByCoordinador, ListarAuditoriasByCoordinadorCU>();
+
             //ini casos de uso OBJETOS CELESTES
             builder.Services.AddScoped<IListarObjetosCelestes, ListarObjetosCelestesCU>();
             builder.Services.AddScoped<IRankObjetosCelestes, RankObjetosCelestesCU>();

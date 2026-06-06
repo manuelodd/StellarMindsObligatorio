@@ -1,4 +1,5 @@
 ﻿using Dominio.InterfacesRepositorio;
+using DTOs.AuxiliarViewmodel;
 using DTOs.DTOs;
 using LogicaAplicacion.InterfacesCasosDeUso;
 using Microsoft.AspNetCore.Http;
@@ -9,10 +10,17 @@ namespace StellarMindsWebAPP.Controllers
     public class AuditoriaPrestamoController : BaseController
     {
         private IListarAuditoriasPrestamo listAllAudisCU;
+        private IListarCoordinadores listAllCoordinadoresCU;
+        private IListarAuditoriasByCoordinador listAllAudisByCoordinadorCU;
 
-        public AuditoriaPrestamoController(IListarAuditoriasPrestamo listAllAudisCu)
+
+        public AuditoriaPrestamoController  (IListarAuditoriasPrestamo listAllAudisCu, 
+                                            IListarCoordinadores listAllCoordinadoresCu,
+                                            IListarAuditoriasByCoordinador listAllAudisByCoordinadorCu)
         {
             this.listAllAudisCU = listAllAudisCu;
+            this.listAllCoordinadoresCU = listAllCoordinadoresCu;
+            this.listAllAudisByCoordinadorCU = listAllAudisByCoordinadorCu;
         }
 
 
@@ -21,6 +29,22 @@ namespace StellarMindsWebAPP.Controllers
         {
             List<AuditoriaPrestamoDTO> lista = listAllAudisCU.Execute();
             return View(lista);
+        }
+
+        public IActionResult FilterByCoordinador()
+        {
+            ListarAuditoriasPorCoordinadorViewmodel vm = new ListarAuditoriasPorCoordinadorViewmodel();
+            vm.Coordinadores = listAllCoordinadoresCU.Execute();
+            return View(vm);
+        }
+
+        [HttpPost]
+        public IActionResult FilterByCoordinador(int coordinadorId)
+        {
+            ListarAuditoriasPorCoordinadorViewmodel vm = new ListarAuditoriasPorCoordinadorViewmodel();
+            vm.Coordinadores = listAllCoordinadoresCU.Execute();
+            vm.Auditorias = listAllAudisByCoordinadorCU.Execute(coordinadorId);
+            return View(vm);
         }
 
         // GET: AuditoriaController/Details/5
