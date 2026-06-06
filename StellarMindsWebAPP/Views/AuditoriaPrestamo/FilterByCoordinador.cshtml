@@ -6,7 +6,7 @@
 
 <form method="post">
     <label for="coordinadorId">Busqueda por coordinador</label>
-    <select>
+    <select name="coordinadorId" id="coordinadorId">
         <option value="">
             Seleccione a un coordinador
         </option>
@@ -20,3 +20,53 @@
 
     <input type="submit" value="Filtrar" />
 </form>
+
+@if (Model.Auditorias != null && Model.Auditorias.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Auditorias.First().Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Auditorias.First().Fecha)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Auditorias.First().Accion)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Auditorias.First().PrestamoId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Auditorias.First().CoordinadorId)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (AuditoriaPrestamoDTO item in Model.Auditorias)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Fecha</td>
+                    <td>@item.Accion</td>
+                    <td>@item.PrestamoId</td>
+                    <td>@item.CoordinadorId</td>
+                    <td>
+                        <a asp-controller="Prestamo"
+                           asp-action="Details"
+                           asp-route-id="@item.PrestamoId">
+                            Ver préstamo
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No hay auditorías para mostrar.</p>
+}
