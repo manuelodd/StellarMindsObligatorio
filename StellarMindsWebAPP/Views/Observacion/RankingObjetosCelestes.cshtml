@@ -1,0 +1,33 @@
+﻿@using DTOs.DTOs
+
+@model IEnumerable<RankObjetosCelestesDTO>
+
+<h2>Ranking de Objetos Celestes</h2>
+
+@if (!Model.Any())
+{
+    <p>No existen objetos celestes observados.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Tipo</th>
+                <th>Cantidad de observaciones</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (RankObjetosCelestesDTO objeto in Model)
+            {
+                <tr>
+                    <td>@objeto.Nombre</td>
+                    <td>@objeto.Tipo</td>
+                    <td>@objeto.CantidadObservaciones</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

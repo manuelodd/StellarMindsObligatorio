@@ -29,5 +29,6 @@ namespace LogicaAplicacion.CasosDeUso.CUAuditoriaPrestamo
 
             return aRetornar;
         }
+
     }
 }

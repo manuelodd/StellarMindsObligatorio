@@ -9,5 +9,6 @@ namespace Dominio.InterfacesRepositorio
 {
     public interface IRepositorioAuditoriaPrestamo : IRepositorio<AuditoriaPrestamo>
     {
+        public IEnumerable<AuditoriaPrestamo> Execute();
     }
 }

@@ -26,6 +26,15 @@ namespace LogicaAccesoDatos.EntityFramework.Repositorios
             throw new NotImplementedException();
         }
 
+        public IEnumerable<AuditoriaPrestamo> FindAllbyCoordinador(int coordinadorId)
+        {
+            return _context.AuditoriaPrestamo
+                                            .Where(a => a.CoordinadorId == coordinadorId)
+                                            .Include(a => a.Coordinador)
+                                            .Include(a => a.Prestamo)
+                                            .ToList();
+        }
+
         public IEnumerable<AuditoriaPrestamo> FindAll()
         {
             return _context.AuditoriaPrestamo
@@ -33,6 +42,7 @@ namespace LogicaAccesoDatos.EntityFramework.Repositorios
                                             .Include(a => a.Prestamo)
                                             .ToList();
         }
+        
 
         public AuditoriaPrestamo FindById(int id)
         {
