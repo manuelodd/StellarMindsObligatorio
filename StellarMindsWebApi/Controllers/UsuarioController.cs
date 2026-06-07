@@ -1,4 +1,5 @@
-﻿using DTOs.DTOs;
+﻿using Dominio.Exceptions;
+using DTOs.DTOs;
 using LogicaAplicacion.InterfacesCasosDeUso;
 using Microsoft.AspNetCore.Mvc;
 
@@ -23,15 +24,46 @@ namespace StellarMindsWebApi.Controllers
             this.findAllCU = findAllCu;
         }
         // GET: api/<UsuarioController>
+        /*
         [HttpGet]
         public ActionResult<UsuarioDTO> Get()
         {
-
+            try
+            {
                 IEnumerable<UsuarioDTO> listado = findAllCU.Execute();
                 return Ok(listado);
-           
+            }
+            catch(Exception ex)
+            {
+                StatusCode(500, "Internal server error.");
+            }
+
         }
-        
+        */
+
+        [HttpGet]
+        public ActionResult<UsuarioDTO> Get()
+        {
+            try
+            {
+                IEnumerable<UsuarioDTO> listado = findAllCU.Execute();
+                return Ok(listado);
+            }
+            //primer catch, si explota la db (por x motivo), mala cadena de conexion
+            catch (System.Data.Common.DbException)
+            {
+                return StatusCode(500, "Internal server error.");
+            }
+                //segundo catch, si la logica de negocio lanza excepcion (badrequest = 400)
+                catch(InvalidUserException ex)
+                {
+                    return BadRequest(ex.Message);
+                }
+        }
+
+
+
+
 
         // GET api/<UsuarioController>/5
         [HttpGet("{id}")]

@@ -100,7 +100,7 @@ namespace StellarMindsWebAPP.Controllers
         // GET: UsuarioController1/Create
         public ActionResult Create(UsuarioDTO dto)
         {
-            if (base.Rol() != "ADMINISTRADOR")
+            if (base.rolLogeado() != "ADMINISTRADOR")
             {
                 return RedirectToAction("Index", "Usuario");
             }

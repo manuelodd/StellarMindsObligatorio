@@ -13,7 +13,7 @@ namespace StellarMindsWebAPP.Controllers
         {
             return HttpContext.Session.GetString("username") != null;
         }
-        protected string Rol()
+        protected string rolLogeado()
         {
             return HttpContext.Session.GetString("rol");
         }
