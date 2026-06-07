@@ -38,25 +38,25 @@ namespace StellarMinds.Entities
         {
             // ToDo, solo para poner algo y poner debuggear
             if (string.IsNullOrEmpty(NombreCompleto.Nombre))
-                throw new InvalidUser("Nombre no puede ser vacío.");
+                throw new InvalidUserException("Nombre no puede ser vacío.");
             if (string.IsNullOrEmpty(NombreCompleto.Apellido))
-                throw new InvalidUser("Apellido no puede ser vacío.");
+                throw new InvalidUserException("Apellido no puede ser vacío.");
             if (string.IsNullOrEmpty(Telefono))
-                throw new InvalidUser("Teléfono no puede ser vacío.");
+                throw new InvalidUserException("Teléfono no puede ser vacío.");
             if (string.IsNullOrEmpty(Email))
-                throw new InvalidUser("Email no puede ser vacío.");
+                throw new InvalidUserException("Email no puede ser vacío.");
             if (string.IsNullOrEmpty(Username))
-                throw new InvalidUser("Username no puede ser vacío.");
+                throw new InvalidUserException("Username no puede ser vacío.");
             if (string.IsNullOrEmpty(Password))
-                throw new InvalidUser("Password no puede ser vacío.");
+                throw new InvalidUserException("Password no puede ser vacío.");
             if (string.IsNullOrEmpty(Direccion.Pais))
-                throw new InvalidUser("Pais no puede ser vacío.");
+                throw new InvalidUserException("Pais no puede ser vacío.");
             if (string.IsNullOrEmpty(Direccion.Ciudad))
-                throw new InvalidUser("Ciudad no puede ser vacía.");
+                throw new InvalidUserException("Ciudad no puede ser vacía.");
             if (string.IsNullOrEmpty(Direccion.Calle))
-                throw new InvalidUser("Calle no puede ser vacía.");
+                throw new InvalidUserException("Calle no puede ser vacía.");
             if (Password.Length < 8)
-                throw new InvalidUser("La contraseña debe tener al menos 8 caracteres.");
+                throw new InvalidUserException("La contraseña debe tener al menos 8 caracteres.");
             
             bool mayus = false;
             bool minus = false;
@@ -71,13 +71,13 @@ namespace StellarMinds.Entities
             }
 
             if (!mayus)
-                throw new InvalidUser("La contraseña debe tener al menos una mayúscula.");
+                throw new InvalidUserException("La contraseña debe tener al menos una mayúscula.");
             if (!minus)
-                throw new InvalidUser("La contraseña debe tener al menos una minúscula.");
+                throw new InvalidUserException("La contraseña debe tener al menos una minúscula.");
             if (!numb)
-                throw new InvalidUser("La contraseña debe tener al menos un número.");
+                throw new InvalidUserException("La contraseña debe tener al menos un número.");
             if (!simb)
-                throw new InvalidUser("La contraseña debe tener al menos un carácter especial.");
+                throw new InvalidUserException("La contraseña debe tener al menos un carácter especial.");
         }
     }
 

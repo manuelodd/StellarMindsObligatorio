@@ -1,4 +1,5 @@
 ﻿using Dominio.InterfacesRepositorio;
+using Dominio.Exceptions;
 using DTOs.DTOs;
 using DTOs.Mappers;
 using LogicaAplicacion.CasosDeUso.CUUsuario;
@@ -55,7 +56,7 @@ namespace StellarMindsWebAPP.Controllers
 
                 return RedirectToAction("Index", "Usuario");
             }
-            catch (Exception ex)
+            catch (InvalidUserException ex)
             {
                 ViewBag.Error = ex.Message;
                 return View();

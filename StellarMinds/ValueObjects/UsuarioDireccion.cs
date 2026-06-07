@@ -25,11 +25,11 @@ namespace Dominio.ValueObjects
         public void Validar() 
             {
             if (string.IsNullOrEmpty(Pais))
-                throw new InvalidUser("País no puede ser vacío");
+                throw new InvalidUserException("País no puede ser vacío");
             if (string.IsNullOrEmpty(Ciudad))
-                throw new InvalidUser("Ciudad no puede ser vacía");
+                throw new InvalidUserException("Ciudad no puede ser vacía");
             if (string.IsNullOrEmpty(Calle))
-                throw new InvalidUser("Calle no puede ser vacía");
+                throw new InvalidUserException("Calle no puede ser vacía");
         }
     }
 }

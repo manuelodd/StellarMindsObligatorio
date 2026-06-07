@@ -101,7 +101,7 @@ namespace StellarMindsWebAPP.Controllers
                 altaCU.Execute(dto, idLogeado());
                 return RedirectToAction(nameof(Index));
             }
-            catch (InvalidPrestamo ex)
+            catch (InvalidPrestamoException ex)
             {
                 //creo denuevo el vm para retener los datos
                 PrestamoAltaViewmodel vm = new PrestamoAltaViewmodel();

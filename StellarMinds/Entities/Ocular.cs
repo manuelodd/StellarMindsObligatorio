@@ -14,15 +14,15 @@ namespace StellarMinds.Entities
         public void Validar()
         {
             if (string.IsNullOrEmpty(Marca))
-                throw new InvalidEquipo("La marca no puede ser vacía.");
+                throw new InvalidEquipoException("La marca no puede ser vacía.");
             if (string.IsNullOrEmpty(Modelo))
-                throw new InvalidEquipo("El modelo no puede ser vacío.");
+                throw new InvalidEquipoException("El modelo no puede ser vacío.");
             if (CantDisp < 0)
-                throw new InvalidEquipo("La cantidad disponible no puede ser negativa.");
+                throw new InvalidEquipoException("La cantidad disponible no puede ser negativa.");
             if (Diametro <= 0)
-                throw new InvalidEquipo("El diámetro debe ser mayor a 0.");
+                throw new InvalidEquipoException("El diámetro debe ser mayor a 0.");
             if (GradosVision <= 0)
-                throw new InvalidEquipo("Los grados de visión deben ser mayores a 0.");
+                throw new InvalidEquipoException("Los grados de visión deben ser mayores a 0.");
         }
     }
 }

@@ -23,10 +23,10 @@ namespace LogicaAplicacion.CasosDeUso.CUUsuario
                 Usuario usuario = repositorio.FindByUsername(username);
 
                 if (usuario == null)
-                    throw new InvalidUser("Usuario no existe");
+                    throw new InvalidUserException("Usuario no existe.");
 
                 if (usuario.Password != password)
-                    throw new InvalidUser("Contraseña incorrecta");
+                    throw new InvalidUserException("Contraseña incorrecta.");
 
                 return usuario;
             }

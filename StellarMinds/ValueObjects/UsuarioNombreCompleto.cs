@@ -22,9 +22,9 @@ namespace Dominio.ValueObjects
         public void Validar() 
         {
             if (string.IsNullOrEmpty(Nombre))
-                throw new InvalidUser("Nombre no puede ser vacío");
+                throw new InvalidUserException("Nombre no puede ser vacío");
             if (string.IsNullOrEmpty(Apellido))
-                throw new InvalidUser("Apellido no puede ser vacío");
+                throw new InvalidUserException("Apellido no puede ser vacío");
         }
     }
 }

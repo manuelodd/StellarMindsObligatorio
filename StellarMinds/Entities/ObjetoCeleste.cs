@@ -17,9 +17,9 @@ namespace Dominio.Entities
         public void Validar()
         {
             if (string.IsNullOrEmpty(Nombre))
-                throw new InvalidObjetoCeleste("El nombre no puede ser vacío.");
+                throw new InvalidObjetoCelesteException("El nombre no puede ser vacío.");
             if (Tipo == null)
-                throw new InvalidObjetoCeleste("Tiene que elegir un tipo.");
+                throw new InvalidObjetoCelesteException("Tiene que elegir un tipo.");
         }
     }
 }

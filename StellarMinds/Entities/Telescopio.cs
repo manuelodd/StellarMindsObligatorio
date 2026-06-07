@@ -16,19 +16,19 @@ namespace StellarMinds.Entities
         public void Validar()
         {
             if (string.IsNullOrEmpty(Marca))
-                throw new InvalidEquipo("La marca no puede ser vacía.");
+                throw new InvalidEquipoException("La marca no puede ser vacía.");
             if (string.IsNullOrEmpty(Modelo))
-                throw new InvalidEquipo("El modelo no puede ser vacío.");
+                throw new InvalidEquipoException("El modelo no puede ser vacío.");
             if (CantDisp < 0)
-                throw new InvalidEquipo("La cantidad disponible no puede ser negativa.");
+                throw new InvalidEquipoException("La cantidad disponible no puede ser negativa.");
             if (Apertura <= 0)
-                throw new InvalidEquipo("La apertura debe ser mayor a 0.");
+                throw new InvalidEquipoException("La apertura debe ser mayor a 0.");
             if (string.IsNullOrEmpty(RelacionFocal))
-                throw new InvalidEquipo("La relación focal no puede ser vacía.");
+                throw new InvalidEquipoException("La relación focal no puede ser vacía.");
             if (DistanciaFocal <= 0)
-                throw new InvalidEquipo("La distancia focal debe ser mayor a 0.");
+                throw new InvalidEquipoException("La distancia focal debe ser mayor a 0.");
             if (PesoKG <= 0)
-                throw new InvalidEquipo("El peso debe ser mayor a 0.");
+                throw new InvalidEquipoException("El peso debe ser mayor a 0.");
         }
     }
 }

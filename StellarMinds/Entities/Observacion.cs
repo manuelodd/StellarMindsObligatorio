@@ -24,15 +24,15 @@ namespace StellarMinds.Entities
         public void Validar()
         {
             if (Fecha < DateTime.Today)
-                throw new InvalidObservacion("La fecha debe ser válida");
+                throw new InvalidObservacionException("La fecha debe ser válida");
             if (PrestamoId == 0)
-                throw new InvalidObservacion("Prestamo no válido.");
+                throw new InvalidObservacionException("Prestamo no válido.");
             if (ObjetoCelesteId == 0)
-                throw new InvalidObservacion("Objeto celeste no válido.");
+                throw new InvalidObservacionException("Objeto celeste no válido.");
             if (Prestamo == null)
-                throw new InvalidObservacion("Debe existir un préstamo.");
+                throw new InvalidObservacionException("Debe existir un préstamo.");
             if (ObjetoCeleste == null)
-                throw new InvalidObservacion("Debe existir un objeto celeste.");
+                throw new InvalidObservacionException("Debe existir un objeto celeste.");
             /*
             if (string.IsNullOrWhiteSpace(Indicador))
                 throw new InvalidObservacion("Indicador no puede ser vacío.");
@@ -40,9 +40,9 @@ namespace StellarMinds.Entities
                 throw new InvalidObservacion("Detalle no puede ser vacío.");
             */
             if (Prestamo.Estado != EstadoPrestamo.EN_PRESTAMO)
-                throw new InvalidObservacion("El préstamo no se encuentra activo.");
+                throw new InvalidObservacionException("El préstamo no se encuentra activo.");
             if (Fecha < Prestamo.FechaInicio || Fecha > Prestamo.FechaFin)
-                throw new InvalidObservacion("La fecha de observación está afuera del período del préstamo.");
+                throw new InvalidObservacionException("La fecha de observación está afuera del período del préstamo.");
         }
     }
 }
