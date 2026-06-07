@@ -3,6 +3,13 @@
 
 @model ObservacionAltaViewmodel
 
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger">
+        @ViewBag.Error
+    </div>
+}
+
 <form method="post">
 
     <label for="Fecha">Fecha</label>

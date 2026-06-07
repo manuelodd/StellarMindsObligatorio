@@ -1,4 +1,9 @@
-﻿<body>
+﻿@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger">
+        @ViewBag.Error
+    </div>
+}
 
     <h1>Create equipo</h1>
 
@@ -137,4 +142,3 @@
                 console.log(valor);
             }
     </script>
-</body>

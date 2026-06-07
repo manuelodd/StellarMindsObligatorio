@@ -2,6 +2,12 @@
 @using StellarMinds.Entities
 @model IEnumerable<EquipoDTO>
 
+    @if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger">
+        @ViewBag.Error
+    </div>
+}
 
 @{
     ViewData["Title"] = "Index";

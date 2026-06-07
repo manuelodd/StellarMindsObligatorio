@@ -2,6 +2,13 @@
 @using StellarMinds.Enums
 @model EquipoDTO
 
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger">
+        @ViewBag.Error
+    </div>
+}
+
 @if(Model is TelescopioDTO){
 
     @if (Model is TelescopioDTO tele)

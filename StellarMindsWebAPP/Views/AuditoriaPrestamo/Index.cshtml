@@ -3,6 +3,13 @@
 
 @model IEnumerable<AuditoriaPrestamoDTO>
 
+    @if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger">
+        @ViewBag.Error
+    </div>
+}
+    
 <h2>Auditoría de Préstamos</h2>
 
 <a asp-controller="AuditoriaPrestamo" asp-action="FilterByCoordinador">Ver auditoria filtrado por coordinador</a>

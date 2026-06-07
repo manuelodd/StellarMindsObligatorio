@@ -4,6 +4,12 @@
 
 @model SociosPorTelescopioViewmodel
 
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger">
+        @ViewBag.Error
+    </div>
+}
 
 <form method="post">
 

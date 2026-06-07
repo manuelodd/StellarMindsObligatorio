@@ -1,6 +1,12 @@
 ﻿@using DTOs.AuxiliarViewmodel
 @using DTOs.DTOs
 
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger">
+        @ViewBag.Error
+    </div>
+}
 
 @model ListarAuditoriasPorCoordinadorViewmodel
 

@@ -2,6 +2,13 @@
 @using DTOs.DTOs
 @model PrestamoDevolucionViewmodel
 
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger">
+        @ViewBag.Error
+    </div>
+}
+
 <form method="post">
 <select name="socioId">
     @foreach(UsuarioDTO usu in Model.Socios)
