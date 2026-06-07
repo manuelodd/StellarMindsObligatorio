@@ -18,7 +18,7 @@ namespace DTOs.Mappers
                 Modelo = unaMontura.Modelo,
                 EnPrestamo = unaMontura.EnPrestamo,
                 CantDisp = unaMontura.CantDisp,
-                Tipo = unaMontura.Tipo,
+                Tipo = unaMontura.Tipo.Value,
                 CargaKG = unaMontura.CargaKG,
                 GoTo = unaMontura.GoTo,
             };

@@ -70,7 +70,7 @@ namespace DTOs.Mappers
                     Modelo = montura.Modelo,
                     EnPrestamo = montura.EnPrestamo,
                     CantDisp = montura.CantDisp,
-                    Tipo = montura.Tipo,
+                    Tipo = montura.Tipo.Value,
                     CargaKG = montura.CargaKG,
                     GoTo = montura.GoTo,
                 };
@@ -85,7 +85,7 @@ namespace DTOs.Mappers
                     Modelo = camara.Modelo,
                     EnPrestamo = camara.EnPrestamo,
                     CantDisp = camara.CantDisp,
-                    TipoSensor = camara.TipoSensor,
+                    TipoSensor = camara.TipoSensor.Value,
                     Resolution = camara.Resolution,
                     PixelSize = camara.PixelSize,
                 };

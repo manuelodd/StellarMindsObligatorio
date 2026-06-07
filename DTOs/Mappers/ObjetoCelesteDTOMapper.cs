@@ -14,7 +14,7 @@ namespace DTOs.Mappers
             {
                 Id = objeto.Id,
                 Nombre = objeto.Nombre,
-                Tipo = objeto.Tipo,
+                Tipo = objeto.Tipo.Value,
                 MagnitudAparente = objeto.MagnitudAparente
             };
         }

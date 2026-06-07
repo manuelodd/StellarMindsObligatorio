@@ -17,7 +17,7 @@ namespace DTOs.Mappers
                 Modelo = unaCamara.Modelo,
                 EnPrestamo = unaCamara.EnPrestamo,
                 CantDisp = unaCamara.CantDisp,
-                TipoSensor = unaCamara.TipoSensor,
+                TipoSensor = unaCamara.TipoSensor.Value,
                 Resolution = unaCamara.Resolution,
                 PixelSize = unaCamara.PixelSize,
             };
