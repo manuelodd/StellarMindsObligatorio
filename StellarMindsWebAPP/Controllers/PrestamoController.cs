@@ -76,7 +76,15 @@ namespace StellarMindsWebAPP.Controllers
         // GET: PrestamoController/Details/5
         public ActionResult Details(int id)
         {
-            return View(findPrestamoByIdCU.Execute(id));
+            try
+            {
+                return View(findPrestamoByIdCU.Execute(id));
+            }
+            catch (EntityNotFoundException ex)
+            {
+                ViewBag.Error = ex.Message;
+                return View();
+            }
         }
 
         // GET: PrestamoController/Create
@@ -147,9 +155,21 @@ namespace StellarMindsWebAPP.Controllers
         [HttpPost]
         public IActionResult Return4Real(int prestamoid)
         {
-            returnCU.Execute(prestamoid, idLogeado());
+            try
+            {
+                returnCU.Execute(prestamoid, idLogeado());
+                return RedirectToAction(nameof(Index));
+            }
+            catch (InvalidPrestamoException ex)
+            {
+                ViewBag.Error = ex.Message;
 
-            return RedirectToAction(nameof(Index));
+                PrestamoDevolucionViewmodel vm = new PrestamoDevolucionViewmodel();
+                vm.Socios = listarUsuariosCU.Execute();
+                vm.Prestamos = new List<PrestamoDTO>();
+
+                return View("Return", vm);
+            }
         }
         // GET: PrestamoController/Edit/5
         public ActionResult Edit(int id)

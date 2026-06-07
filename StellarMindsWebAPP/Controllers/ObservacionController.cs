@@ -1,4 +1,5 @@
-﻿using DTOs.AuxiliarViewmodel;
+﻿using Dominio.Exceptions;
+using DTOs.AuxiliarViewmodel;
 using DTOs.DTOs;
 using LogicaAplicacion.InterfacesCasosDeUso;
 using Microsoft.AspNetCore.Http;
@@ -58,8 +59,20 @@ namespace StellarMindsWebAPP.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(ObservacionDTO dto)
         {
-            altaObservacionCU.Execute(dto);
-            return RedirectToAction("Index", "Usuario");
+            try
+            {
+                altaObservacionCU.Execute(dto);
+                return RedirectToAction("Index", "Usuario");
+            }
+            catch (InvalidObservacionException ex)
+            {
+                ObservacionAltaViewmodel vm = new ObservacionAltaViewmodel();
+                vm.Prestamos = listarPrestamosSocioCU.Execute(idLogeado());
+                vm.ObjetosCelestes = listarObjetosCelestesCU.Execute();
+                ViewBag.Error = ex.Message;
+
+                return View(vm);
+            }
         }
 
         // GET: ObservacionController/Edit/5

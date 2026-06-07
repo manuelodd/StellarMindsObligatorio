@@ -1,7 +1,8 @@
-﻿using Dominio.InterfacesRepositorio;
-using Dominio.Exceptions;
+﻿using Dominio.Exceptions;
+using Dominio.InterfacesRepositorio;
 using DTOs.DTOs;
 using DTOs.Mappers;
+using Humanizer;
 using LogicaAplicacion.CasosDeUso.CUUsuario;
 using LogicaAplicacion.InterfacesCasosDeUso;
 using Microsoft.AspNetCore.Http;
@@ -72,7 +73,17 @@ namespace StellarMindsWebAPP.Controllers
         // GET: UsuarioController1/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            /*
+            try
+            {
+                UsuarioDTO dto = detalleCU.Execute(id);
+                return View(dto);
+            }
+            catch (EntityNotFoundException ex)
+            {
+                ViewBag.Error = ex.Message;
+                return View();
+            }
         }
         public ActionResult Create()
         {
@@ -80,7 +91,7 @@ namespace StellarMindsWebAPP.Controllers
             {
                 return RedirectToAction("Index", "Usuario");
             }
-
+            */
             return View();
         }
 
@@ -101,15 +112,17 @@ namespace StellarMindsWebAPP.Controllers
                 altaCU.Execute(dto);
                 return RedirectToAction(nameof(Index));
             }
-            catch
+            catch (InvalidUserException ex)
             {
-                return View();
+                ViewBag.Error = ex.Message;
+                return View(dto);
             }
-           
+
         }
 
         public ActionResult Edit(int id)
         {
+
             return View();
         }
 
@@ -118,19 +131,42 @@ namespace StellarMindsWebAPP.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            /*
+ * try
+{
+modificarCU.Execute(dto);
+return RedirectToAction(nameof(Index));
+}
+catch(InvalidUser ex)
+{
+ViewBag.Error = ex.Message;
+return View(dto);
+}
+catch(EntityNotFoundException ex)
+{
+ViewBag.Error = ex.Message;
+return View(dto);
+}
+ */
+            return View();
         }
 
         // GET: UsuarioController1/Delete/5
         public ActionResult Delete(int id)
         {
+            /*
+             * try
+{
+    eliminarCU.Execute(id);
+    return RedirectToAction(nameof(Index));
+}
+catch(EntityNotFoundException ex)
+{
+    ViewBag.Error = ex.Message;
+    return View();
+}
+             */
+
             return View();
         }
 

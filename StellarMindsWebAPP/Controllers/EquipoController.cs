@@ -1,4 +1,5 @@
-﻿using DTOs.AuxiliarViewmodel;
+﻿using Dominio.Exceptions;
+using DTOs.AuxiliarViewmodel;
 using DTOs.DTOs;
 using DTOs.Mappers;
 using LogicaAplicacion.CasosDeUso.CUEquipo;
@@ -99,53 +100,108 @@ namespace StellarMindsWebAPP.Controllers
 
         public ActionResult Delete(int id)
         {
-            deleteEquipoCU.Execute(id);
-            return RedirectToAction(nameof(Index));
+            try
+            {
+                deleteEquipoCU.Execute(id);
+                return RedirectToAction(nameof(Index));
+            }
+            catch (EntityNotFoundException ex)
+            {
+                ViewBag.Error = ex.Message;
+                return RedirectToAction(nameof(Index));
+            }
         }
 
         public ActionResult Details(int id)
         {
-            EquipoDTO equipo = buscarEquipoIDCU.Execute(id);
-            return View(equipo);
+            try
+            {
+                EquipoDTO equipo = buscarEquipoIDCU.Execute(id);
+                return View(equipo);
+            }
+            catch (EntityNotFoundException ex)
+            {
+                ViewBag.Error = ex.Message;
+                return RedirectToAction(nameof(Index));
+            }
         }
 
         public ActionResult Edit(int id)
         {
-            EquipoDTO dto = buscarEquipoIDCU.Execute(id);
-            return View(dto);
+            try
+            {
+                EquipoDTO equipo = buscarEquipoIDCU.Execute(id);
+                return View(equipo);
+            }
+            catch (EntityNotFoundException ex)
+            {
+                ViewBag.Error = ex.Message;
+                return RedirectToAction(nameof(Index));
+            }
         }
 
         // - - - - - - - - - - - - - - - - - - - - - - - - -  CREATES - - - - - - - - - - - - - - - - - -  - - - - - -  - - - - -  - - -
         [HttpPost]
         public ActionResult CreateTelescopio(TelescopioDTO dto)
         {
-            altaCU.Execute(TelescopioDTOMapper.FromDTO(dto));
-            return RedirectToAction(nameof(Index));
+            try
+            {
+                altaCU.Execute(TelescopioDTOMapper.FromDTO(dto));
+                return RedirectToAction(nameof(Index));
+            }
+            catch(InvalidEquipoException ex)
+            {
+                ViewBag.Error = ex.Message;
+                return RedirectToAction(nameof(Index));
+            }
+            
         }
 
         [HttpPost]
         public ActionResult CreateMontura(MonturaDTO dto)
         {
-            altaCU.Execute(MonturaDTOMapper.FromDTO(dto));
-            return RedirectToAction(nameof(Index));
+            try
+            {
+                altaCU.Execute(MonturaDTOMapper.FromDTO(dto));
+                return RedirectToAction(nameof(Index));
+            }
+            catch (InvalidEquipoException ex)
+            {
+                ViewBag.Error = ex.Message;
+                return RedirectToAction(nameof(Index));
+            }
         }
 
 
         [HttpPost]
         public ActionResult CreateCamara(CamaraDTO dto)
         {
-            altaCU.Execute(CamaraDTOMapper.FromDTO(dto));
-
-            return RedirectToAction(nameof(Index));
+            try
+            {
+                altaCU.Execute(CamaraDTOMapper.FromDTO(dto));
+                return RedirectToAction(nameof(Index));
+            }
+            catch (InvalidEquipoException ex)
+            {
+                ViewBag.Error = ex.Message;
+                return RedirectToAction(nameof(Index));
+            }
         }
 
 
         [HttpPost]
         public ActionResult CreateOcular(OcularDTO dto)
         {
-            altaCU.Execute(OcularDTOMapper.FromDTO(dto));
-            return RedirectToAction(nameof(Index));
-
+            try
+            {
+                altaCU.Execute(OcularDTOMapper.FromDTO(dto));
+                return RedirectToAction(nameof(Index));
+            }
+            catch (InvalidEquipoException ex)
+            {
+                ViewBag.Error = ex.Message;
+                return RedirectToAction(nameof(Index));
+            }
         }
 
         // - - - - - - - - - - - - - - - - - - - - - - - - -  EDITS - - - - - - - - - - - - - - - - - -  - - - - - -  - - - - -  - - -
@@ -153,30 +209,62 @@ namespace StellarMindsWebAPP.Controllers
         public IActionResult EditTelescopio(TelescopioDTO dto)
         {
             //editarTelescopioCU.Execute(dto);
-            editarTelescopioCU.Execute(dto);
-            return RedirectToAction(nameof(Index));
+            try
+            {
+                editarTelescopioCU.Execute(dto);
+                return RedirectToAction(nameof(Index));
+            }
+            catch(InvalidEquipoException ex)
+            {
+                ViewBag.Error = ex.Message;
+                return RedirectToAction(nameof(Index));
+            }
         }
 
         [HttpPost]
         public IActionResult EditMontura(MonturaDTO dto)
         {
             //editarTelescopioCU.Execute(dto);
-            editarMonturaCU.Execute(dto);
-            return RedirectToAction(nameof(Index));
+            try
+            {
+                editarMonturaCU.Execute(dto);
+                return RedirectToAction(nameof(Index));
+            }
+            catch (InvalidEquipoException ex)
+            {
+                ViewBag.Error = ex.Message;
+                return RedirectToAction(nameof(Index));
+            }
         }
         [HttpPost]
         public IActionResult EditCamara(CamaraDTO dto)
         {
             //editarTelescopioCU.Execute(dto);
-            editarCamaraCU.Execute(dto);
-            return RedirectToAction(nameof(Index));
+            try
+            {
+                editarCamaraCU.Execute(dto);
+                return RedirectToAction(nameof(Index));
+            }
+            catch (InvalidEquipoException ex)
+            {
+                ViewBag.Error = ex.Message;
+                return RedirectToAction(nameof(Index));
+            }
         }
         [HttpPost]
         public IActionResult EditOcular(OcularDTO dto)
         {
             //editarTelescopioCU.Execute(dto);
-            editarOcularCU.Execute(dto);
-            return RedirectToAction(nameof(Index));
+            try
+            {
+                editarOcularCU.Execute(dto);
+                return RedirectToAction(nameof(Index));
+            }
+            catch (InvalidEquipoException ex)
+            {
+                ViewBag.Error = ex.Message;
+                return RedirectToAction(nameof(Index));
+            }
         }
 
 
