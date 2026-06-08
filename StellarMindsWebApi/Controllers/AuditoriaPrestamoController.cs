@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace StellarMindsWebApi.Controllers
 {
+    [ApiController]
+    [Route("api/[controller]")]
     public class AuditoriaPrestamoController : Controller
     {
         private IListarAuditoriasPrestamo listAllAudisCU;

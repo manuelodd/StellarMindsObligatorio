@@ -8,6 +8,8 @@ using System.Runtime.CompilerServices;
 
 namespace StellarMindsWebApi.Controllers
 {
+    [ApiController]
+    [Route("api/[controller]")]
     public class PrestamoController : Controller
     {
         private IAltaPrestamo altaCU;
