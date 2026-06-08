@@ -12,7 +12,6 @@ namespace StellarMindsWebApi.Controllers
     [ApiController]
     public class EquipoController : ControllerBase
     {
-        private IRepositorioEquipo repositorio;
         private IAltaEquipo altaCU;
         private IListarEquipos findAllCU;
         private IBuscarEquipoPorID buscarEquipoIDCU;
@@ -22,7 +21,7 @@ namespace StellarMindsWebApi.Controllers
         private IEditarOcular editarOcularCU;
         private IDeleteEquipo deleteEquipoCU;
 
-        public EquipoController(IRepositorioEquipo repo,
+        public EquipoController(
                                 IAltaEquipo altae,
                                 IListarEquipos findAllCu,
                                 IBuscarEquipoPorID buscarEquipoIDCu,
@@ -32,7 +31,6 @@ namespace StellarMindsWebApi.Controllers
                                 IEditarOcular editarOcularCu,
                                 IDeleteEquipo deleteEquipoCu)
         {
-            repositorio = repo;
             this.altaCU = altae;
             this.findAllCU = findAllCu;
             this.buscarEquipoIDCU = buscarEquipoIDCu;
@@ -48,7 +46,7 @@ namespace StellarMindsWebApi.Controllers
         [HttpGet("{id}")]
         public IActionResult Disponible(int id)
         {
-            Equipo equipo = repositorio.FindById(id);
+            EquipoDTO equipo = buscarEquipoIDCU.Execute(id);
             bool disponible = equipo.CantDisp > 0;
             return Ok(disponible);
         }
