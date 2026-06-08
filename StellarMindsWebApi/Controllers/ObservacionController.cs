@@ -1,4 +1,6 @@
-﻿using LogicaAplicacion.InterfacesCasosDeUso;
+﻿using Dominio.Exceptions;
+using DTOs.DTOs;
+using LogicaAplicacion.InterfacesCasosDeUso;
 using Microsoft.AspNetCore.Mvc;
 
 namespace StellarMindsWebApi.Controllers
@@ -20,9 +22,40 @@ namespace StellarMindsWebApi.Controllers
             this.altaObservacionCU = altaObservacionCu;
             this.rankObjetosCelestesCU = rankObjetosCelestesCu;
         }
-        public IActionResult Index()
+
+        [HttpGet("ranking")]
+        public ActionResult<ObservacionDTO> Ranking()
         {
-            return View();
+            try
+            {
+                return Ok(rankObjetosCelestesCU.Execute());
+            }
+            catch (System.Data.Common.DbException)
+            {
+                return StatusCode(500, "Error de base de datos.");
+            }
+        }
+
+        [HttpPost]
+        public ActionResult<ObservacionDTO> Post(ObservacionDTO dto)
+        {
+            try
+            {
+                altaObservacionCU.Execute(dto);
+                return Created();
+            }
+            catch (InvalidObservacionException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (EntityNotFoundException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (System.Data.Common.DbException)
+            {
+                return StatusCode(500, "Error de base de datos.");
+            }
         }
     }
 }
