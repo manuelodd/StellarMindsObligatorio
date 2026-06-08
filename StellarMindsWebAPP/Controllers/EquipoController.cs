@@ -146,7 +146,7 @@ namespace StellarMindsWebAPP.Controllers
         {
             try
             {
-                altaCU.Execute(TelescopioDTOMapper.FromDTO(dto));
+                altaCU.Execute(dto);
                 return RedirectToAction(nameof(Index));
             }
             catch(InvalidEquipoException ex)
@@ -162,7 +162,7 @@ namespace StellarMindsWebAPP.Controllers
         {
             try
             {
-                altaCU.Execute(MonturaDTOMapper.FromDTO(dto));
+                altaCU.Execute(dto);
                 return RedirectToAction(nameof(Index));
             }
             catch (InvalidEquipoException ex)
@@ -178,7 +178,7 @@ namespace StellarMindsWebAPP.Controllers
         {
             try
             {
-                altaCU.Execute(CamaraDTOMapper.FromDTO(dto));
+                altaCU.Execute(dto);
                 return RedirectToAction(nameof(Index));
             }
             catch (InvalidEquipoException ex)
@@ -194,7 +194,7 @@ namespace StellarMindsWebAPP.Controllers
         {
             try
             {
-                altaCU.Execute(OcularDTOMapper.FromDTO(dto));
+                altaCU.Execute(dto);
                 return RedirectToAction(nameof(Index));
             }
             catch (InvalidEquipoException ex)

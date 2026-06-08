@@ -17,10 +17,28 @@ namespace LogicaAplicacion.CasosDeUso.CUEquipo
         {
             repositorio = repo;
         }
-        public void Execute(Equipo unEquipo)
+        public void Execute(EquipoDTO dto)
         {
-            repositorio.Alta(unEquipo);
+            Equipo equipo = null;
 
+            if (dto is TelescopioDTO teleDto)
+            {
+                equipo = EquipoDTOMapper.FromDTOTele(teleDto);
+            }
+            else if (dto is MonturaDTO montuDto)
+            {
+                equipo = EquipoDTOMapper.FromDTOMontu(montuDto);
+            }
+            else if (dto is CamaraDTO camaDto)
+            {
+                equipo = EquipoDTOMapper.FromDTOCama(camaDto);
+            }
+            else if (dto is OcularDTO ocuDto)
+            {
+                equipo = EquipoDTOMapper.FromDTOOcu(ocuDto);
+            }
+
+            repositorio.Alta(equipo);
         }
 
     }

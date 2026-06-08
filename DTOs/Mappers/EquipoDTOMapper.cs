@@ -9,6 +9,68 @@ namespace DTOs.Mappers
 {
     public class EquipoDTOMapper
     {
+        public static Telescopio FromDTOTele(TelescopioDTO dto)
+        {
+            return new Telescopio
+            {
+                Id = dto.Id,
+                Marca = dto.Marca,
+                Modelo = dto.Modelo,
+                CantDisp = dto.CantDisp,
+                EnPrestamo = dto.EnPrestamo,
+                Apertura = dto.Apertura,
+                RelacionFocal = dto.RelacionFocal,
+                DistanciaFocal = dto.DistanciaFocal,
+                PesoKG = dto.PesoKG,
+            };
+        }
+
+
+        public static Montura FromDTOMontu(MonturaDTO dto)
+        {
+            return new Montura
+            {
+                Id = dto.Id,
+                Marca = dto.Marca,
+                Modelo = dto.Modelo,
+                CantDisp = dto.CantDisp,
+                EnPrestamo = dto.EnPrestamo,
+                Tipo = dto.Tipo,
+                CargaKG = dto.CargaKG,
+                GoTo = dto.GoTo,
+            };
+        }
+
+        public static Camara FromDTOCama(CamaraDTO dto)
+        {
+            return new Camara
+            {
+                Id = dto.Id,
+                Marca = dto.Marca,
+                Modelo = dto.Modelo,
+                CantDisp = dto.CantDisp,
+                EnPrestamo = dto.EnPrestamo,
+                TipoSensor = dto.TipoSensor,
+                Resolution = dto.Resolution,
+                PixelSize = dto.PixelSize,
+            };
+        }
+
+        public static Ocular FromDTOOcu(OcularDTO dto)
+        {
+            return new Ocular
+            {
+                Id = dto.Id,
+                Marca = dto.Marca,
+                Modelo = dto.Modelo,
+                CantDisp = dto.CantDisp,
+                EnPrestamo = dto.EnPrestamo,
+                Diametro = dto.Diametro,
+                GradosVision = dto.GradosVision,
+            };
+        }
+
+
         public static EquipoDTO ToListDTO(Equipo unEquipo)
         {
             string tipo = "";
