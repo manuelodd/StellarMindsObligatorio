@@ -1,10 +1,12 @@
 ﻿using Dominio.Exceptions;
 using Dominio.InterfacesRepositorio;
 using DTOs.DTOs;
+using LogicaAplicacion.CasosDeUso.CUUsuario;
 using LogicaAplicacion.InterfacesCasosDeUso;
 using Microsoft.AspNetCore.Mvc;
 using StellarMinds.Entities;
 using System.Data.Common;
+using System.Formats.Cbor;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -16,31 +18,56 @@ namespace StellarMindsWebApi.Controllers
     {
         private IAltaEquipo altaCU;
         private IListarEquipos findAllCU;
+        /*
+        private IListarTelescopios findAllTelCU;
+        private IListarMonturas findAllMonCU;
+        private IListarCamaras findAllCamCU;
+        private IListarOculares findAllOcuCU;
+        */
         private IBuscarEquipoPorID buscarEquipoIDCU;
         private IEditarTelescopio editarTelescopioCU;
         private IEditarMontura editarMonturaCU;
         private IEditarCamara editarCamaraCU;
         private IEditarOcular editarOcularCU;
         private IDeleteEquipo deleteEquipoCU;
+        private IListarTelescopiosToList listarTelescopiosToListCU;
+        private IListarSociosByTelescopio listarSociosByTelescopioCU;
 
-        public EquipoController(
-                                IAltaEquipo altae,
+
+
+        public EquipoController(IAltaEquipo altae,
                                 IListarEquipos findAllCu,
                                 IBuscarEquipoPorID buscarEquipoIDCu,
                                 IEditarTelescopio editarTelescopioCu,
                                 IEditarMontura editarMonturaCu,
                                 IEditarCamara editarCamaraCu,
                                 IEditarOcular editarOcularCu,
-                                IDeleteEquipo deleteEquipoCu)
+                                IDeleteEquipo deleteEquipoCu,
+                                IListarTelescopiosToList listarTelescopiosToListCu,
+                                IListarSociosByTelescopio listarSociosByTelescopioCu
+                                /*
+                                IListarTelescopios findAllTelCu,
+                                IListarMonturas findAllMonCu,
+                                IListarCamaras findAllCamCu,
+                                IListarOculares findAllOcuCu*/)
         {
             this.altaCU = altae;
             this.findAllCU = findAllCu;
+            /*
+            this.findAllTelCU = findAllTelCu;
+            this.findAllMonCU = findAllMonCu;
+            this.findAllCamCU = findAllCamCu;
+            this.findAllOcuCU = findAllOcuCu;
+            */
             this.buscarEquipoIDCU = buscarEquipoIDCu;
             this.editarTelescopioCU = editarTelescopioCu;
             this.editarMonturaCU = editarMonturaCu;
             this.editarCamaraCU = editarCamaraCu;
             this.editarOcularCU = editarOcularCu;
             this.deleteEquipoCU = deleteEquipoCu;
+            this.listarTelescopiosToListCU = listarTelescopiosToListCu;
+            this.listarSociosByTelescopioCU = listarSociosByTelescopioCu;
+
         }
 
 
@@ -76,7 +103,7 @@ namespace StellarMindsWebApi.Controllers
             }
             catch (EntityNotFoundException ex)
             {
-                return BadRequest(ex.Message);
+                return BadRequest("Entidad no existe.");
             }
             catch (DbException)
             {
@@ -94,7 +121,7 @@ namespace StellarMindsWebApi.Controllers
             }
             catch (EntityNotFoundException ex)
             {
-                return BadRequest(ex.Message);
+                return BadRequest("Entidad no existe.");
             }
             catch (InvalidEquipoException ex)
             {
@@ -115,6 +142,7 @@ namespace StellarMindsWebApi.Controllers
             {
                 altaCU.Execute(dto);
                 return Ok();
+                //return Created("", dto);
             }
             catch (InvalidEquipoException ex)
             {
@@ -192,7 +220,7 @@ namespace StellarMindsWebApi.Controllers
             }
             catch (EntityNotFoundException ex)
             {
-                return BadRequest(ex.Message);
+                return BadRequest("Entidad no existe.");
             }
             catch (InvalidEquipoException ex)
             {
@@ -214,7 +242,7 @@ namespace StellarMindsWebApi.Controllers
             }
             catch (EntityNotFoundException ex)
             {
-                return BadRequest(ex.Message);
+                return BadRequest("Entidad no existe.");
             }
             catch (InvalidEquipoException ex)
             {
@@ -236,7 +264,7 @@ namespace StellarMindsWebApi.Controllers
             }
             catch (EntityNotFoundException ex)
             {
-                return BadRequest(ex.Message);
+                return BadRequest("Entidad no existe.");
             }
             catch (InvalidEquipoException ex)
             {
@@ -258,7 +286,7 @@ namespace StellarMindsWebApi.Controllers
             }
             catch (EntityNotFoundException ex)
             {
-                return BadRequest(ex.Message);
+                return BadRequest("Entidad no existe.");
             }
             catch (InvalidEquipoException ex)
             {
@@ -270,7 +298,22 @@ namespace StellarMindsWebApi.Controllers
             }
         }
 
-
+        [HttpGet("socios-por-telescopio/{id}")]
+        public ActionResult<UsuarioDTO> SociosPorTelescopio(int id)
+        {
+            try
+            {
+                return Ok(listarSociosByTelescopioCU.Execute(id));
+            }
+            catch (EntityNotFoundException ex)
+            {
+                return BadRequest("Entidad no existe.");
+            }
+            catch (DbException)
+            {
+                return StatusCode(500, "Error de base de datos.");
+            }
+        }
 
         /*
         // GET api/<EquipoController>/5

@@ -101,7 +101,6 @@ namespace StellarMindsWebAPP.Controllers
 
         // POST: PrestamoController/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Create(PrestamoDTO dto)
         {
             try
