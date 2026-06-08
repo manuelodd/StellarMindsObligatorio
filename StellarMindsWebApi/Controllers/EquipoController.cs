@@ -336,9 +336,6 @@ namespace StellarMindsWebApi.Controllers
         }
 
         // DELETE api/<EquipoController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+
     }
 }

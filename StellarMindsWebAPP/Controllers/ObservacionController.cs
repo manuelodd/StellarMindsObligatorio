@@ -56,7 +56,6 @@ namespace StellarMindsWebAPP.Controllers
 
         // POST: ObservacionController/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Create(ObservacionDTO dto)
         {
             try

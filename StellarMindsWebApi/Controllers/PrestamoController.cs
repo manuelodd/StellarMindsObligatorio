@@ -2,7 +2,9 @@
 using DTOs.DTOs;
 using LogicaAplicacion.InterfacesCasosDeUso;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.OpenApi;
 using System.Data.Common;
+using System.Runtime.CompilerServices;
 
 namespace StellarMindsWebApi.Controllers
 {
@@ -53,7 +55,7 @@ namespace StellarMindsWebApi.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAll()
+        public ActionResult<PrestamoDTO> GetAll()
         {
             try
             {
@@ -66,7 +68,7 @@ namespace StellarMindsWebApi.Controllers
         }
 
         [HttpGet("entre-fechas")]
-        public IActionResult GetEntreFechas(int socioId, int mes, int anio)
+        public ActionResult<PrestamoDTO> GetEntreFechas(int socioId, int mes, int anio)
         {
             try
             {
@@ -83,7 +85,7 @@ namespace StellarMindsWebApi.Controllers
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetById(int id)
+        public ActionResult<PrestamoDTO> GetById(int id)
         {
             try
             {
@@ -100,13 +102,47 @@ namespace StellarMindsWebApi.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post(PrestamoDTO dto,int coordinadorId)
+        public ActionResult<PrestamoDTO> Post(PrestamoDTO dto,int coordinadorId)
         {
             try
             {
                 altaCU.Execute(dto, coordinadorId);
-
                 return Created();
+            }
+            catch (InvalidPrestamoException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (DbException)
+            {
+                return StatusCode(500);
+            }
+        }
+
+        [HttpGet("socio/{id}")]
+        public ActionResult<PrestamoDTO> GetBySocio(int id)
+        {
+            try
+            {
+                return Ok(listarPrestamosSocioCU.Execute(id));
+            }
+            catch (DbException)
+            {
+                return StatusCode(500);
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPut("{prestamoid}/devolver")]
+        public ActionResult<PrestamoDTO> Devolver(int prestamoid,int coordinadorId)
+        {
+            try
+            {
+                returnCU.Execute(prestamoid, coordinadorId);
+                return Ok();
             }
             catch (InvalidPrestamoException ex)
             {
@@ -114,7 +150,7 @@ namespace StellarMindsWebApi.Controllers
             }
             catch (EntityNotFoundException ex)
             {
-                return NotFound(ex.Message);
+                return BadRequest(ex.Message);
             }
             catch (DbException)
             {
