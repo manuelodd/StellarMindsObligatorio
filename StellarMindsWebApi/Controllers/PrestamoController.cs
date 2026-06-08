@@ -1,4 +1,5 @@
 ﻿using Dominio.Exceptions;
+using DTOs.DTOs;
 using LogicaAplicacion.InterfacesCasosDeUso;
 using Microsoft.AspNetCore.Mvc;
 using System.Data.Common;
@@ -74,6 +75,46 @@ namespace StellarMindsWebApi.Controllers
             catch (InvalidPrestamoException ex)
             {
                 return BadRequest(ex.Message);
+            }
+            catch (DbException)
+            {
+                return StatusCode(500);
+            }
+        }
+
+        [HttpGet("{id}")]
+        public IActionResult GetById(int id)
+        {
+            try
+            {
+                return Ok(findPrestamoByIdCU.Execute(id));
+            }
+            catch (EntityNotFoundException ex)
+            {
+                return BadRequest("Entidad no existe");
+            }
+            catch (DbException)
+            {
+                return StatusCode(500);
+            }
+        }
+
+        [HttpPost]
+        public IActionResult Post(PrestamoDTO dto,int coordinadorId)
+        {
+            try
+            {
+                altaCU.Execute(dto, coordinadorId);
+
+                return Created();
+            }
+            catch (InvalidPrestamoException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (EntityNotFoundException ex)
+            {
+                return NotFound(ex.Message);
             }
             catch (DbException)
             {

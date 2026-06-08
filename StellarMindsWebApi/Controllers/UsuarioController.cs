@@ -100,7 +100,7 @@ namespace StellarMindsWebApi.Controllers
                 try
                 {
                     altaCU.Execute(dto);
-                    return Ok();
+                    return Created();
                 }
                 catch (InvalidUserException ex)
                 {

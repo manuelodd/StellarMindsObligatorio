@@ -141,7 +141,7 @@ namespace StellarMindsWebApi.Controllers
             try
             {
                 altaCU.Execute(dto);
-                return Ok();
+                return Created();
                 //return Created("", dto);
             }
             catch (InvalidEquipoException ex)
@@ -160,7 +160,7 @@ namespace StellarMindsWebApi.Controllers
             try
             {
                 altaCU.Execute(dto);
-                return Ok();
+                return Created();
             }
             catch (InvalidEquipoException ex)
             {
@@ -178,7 +178,7 @@ namespace StellarMindsWebApi.Controllers
             try
             {
                 altaCU.Execute(dto);
-                return Ok();
+                return Created();
             }
             catch (InvalidEquipoException ex)
             {
@@ -196,7 +196,7 @@ namespace StellarMindsWebApi.Controllers
             try
             {
                 altaCU.Execute(dto);
-                return Ok();
+                return Created();
             }
             catch (InvalidEquipoException ex)
             {
