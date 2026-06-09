@@ -1,5 +1,7 @@
 ﻿using Dominio.Exceptions;
 using Dominio.InterfacesRepositorio;
+using DTOs.DTOs;
+using DTOs.Mappers;
 using LogicaAplicacion.InterfacesCasosDeUso;
 using StellarMinds.Entities;
 using System;
@@ -18,17 +20,9 @@ namespace LogicaAplicacion.CasosDeUso.CUUsuario
                 this.repositorio = repo;
             }
 
-            public Usuario Execute(string username, string password)
+            public UsuarioDTO Execute(string username, string password)
             {
-                Usuario usuario = repositorio.FindByUsername(username);
-
-                if (usuario == null)
-                    throw new InvalidUserException("Usuario no existe.");
-
-                if (usuario.Password != password)
-                    throw new InvalidUserException("Contraseña incorrecta.");
-
-                return usuario;
+                return UsuarioDTOMapper.ToDTO(repositorio.Login(username, password));
             }
         
     }

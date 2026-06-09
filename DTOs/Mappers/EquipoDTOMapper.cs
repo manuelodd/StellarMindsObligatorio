@@ -35,7 +35,7 @@ namespace DTOs.Mappers
                 Modelo = dto.Modelo,
                 CantDisp = dto.CantDisp,
                 EnPrestamo = dto.EnPrestamo,
-                Tipo = dto.Tipo,
+                Tipo = Enum.Parse<TipoMontura>(dto.Tipo),
                 CargaKG = dto.CargaKG,
                 GoTo = dto.GoTo,
             };
@@ -50,7 +50,7 @@ namespace DTOs.Mappers
                 Modelo = dto.Modelo,
                 CantDisp = dto.CantDisp,
                 EnPrestamo = dto.EnPrestamo,
-                TipoSensor = dto.TipoSensor,
+                TipoSensor = Enum.Parse<TipoSensor>(dto.Tipo),
                 Resolution = dto.Resolution,
                 PixelSize = dto.PixelSize,
             };
@@ -132,7 +132,7 @@ namespace DTOs.Mappers
                     Modelo = montura.Modelo,
                     EnPrestamo = montura.EnPrestamo,
                     CantDisp = montura.CantDisp,
-                    Tipo = montura.Tipo.Value,
+                    Tipo = montura.Tipo.ToString(),
                     CargaKG = montura.CargaKG,
                     GoTo = montura.GoTo,
                 };
@@ -147,7 +147,7 @@ namespace DTOs.Mappers
                     Modelo = camara.Modelo,
                     EnPrestamo = camara.EnPrestamo,
                     CantDisp = camara.CantDisp,
-                    TipoSensor = camara.TipoSensor.Value,
+                    TipoSensor = camara.TipoSensor.ToString(),
                     Resolution = camara.Resolution,
                     PixelSize = camara.PixelSize,
                 };

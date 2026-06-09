@@ -13,7 +13,7 @@ namespace DTOs.DTOs
         public string Modelo { get; set; } = string.Empty;
         public int CantDisp { get; set; }
         */
-        public TipoSensor TipoSensor { get; set; }
+        public string TipoSensor { get; set; }
         public int Resolution { get; set; }
         public decimal PixelSize { get; set; }
     }

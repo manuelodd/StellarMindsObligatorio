@@ -50,6 +50,13 @@ namespace LogicaAccesoDatos.EntityFramework.Repositorios
                                     .ToList();
         }
 
+        public Usuario Login(string username, string password)
+        {
+            return _context.Usuarios
+                                .Where(u => u.Username == username && u.Password == password)
+                                .FirstOrDefault();
+        }
+
         public void Delete(int id)
         {
             throw new NotImplementedException();

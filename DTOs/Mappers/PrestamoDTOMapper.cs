@@ -26,7 +26,7 @@ namespace DTOs.Mappers
                 SocioId = unPrestamo.SocioId,
                 FechaInicio = unPrestamo.FechaInicio,
                 FechaFin = unPrestamo.FechaFin,
-                Estado = unPrestamo.Estado,
+                Estado = unPrestamo.Estado.ToString(),
                 Atrasado = unPrestamo.Estado == StellarMinds.Enums.EstadoPrestamo.EN_PRESTAMO && DateTime.Now > unPrestamo.FechaFin,
                 TelescopioID = unPrestamo.Telescopio.Id,
                 MonturaID = unPrestamo.Montura.Id,

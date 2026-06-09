@@ -1,6 +1,7 @@
 ﻿using Dominio.Exceptions;
 using DTOs.DTOs;
 using LogicaAplicacion.InterfacesCasosDeUso;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using StellarMinds.Entities;
 using System.Data.Common;
@@ -70,6 +71,7 @@ namespace StellarMindsWebApi.Controllers
             }
         }
 
+        /*
             [HttpPost("login")]
             public ActionResult<UsuarioDTO> Login(string username, string pass)
             {
@@ -93,8 +95,37 @@ namespace StellarMindsWebApi.Controllers
                     return BadRequest(ex.Message);
                 }
             }
+        */
 
-            [HttpPost]
+        [HttpPost]
+        [AllowAnonymous]
+        [Route("login")]
+        public ActionResult<UsuarioDTO> Login([FromBody] UsuarioDTO usuario)
+        {
+            try
+            {
+                UsuarioDTO usr = loginU.Execute(usuario.Username, usuario.Password);
+                if (usr == null || usr.Password != usuario.Password)
+                    return Unauthorized("Credenciales inválidas. Reintente");
+                //Le pedimos al manejador de tokens que nos genere un token jwt con
+                //la información del usuario para usar como claims (el email y el nombre de rol)
+                //En caso de que se autentique, retorna el token y el usuario
+                var token = JWTHandler.JWTHandler.GenerarToken(usr);
+                return Ok(new
+                {
+                    Token = token,
+                    Usuario = usr
+                });
+            }
+            catch (Exception ex)
+            {
+                return Unauthorized(new
+                {
+                    Message = "Se produjo un error. Intente n"
+                });
+            }
+        }
+        [HttpPost]
             public ActionResult<UsuarioDTO> Post(UsuarioDTO dto)
             {
                 try

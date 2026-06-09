@@ -14,7 +14,7 @@ namespace DTOs.DTOs
         public string Email { get; set; } = string.Empty;
         public string Username { get; set; } = string.Empty;
         public string Password { get; set; } = string.Empty;
-        public RolUsuario Rol { get; set; }
+        public string Rol { get; set; }
         public string Pais { get; set; } = string.Empty;
         public string Ciudad { get; set; } = string.Empty;
         public string Calle { get; set; } = string.Empty;

@@ -12,7 +12,7 @@ namespace DTOs.DTOs
         public int SocioId { get; set; }
         public DateTime FechaInicio { get; set; }
         public DateTime FechaFin { get; set; }
-        public EstadoPrestamo Estado { get; set; }
+        public string Estado { get; set; }
         public bool Atrasado {  get; set; }
         public int TelescopioID { get; set; }
         public int MonturaID { get; set; } 

@@ -1,5 +1,6 @@
 ﻿using DTOs.DTOs;
 using StellarMinds.Entities;
+using StellarMinds.Enums;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -17,7 +18,7 @@ namespace DTOs.Mappers
                 Modelo = unaCamara.Modelo,
                 EnPrestamo = unaCamara.EnPrestamo,
                 CantDisp = unaCamara.CantDisp,
-                TipoSensor = unaCamara.TipoSensor.Value,
+                TipoSensor = unaCamara.TipoSensor.ToString(),
                 Resolution = unaCamara.Resolution,
                 PixelSize = unaCamara.PixelSize,
             };
@@ -32,7 +33,7 @@ namespace DTOs.Mappers
                 Modelo = dto.Modelo,
                 EnPrestamo = dto.EnPrestamo,
                 CantDisp = dto.CantDisp,
-                TipoSensor = dto.TipoSensor,
+                TipoSensor = Enum.Parse<TipoSensor>(dto.Tipo),
                 Resolution = dto.Resolution,
                 PixelSize = dto.PixelSize,
             };

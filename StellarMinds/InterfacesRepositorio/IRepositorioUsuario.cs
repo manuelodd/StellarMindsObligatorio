@@ -12,5 +12,6 @@ namespace Dominio.InterfacesRepositorio
         public Usuario? FindByUsername(string username);
         public IEnumerable<Usuario> FindCoordinadores();
         public IEnumerable<Usuario> FindSociosPorTelescopio(int telescopioId);
+        public Usuario Login(string username, string password);
     }
 }

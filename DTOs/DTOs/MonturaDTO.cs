@@ -13,7 +13,7 @@ namespace DTOs.DTOs
         public string Modelo { get; set; } = string.Empty;
         public int CantDisp { get; set; }
         */
-        public TipoMontura Tipo { get; set; }
+        public string Tipo { get; set; }
         public decimal CargaKG { get; set; }
         public bool GoTo { get; set; }
     }

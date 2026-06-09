@@ -1,5 +1,6 @@
 ﻿using DTOs.DTOs;
 using StellarMinds.Entities;
+using StellarMinds.Enums;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -18,7 +19,7 @@ namespace DTOs.Mappers
                 Modelo = unaMontura.Modelo,
                 EnPrestamo = unaMontura.EnPrestamo,
                 CantDisp = unaMontura.CantDisp,
-                Tipo = unaMontura.Tipo.Value,
+                Tipo = unaMontura.Tipo.ToString(),
                 CargaKG = unaMontura.CargaKG,
                 GoTo = unaMontura.GoTo,
             };
@@ -33,7 +34,7 @@ namespace DTOs.Mappers
                 Modelo = dto.Modelo,
                 EnPrestamo = dto.EnPrestamo,
                 CantDisp = dto.CantDisp,
-                Tipo = dto.Tipo,
+                Tipo = Enum.Parse<TipoMontura>(dto.Tipo),
                 CargaKG = dto.CargaKG,
                 GoTo = dto.GoTo,
             };

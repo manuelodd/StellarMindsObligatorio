@@ -9,7 +9,11 @@ using LogicaAplicacion.CasosDeUso.CUObservacion;
 using LogicaAplicacion.CasosDeUso.CUPrestamo;
 using LogicaAplicacion.CasosDeUso.CUUsuario;
 using LogicaAplicacion.InterfacesCasosDeUso;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace StellarMindsWebApi
 {
@@ -93,6 +97,31 @@ namespace StellarMindsWebApi
             //ini casos de uso OBSERVACIONES
             builder.Services.AddScoped<IAltaObservacion, AltaObservacionCU>();
 
+            //config autenticacion mierdtoken
+            builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opciones =>
+            {
+                opciones.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters()
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(builder.Configuration.GetSection("SecretTokenKey").Value!)),
+                    ValidateIssuer = false,
+                    ValidateAudience = false,
+                };
+            });
+
+            //config autorizacion
+            builder.Services.AddAuthorization(options =>
+            {
+                options.DefaultPolicy = new AuthorizationPolicyBuilder()
+                    .RequireAuthenticatedUser()
+                    .Build();
+            });
+
+
+            builder.Services.AddControllers();
+            // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
+            builder.Services.AddOpenApi();
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -101,15 +130,16 @@ namespace StellarMindsWebApi
                 app.MapOpenApi();
                 app.UseSwagger();
                 app.UseSwaggerUI();
-                
             }
 
             app.UseHttpsRedirection();
-            
+
+
+            app.UseAuthentication();
+            app.UseAuthorization();
             //cors
             app.UseCors("MiPolitica");
 
-            app.UseAuthorization();
 
         
 

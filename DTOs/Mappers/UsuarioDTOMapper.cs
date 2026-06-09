@@ -1,9 +1,10 @@
-﻿using DTOs.DTOs;
+﻿using Dominio;
+using DTOs.DTOs;
 using StellarMinds.Entities;
+using StellarMinds.Enums;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Dominio;
 
 namespace DTOs.Mappers
 {
@@ -20,7 +21,7 @@ namespace DTOs.Mappers
                 Email = unUsuario.Email,
                 Username = unUsuario.Username,
                 Password = unUsuario.Password,
-                Rol = unUsuario.Rol,
+                Rol = unUsuario.Rol.ToString(),
                 Pais = unUsuario.Direccion.Pais,
                 Ciudad = unUsuario.Direccion.Ciudad,
                 Calle = unUsuario.Direccion.Calle
@@ -37,7 +38,7 @@ namespace DTOs.Mappers
                 Email = dto.Email,
                 Username = dto.Username,
                 Password = dto.Password,
-                Rol = dto.Rol,
+                Rol = Enum.Parse<RolUsuario>(dto.Rol),
                 Direccion = new Dominio.ValueObjects.UsuarioDireccion(dto.Pais, dto.Ciudad, dto.Calle)
             };
         }
