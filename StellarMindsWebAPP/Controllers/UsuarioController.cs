@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.Mvc.NewtonsoftJson; //opcional
 using Newtonsoft.Json;//opcional
 using System.Threading.Tasks;
 using StellarMindsWebAPP.Models;
+using StellarMinds.Enums;
+using System.Text;
 
 
 namespace StellarMindsWebAPP.Controllers
@@ -29,7 +31,7 @@ namespace StellarMindsWebAPP.Controllers
 
 
         // GET: UsuarioController1
-
+        [HttpGet]
         public IActionResult Index()
         {
             HttpResponseMessage respuesta = _client.GetAsync("").Result;
@@ -43,10 +45,40 @@ namespace StellarMindsWebAPP.Controllers
             return View();
         }
 
-
-        public IActionResult Login()
+        [HttpGet]
+        public IActionResult Create()
         {
-            return View();
+            return View(new UsuarioModel());
+        }
+
+        [HttpPost]
+        public ActionResult<UsuarioModel> Create(UsuarioModel model)
+        {
+            /*
+            if (base.rolLogeado() != "ADMINISTRADOR")
+            {
+                return RedirectToAction("Index", "Usuario");
+            }
+            */
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            HttpResponseMessage respuesta = 
+                _client.PostAsync("",
+                new StringContent(
+                    JsonConvert.SerializeObject(model),
+                    Encoding.UTF8,
+                    "application/json"
+                    )
+                ).Result;
+            if (respuesta.IsSuccessStatusCode)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+
+            return View(model);
         }
 
 

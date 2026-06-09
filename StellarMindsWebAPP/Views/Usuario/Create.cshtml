@@ -1,4 +1,5 @@
-﻿@model UsuarioModel
+﻿@using StellarMinds.Enums
+@model UsuarioModel
 
 @{
     ViewData["Title"] = "Create";
@@ -41,6 +42,15 @@
                 <input type="text" name="Email" id="Email" class="form-control" />
             </div>
 
+            <div class="form-group">
+                <label for="Rol">ROL</label>
+                <select name="Rol"id="Rol">
+                    <option value="">Seleccione un rol</option>
+                    <option value="0">ADMINISTRADOR</option>
+                    <option value="1">COORDINADOR</option>
+                    <option value="2">SOCIO</option>
+                </select>
+            </div>
            
             
             <div class="form-group">
