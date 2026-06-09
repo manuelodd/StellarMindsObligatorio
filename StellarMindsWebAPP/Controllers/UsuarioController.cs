@@ -20,23 +20,13 @@ namespace StellarMindsWebAPP.Controllers
     {
 
         private string baseUrl = "http://localhost:5077/api/Usuario";
-        private HttpClient _client = new HttpClient();
-
-        public UsuarioController()
-        {
-            _client.BaseAddress = new Uri("http://localhost:5077/api/Usuario");
-            _client.DefaultRequestHeaders.Accept.Clear();
-            _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-        }
-
-
 
         // GET: UsuarioController1
         [HttpGet]
         public IActionResult Index()
         {
             HttpResponseMessage respuesta = HttpClientAuxiliar.EnviarSolicitud(
-                baseUrl, "GET");
+                baseUrl, Enums.HttpVerbos.GET);
 
             if (respuesta.IsSuccessStatusCode)
             {
@@ -56,31 +46,15 @@ namespace StellarMindsWebAPP.Controllers
         [HttpPost]
         public ActionResult<UsuarioModel> Create(UsuarioModel model)
         {
-            /*
-            if (base.rolLogeado() != "ADMINISTRADOR")
-            {
-                return RedirectToAction("Index", "Usuario");
-            }
-            */
-            if (!ModelState.IsValid)
+
+            HttpResponseMessage respuesta = HttpClientAuxiliar.EnviarSolicitud(baseUrl, Enums.HttpVerbos.POST, model);
+
+            if (respuesta.IsSuccessStatusCode)
             {
                 return View(model);
             }
 
-            HttpResponseMessage respuesta = 
-                _client.PostAsync("",
-                new StringContent(
-                    JsonConvert.SerializeObject(model),
-                    Encoding.UTF8,
-                    "application/json"
-                    )
-                ).Result;
-            if (respuesta.IsSuccessStatusCode)
-            {
-                return RedirectToAction(nameof(Index));
-            }
-
-            return View(model);
+            return RedirectToAction("Index");
         }
 
 

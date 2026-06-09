@@ -1,4 +1,6 @@
-﻿using StellarMindsWebAPP.Enums;
+﻿using Newtonsoft.Json;
+using StellarMindsWebAPP.Enums;
+using System.Text;
 
 namespace StellarMindsWebAPP.Auxiliar
 {
@@ -8,6 +10,12 @@ namespace StellarMindsWebAPP.Auxiliar
         {
             HttpClient cliente = new HttpClient();
             Task<HttpResponseMessage> tarea = null;
+
+            if (obj != null) 
+            {
+                string stringJson = JsonConvert.SerializeObject(obj);
+                StringContent body = new StringContent(stringJson, Encoding.UTF8, "application/json");
+            }
 
             switch (verbo)
             {
