@@ -72,13 +72,15 @@ namespace StellarMindsWebApi.Controllers
 
 
         // GET: EquipoController
-        [HttpGet("{id}")]
+        
+        [HttpGet("{id}/disponible")]
         public IActionResult Disponible(int id)
         {
             EquipoDTO equipo = buscarEquipoIDCU.Execute(id);
             bool disponible = equipo.CantDisp > 0;
             return Ok(disponible);
         }
+        
 
         // GET: api/<EquipoController>
         [HttpGet]
@@ -324,6 +326,7 @@ namespace StellarMindsWebApi.Controllers
         }*/
 
         // POST api/<EquipoController>
+        /*
         [HttpPost]
         public void Post([FromBody] string value)
         {
@@ -336,6 +339,6 @@ namespace StellarMindsWebApi.Controllers
         }
 
         // DELETE api/<EquipoController>/5
-
+        */
     }
 }
