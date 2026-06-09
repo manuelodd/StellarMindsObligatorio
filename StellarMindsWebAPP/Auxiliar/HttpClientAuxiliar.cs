@@ -25,11 +25,17 @@ namespace StellarMindsWebAPP.Auxiliar
                 case HttpVerbos.POST:
                     tarea = cliente.PostAsJsonAsync(url, obj);
                     break;
+                case HttpVerbos.PUT:
+                    tarea = cliente.PutAsJsonAsync(url, obj);
+                    break;
+                case HttpVerbos.DELETE:
+                    tarea = cliente.DeleteAsync(url);
+                    break;
                 default:
                     throw new Exception("VERBO INVALIDO");
             }
 
-            tarea.Wait();
+            tarea.Wait(); // aca
             return tarea.Result;
         }
 

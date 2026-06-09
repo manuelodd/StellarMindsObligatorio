@@ -43,21 +43,18 @@ namespace StellarMindsWebApi.Controllers
                                 IEditarOcular editarOcularCu,
                                 IDeleteEquipo deleteEquipoCu,
                                 IListarTelescopiosToList listarTelescopiosToListCu,
-                                IListarSociosByTelescopio listarSociosByTelescopioCu
-                                /*
+                                IListarSociosByTelescopio listarSociosByTelescopioCu,
                                 IListarTelescopios findAllTelCu,
                                 IListarMonturas findAllMonCu,
                                 IListarCamaras findAllCamCu,
-                                IListarOculares findAllOcuCu*/)
+                                IListarOculares findAllOcuCu)
         {
             this.altaCU = altae;
             this.findAllCU = findAllCu;
-            /*
             this.findAllTelCU = findAllTelCu;
             this.findAllMonCU = findAllMonCu;
             this.findAllCamCU = findAllCamCu;
             this.findAllOcuCU = findAllOcuCu;
-            */
             this.buscarEquipoIDCU = buscarEquipoIDCu;
             this.editarTelescopioCU = editarTelescopioCu;
             this.editarMonturaCU = editarMonturaCu;
