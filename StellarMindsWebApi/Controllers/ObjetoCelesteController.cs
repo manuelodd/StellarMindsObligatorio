@@ -11,7 +11,7 @@ namespace StellarMindsWebApi.Controllers
         private IListarObjetosCelestes listarObjetosCelestesCU;
 
         public ObjetoCelesteController(
-            IListarObjetosCelestes listarObjetosCelestesCu)
+                                        IListarObjetosCelestes listarObjetosCelestesCu)
         {
             listarObjetosCelestesCU = listarObjetosCelestesCu;
         }

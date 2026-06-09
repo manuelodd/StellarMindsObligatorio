@@ -49,6 +49,46 @@ namespace StellarMindsWebAPP.Controllers
             return View(vm);
         }
 
+        [HttpPost]
+        public IActionResult Create(ObservacionModel model)
+        {
+            HttpResponseMessage respuesta = HttpClientAuxiliar.EnviarSolicitud(baseUrl, HttpVerbos.POST, model);
+
+            if (respuesta.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index", "Usuario");
+            }
+            ViewBag.Error = HttpClientAuxiliar.ObtenerBody(respuesta);
+
+            ObservacionAltaViewmodel vm = new ObservacionAltaViewmodel();
+
+            HttpResponseMessage prestamos =
+                HttpClientAuxiliar.EnviarSolicitud(
+                    $"http://localhost:5077/api/Prestamo/socio/{idLogeado()}", HttpVerbos.GET);
+
+            if (prestamos.IsSuccessStatusCode)
+            {
+                vm.Prestamos = JsonConvert.DeserializeObject<List<PrestamoModel>>(HttpClientAuxiliar.ObtenerBody(prestamos));
+            }
+
+            HttpResponseMessage objetos = HttpClientAuxiliar.EnviarSolicitud("http://localhost:5077/api/ObjetoCeleste", HttpVerbos.GET);
+            if (objetos.IsSuccessStatusCode)
+            {
+                vm.ObjetosCelestes = JsonConvert.DeserializeObject<List<ObjetoCelesteModel>>(HttpClientAuxiliar.ObtenerBody(objetos));
+            }
+
+            return View(vm);
+        }
+
+
+
+
+
+
+
+
+
+
         // GET: ObservacionController/Details/5
         public ActionResult Details(int id)
         {
