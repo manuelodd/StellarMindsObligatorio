@@ -9,33 +9,50 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages;
 using StellarMinds.Entities;
+using Microsoft.AspNetCore.Http;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using Microsoft.AspNetCore.Mvc.NewtonsoftJson; //opcional
+using Newtonsoft.Json;//opcional
+using System.Threading.Tasks;
+using StellarMindsWebAPP.Models;
+
 
 namespace StellarMindsWebAPP.Controllers
 {
     public class UsuarioController : BaseController
     {
 
-        private ILoginUsuario loginU;
-        private IAltaUsuario altaCU;
-        private IListarUsuarios findAllCU;
 
-        
-        public UsuarioController(ILoginUsuario loginu, IAltaUsuario altau, IListarUsuarios findAllCu)
+        private HttpClient _client = new HttpClient();
+
+        public UsuarioController()
         {
-            this.loginU = loginu;
-            this.altaCU = altau;
-            this.findAllCU = findAllCu;
-        }
+            _client.BaseAddress =
+                new Uri("http://localhost:5077/api/Usuario");
 
+            _client.DefaultRequestHeaders.Accept.Clear();
+
+            _client.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("application/json"));
+        }
 
 
 
         // GET: UsuarioController1
 
-        public ActionResult Index()
+        public IActionResult Index()
         {
-            IEnumerable<UsuarioDTO> listado = findAllCU.Execute();
-            return View(listado);
+            HttpResponseMessage respuesta = _client.GetAsync("").Result;
+
+            if (respuesta.IsSuccessStatusCode)
+            {
+                string json = respuesta.Content.ReadAsStringAsync().Result;
+                IEnumerable<UsuarioModel> usuarios = JsonConvert.DeserializeObject<IEnumerable<UsuarioModel>>(json);
+                return View(usuarios);
+            }
+
+            return View();
         }
 
         public IActionResult Login()
