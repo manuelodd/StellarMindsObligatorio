@@ -1,6 +1,7 @@
 ﻿using Dominio.Exceptions;
 using Dominio.InterfacesRepositorio;
 using DTOs.DTOs;
+using LogicaAplicacion.CasosDeUso.CUEquipo;
 using LogicaAplicacion.CasosDeUso.CUUsuario;
 using LogicaAplicacion.InterfacesCasosDeUso;
 using Microsoft.AspNetCore.Mvc;
@@ -18,12 +19,10 @@ namespace StellarMindsWebApi.Controllers
     {
         private IAltaEquipo altaCU;
         private IListarEquipos findAllCU;
-        /*
         private IListarTelescopios findAllTelCU;
         private IListarMonturas findAllMonCU;
         private IListarCamaras findAllCamCU;
         private IListarOculares findAllOcuCU;
-        */
         private IBuscarEquipoPorID buscarEquipoIDCU;
         private IEditarTelescopio editarTelescopioCU;
         private IEditarMontura editarMonturaCU;
@@ -94,6 +93,30 @@ namespace StellarMindsWebApi.Controllers
             {
                 return StatusCode(500, "Error de base de datos.");
             }
+        }
+
+        [HttpGet("telescopios")]
+        public IActionResult GetTelescopios()
+        {
+            return Ok(findAllTelCU.Execute());
+        }
+
+        [HttpGet("monturas")]
+        public IActionResult GetMonturas()
+        {
+            return Ok(findAllMonCU.Execute());
+        }
+
+        [HttpGet("camaras")]
+        public IActionResult GetCamaras()
+        {
+            return Ok(findAllCamCU.Execute());
+        }
+
+        [HttpGet("oculares")]
+        public IActionResult GetOculares()
+        {
+            return Ok(findAllOcuCU.Execute());
         }
 
         [HttpGet("{id}")]
