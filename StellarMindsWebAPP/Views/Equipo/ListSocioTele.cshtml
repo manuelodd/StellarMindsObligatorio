@@ -1,6 +1,4 @@
-﻿@using DTOs.AuxiliarViewmodel
-@using DTOs.DTOs
-
+﻿@using StellarMindsWebApp.AuxiliarViewmodel
 
 @model SociosPorTelescopioViewmodel
 
@@ -18,7 +16,7 @@
             Seleccione un telescopio
         </option>
 
-        @foreach (TelescopioDTO tele in Model.Telescopios)
+        @foreach (TelescopioModel tele in Model.Telescopios)
         {
             <option value="@tele.Id">
                 @tele.Marca - @tele.Modelo
@@ -35,7 +33,7 @@
 {
     <table class="table">
 
-        @foreach (UsuarioDTO socio in Model.Socios)
+        @foreach (UsuarioModel socio in Model.Socios)
         {
             <tr>
                 <td>@socio.Nombre</td>

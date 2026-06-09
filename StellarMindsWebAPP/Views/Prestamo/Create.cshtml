@@ -1,5 +1,4 @@
-﻿@using DTOs.AuxiliarViewmodel
-@using DTOs.DTOs
+﻿@using StellarMindsWebApp.AuxiliarViewmodel
 
 @model PrestamoAltaViewmodel
 
@@ -21,7 +20,7 @@
     <label for="SocioID">Socio</label>
     <select id="socioSelect" name="SocioID" class="form-control">
         <option value="Seleccione socio">Seleccione a un socio</option>
-        @foreach(UsuarioDTO usu in Model.Usuarios)
+        @foreach(UsuarioModel usu in Model.Usuarios)
             {
                 <option value="@usu.Id">
                     @usu.Id - @usu.Username
@@ -36,7 +35,7 @@
 
         <option value="">Seleccione un telescopio</option>
 
-        @foreach (TelescopioDTO tele in Model.Telescopios)
+        @foreach (TelescopioModel tele in Model.Telescopios)
         {
             <option value="@tele.Id">
                 @tele.Id - @tele.Marca @tele.Modelo
@@ -53,7 +52,7 @@
 
         <option value="">Seleccione una montura</option>
 
-        @foreach (MonturaDTO montu in Model.Monturas)
+        @foreach (MonturaModel montu in Model.Monturas)
         {
             <option value="@montu.Id">
                 @montu.Id - @montu.Marca @montu.Modelo
@@ -69,7 +68,7 @@
 
         <option value="">Sin cámara</option>
 
-        @foreach (CamaraDTO cama in Model.Camaras)
+        @foreach (CamaraModel cama in Model.Camaras)
         {
             <option value="@cama.Id">
                 @cama.Id - @cama.Marca @cama.Modelo
@@ -85,7 +84,7 @@
 
         <option value="">Sin ocular</option>
 
-        @foreach (OcularDTO ocu in Model.Oculares)
+        @foreach (OcularModel ocu in Model.Oculares)
         {
             <option value="@ocu.Id">
                 @ocu.Id - @ocu.Marca @ocu.Modelo

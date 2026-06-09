@@ -1,6 +1,5 @@
-﻿@using DTOs.DTOs
-@using StellarMinds.Entities
-@model IEnumerable<UsuarioDTO>
+﻿
+@model IEnumerable<UsuarioModel>
 
 
 @{
@@ -84,7 +83,7 @@
         </tr>
     </thead>
     <tbody>
-@foreach (UsuarioDTO item in Model) {
+@foreach (UsuarioModel item in Model) {
         <tr>
                                     <td>
                 @Html.DisplayFor(modelItem => item.Nombre)

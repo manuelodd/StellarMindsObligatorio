@@ -1,6 +1,5 @@
-﻿@using DTOs.DTOs
-
-@model IEnumerable<RankObjetosCelestesDTO>
+﻿
+@model IEnumerable<RankObjetosCelestesModel>
 
 <h2>Ranking de Objetos Celestes</h2>
 
@@ -20,7 +19,7 @@ else
         </thead>
 
         <tbody>
-            @foreach (RankObjetosCelestesDTO objeto in Model)
+            @foreach (RankObjetosCelestesModel objeto in Model)
             {
                 <tr>
                     <td>@objeto.Nombre</td>

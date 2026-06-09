@@ -1,4 +1,6 @@
-﻿
+﻿@using StellarMindsWebApp.AuxiliarViewmodel
+
+@model ListarAuditoriasPorCoordinadorViewmodel
 
 @if (ViewBag.Error != null)
 {
@@ -7,7 +9,6 @@
     </div>
 }
 
-@model ListarAuditoriasPorCoordinadorViewmodel
 
 <p>Coordinador recibido: @ViewBag.Test</p>
 
@@ -17,7 +18,7 @@
         <option value="">
             Seleccione a un coordinador
         </option>
-        @foreach (UsuarioDTO usu in Model.Coordinadores)
+        @foreach (UsuarioModel usu in Model.Coordinadores)
         {
             <option value="@usu.Id">
                 @usu.Id - @usu.Nombre - @usu.Apellido
@@ -53,7 +54,7 @@
         </thead>
 
         <tbody>
-            @foreach (AuditoriaPrestamoDTO item in Model.Auditorias)
+            @foreach (AuditoriaPrestamoModel item in Model.Auditorias)
             {
                 <tr>
                     <td>@item.Id</td>

@@ -1,5 +1,4 @@
-﻿@using DTOs.AuxiliarViewmodel
-@using DTOs.DTOs
+﻿@using StellarMindsWebApp.AuxiliarViewmodel
 @model PrestamoDevolucionViewmodel
 
 @if (ViewBag.Error != null)
@@ -11,7 +10,7 @@
 
 <form method="post">
 <select name="socioId">
-    @foreach(UsuarioDTO usu in Model.Socios)
+    @foreach(UsuarioModel usu in Model.Socios)
     {
         <option value="@usu.Id">
             @usu.Username + @usu.Email
@@ -25,7 +24,7 @@
 <form method="post" asp-action="Return4Real">
 
     <select name="prestamoId">
-        @foreach (PrestamoDTO pres in Model.Prestamos)
+        @foreach (PrestamoModel pres in Model.Prestamos)
         {
             <option value="@pres.Id">
                 Préstamo @pres.Id

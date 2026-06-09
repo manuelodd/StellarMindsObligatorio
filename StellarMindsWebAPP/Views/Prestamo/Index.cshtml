@@ -1,5 +1,5 @@
-﻿@using DTOs.DTOs
-@model IEnumerable<PrestamoDTO>
+﻿
+@model IEnumerable<PrestamoModel>
 
     @if (Context.Session.GetString("rol") == "ADMINISTRADOR" || Context.Session.GetString("rol") == "COORDINADOR")
 {
@@ -48,7 +48,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (PrestamoDTO item in Model)
+        @foreach (PrestamoModel item in Model)
         {
             <tr>
                 <td>

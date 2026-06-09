@@ -1,5 +1,4 @@
-﻿@using DTOs.AuxiliarViewmodel
-@using DTOs.DTOs
+﻿@using StellarMindsWebApp.AuxiliarViewmodel
 
 @model ObservacionAltaViewmodel
 
@@ -19,7 +18,7 @@
 <select name="PrestamoId">
     <option value="">Seleccione préstamo</option>
 
-    @foreach(PrestamoDTO prestamo in Model.Prestamos)
+    @foreach(PrestamoModel prestamo in Model.Prestamos)
     {
         <option value="@prestamo.Id">
             Prestamo @prestamo.Id - Socio @prestamo.SocioId
@@ -31,7 +30,7 @@
 <select name="ObjetoCelesteId">
     <option value="">Seleccione objeto celeste</option>
 
-    @foreach (ObjetoCelesteDTO objeto in Model.ObjetosCelestes)
+    @foreach (ObjetoCelesteModel objeto in Model.ObjetosCelestes)
     {
         <option value="@objeto.Id">
             @objeto.Id - @objeto.Nombre - @objeto.Tipo

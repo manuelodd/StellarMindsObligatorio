@@ -1,6 +1,6 @@
-﻿@using DTOs.DTOs
+﻿
 @using StellarMinds.Enums
-@model EquipoDTO
+@model EquipoModel
 
 @if (ViewBag.Error != null)
 {
@@ -9,9 +9,10 @@
     </div>
 }
 
-@if(Model is TelescopioDTO){
+@if (Model is TelescopioModel)
+{
 
-    @if (Model is TelescopioDTO tele)
+    @if (Model is TelescopioModel tele)
     {
         <form asp-action="EditTelescopio" method="post">
 
@@ -47,7 +48,7 @@
     }
 }
 
-@if (Model is MonturaDTO montu)
+@if (Model is MonturaModel montu)
 {
     <form asp-action="EditMontura" method="post">
 
@@ -117,7 +118,7 @@
     </form>
 }
 
-@if (Model is CamaraDTO cama)
+@if (Model is CamaraModel cama)
 {
     <form asp-action="EditCamara" method="post">
 
@@ -168,7 +169,7 @@
     </form>
 }
 
-@if (Model is OcularDTO ocu)
+@if (Model is OcularModel ocu)
 {
     <form asp-action="EditOcular" method="post">
 

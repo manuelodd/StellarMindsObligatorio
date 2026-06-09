@@ -1,5 +1,5 @@
-﻿@using DTOs.DTOs
-@model EquipoDTO
+﻿
+@model EquipoModel
 
 @if (ViewBag.Error != null)
 {
@@ -10,7 +10,7 @@
 
 <a asp-controller="Equipo" asp-action="Delete" asp-route-id="@Model.Id">Eliminar equipo</a>
 
-@if (Model is TelescopioDTO tele) { 
+@if (Model is TelescopioModel tele) { 
     
     <h3>Detalles del telescopio</h3>
     <br />
@@ -25,7 +25,7 @@
     <li>PesoKG: @tele.PesoKG</li>
 }
 
-@if (Model is MonturaDTO montu)
+@if (Model is MonturaModel montu)
 {
 
     <h3>Detalles de la montura</h3>
@@ -40,7 +40,7 @@
     <li>GoTo: @montu.GoTo</li>
 }
 
-@if (Model is CamaraDTO cama)
+@if (Model is CamaraModel cama)
 {
 
     <h3>Detalles de la cámara</h3>
@@ -55,7 +55,7 @@
     <li>GoTo: @cama.Resolution</li>
 }
 
-@if (Model is OcularDTO ocu)
+@if (Model is OcularModel ocu)
 {
 
     <h3>Detalles del ocular</h3>

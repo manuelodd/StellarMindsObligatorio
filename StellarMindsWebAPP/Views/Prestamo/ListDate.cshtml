@@ -1,6 +1,5 @@
-﻿@using DTOs.DTOs
-
-@model IEnumerable<PrestamoDTO>
+﻿
+@model IEnumerable<PrestamoModel>
 
     @if (ViewBag.Error != null)
 {
@@ -63,7 +62,7 @@
 
 
         <tbody>
-            @foreach (PrestamoDTO item in Model)
+            @foreach (PrestamoModel item in Model)
             {
                 <tr>
                     <td>
