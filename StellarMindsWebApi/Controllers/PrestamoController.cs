@@ -138,7 +138,7 @@ namespace StellarMindsWebApi.Controllers
             }
         }
 
-        [HttpPut("{prestamoid}/devolver")]
+        [HttpPut("devolver/{prestamoid}")]
         public ActionResult<PrestamoDTO> Devolver(int prestamoid,int coordinadorId)
         {
             try
