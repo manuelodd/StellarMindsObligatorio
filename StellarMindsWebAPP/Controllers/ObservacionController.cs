@@ -1,7 +1,4 @@
-﻿using Dominio.Exceptions;
-using DTOs.AuxiliarViewmodel;
-using DTOs.DTOs;
-using LogicaAplicacion.InterfacesCasosDeUso;
+﻿
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,21 +7,6 @@ namespace StellarMindsWebAPP.Controllers
     public class ObservacionController : BaseController
     {
 
-        private IListarPrestamosSocio listarPrestamosSocioCU;
-        private IListarObjetosCelestes listarObjetosCelestesCU;
-        private IAltaObservacion altaObservacionCU;
-        private IRankObjetosCelestes rankObjetosCelestesCU;
-
-        public ObservacionController(IListarPrestamosSocio listPresSocioCu,
-                                     IListarObjetosCelestes listarObjetosCelestesCu,
-                                     IRankObjetosCelestes rankObjetosCelestesCu,
-                                     IAltaObservacion altaObservacionCu)
-        {
-            this.listarPrestamosSocioCU = listPresSocioCu;
-            this.listarObjetosCelestesCU = listarObjetosCelestesCu;
-            this.altaObservacionCU = altaObservacionCu;
-            this.rankObjetosCelestesCU = rankObjetosCelestesCu;
-        }
 
 
         // GET: ObservacionController
@@ -39,40 +21,7 @@ namespace StellarMindsWebAPP.Controllers
             return View();
         }
 
-        public IActionResult RankingObjetosCelestes()
-        {
-            List<RankObjetosCelestesDTO> listado = rankObjetosCelestesCU.Execute();
-            return View(listado);
-        }
 
-        // GET: ObservacionController/Create
-        public ActionResult Create()
-        {
-            ObservacionAltaViewmodel vm = new ObservacionAltaViewmodel();
-            vm.Prestamos = listarPrestamosSocioCU.Execute(idLogeado());
-            vm.ObjetosCelestes = listarObjetosCelestesCU.Execute();
-            return View(vm);
-        }
-
-        // POST: ObservacionController/Create
-        [HttpPost]
-        public ActionResult Create(ObservacionDTO dto)
-        {
-            try
-            {
-                altaObservacionCU.Execute(dto);
-                return RedirectToAction("Index", "Usuario");
-            }
-            catch (InvalidObservacionException ex)
-            {
-                ObservacionAltaViewmodel vm = new ObservacionAltaViewmodel();
-                vm.Prestamos = listarPrestamosSocioCU.Execute(idLogeado());
-                vm.ObjetosCelestes = listarObjetosCelestesCU.Execute();
-                ViewBag.Error = ex.Message;
-
-                return View(vm);
-            }
-        }
 
         // GET: ObservacionController/Edit/5
         public ActionResult Edit(int id)
