@@ -1,4 +1,4 @@
-﻿@using DTOs.DTOs
+﻿@model AuditoriaPrestamoModel
 
 @if (ViewBag.Error != null)
 {
@@ -6,8 +6,6 @@
         @ViewBag.Error
     </div>
 }
-
-@model AuditoriaPrestamoDTO
 
 <ul>
     <li>Id: @Model.Id</li>
