@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using StellarMindsWebAPP.Models;
 using StellarMinds.Enums;
 using System.Text;
+using StellarMindsWebAPP.Auxiliar;
 
 
 namespace StellarMindsWebAPP.Controllers
@@ -18,7 +19,7 @@ namespace StellarMindsWebAPP.Controllers
     public class UsuarioController : BaseController
     {
 
-
+        private string baseUrl = "http://localhost:5077/api/Usuario";
         private HttpClient _client = new HttpClient();
 
         public UsuarioController()
@@ -34,12 +35,13 @@ namespace StellarMindsWebAPP.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            HttpResponseMessage respuesta = _client.GetAsync("").Result;
+            HttpResponseMessage respuesta = HttpClientAuxiliar.EnviarSolicitud(
+                baseUrl, "GET");
 
             if (respuesta.IsSuccessStatusCode)
             {
-                string json = respuesta.Content.ReadAsStringAsync().Result;
-                IEnumerable<UsuarioModel> usuarios = JsonConvert.DeserializeObject<IEnumerable<UsuarioModel>>(json);
+                string objetoFormatoTexto = HttpClientAuxiliar.ObtenerBody(respuesta);
+                IEnumerable<UsuarioModel> usuarios = JsonConvert.DeserializeObject<IEnumerable<UsuarioModel>>(objetoFormatoTexto);
                 return View(usuarios);
             }
             return View();
