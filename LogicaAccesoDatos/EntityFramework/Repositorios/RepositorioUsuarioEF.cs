@@ -67,6 +67,13 @@ namespace LogicaAccesoDatos.EntityFramework.Repositorios
             return _context.Usuarios;
         }
 
+        public IEnumerable<Usuario> FindAllSocios()
+        {
+            return _context.Usuarios
+                                .Where(u => u.Rol == StellarMinds.Enums.RolUsuario.SOCIO)
+                                .ToList();
+        }
+
         public Usuario FindById(int id)
         {
             return _context.Usuarios

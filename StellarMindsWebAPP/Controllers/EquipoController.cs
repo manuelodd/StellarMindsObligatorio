@@ -109,7 +109,7 @@ namespace StellarMindsWebAPP.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateTelescopio(TelescopioModel model)
+        public ActionResult<TelescopioModel> CreateTelescopio(TelescopioModel model)
         {
             HttpResponseMessage respuesta = HttpClientAuxiliar.EnviarSolicitud(baseUrl + "/telescopios", HttpVerbos.POST,model);
             if (respuesta.IsSuccessStatusCode)
@@ -121,7 +121,7 @@ namespace StellarMindsWebAPP.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateMontura(MonturaModel model)
+        public ActionResult<MonturaModel> CreateMontura(MonturaModel model)
         {
             HttpResponseMessage respuesta = HttpClientAuxiliar.EnviarSolicitud(baseUrl + "/monturas", HttpVerbos.POST, model);
             if (respuesta.IsSuccessStatusCode)
@@ -133,7 +133,7 @@ namespace StellarMindsWebAPP.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateCamara(CamaraModel model)
+        public ActionResult<CamaraModel> CreateCamara(CamaraModel model)
         {
             HttpResponseMessage respuesta = HttpClientAuxiliar.EnviarSolicitud(baseUrl + "/camaras", HttpVerbos.POST, model);
             if (respuesta.IsSuccessStatusCode)
@@ -145,7 +145,7 @@ namespace StellarMindsWebAPP.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateOcular(OcularModel model)
+        public ActionResult<OcularModel> CreateOcular(OcularModel model)
         {
             HttpResponseMessage respuesta = HttpClientAuxiliar.EnviarSolicitud(baseUrl + "/oculares", HttpVerbos.POST, model);
             if (respuesta.IsSuccessStatusCode)
@@ -157,7 +157,7 @@ namespace StellarMindsWebAPP.Controllers
         }
 
         [HttpPost]
-        public IActionResult EditTelescopio(TelescopioModel model)
+        public ActionResult<TelescopioModel> EditTelescopio(TelescopioModel model)
         {
             HttpResponseMessage respuesta = HttpClientAuxiliar.EnviarSolicitud(baseUrl + "/telescopios", HttpVerbos.PUT, model);
             if (respuesta.IsSuccessStatusCode)
@@ -169,7 +169,7 @@ namespace StellarMindsWebAPP.Controllers
         }
 
         [HttpPost]
-        public IActionResult EditMontura(MonturaModel model)
+        public ActionResult<MonturaModel> EditMontura(MonturaModel model)
         {
             HttpResponseMessage respuesta = HttpClientAuxiliar.EnviarSolicitud(baseUrl + "/monturas", HttpVerbos.PUT, model);
             if (respuesta.IsSuccessStatusCode)
@@ -181,7 +181,7 @@ namespace StellarMindsWebAPP.Controllers
         }
 
         [HttpPost]
-        public IActionResult EditCamara(CamaraModel model)
+        public ActionResult<CamaraModel> EditCamara(CamaraModel model)
         {
             HttpResponseMessage respuesta = HttpClientAuxiliar.EnviarSolicitud(baseUrl + "/camaras", HttpVerbos.PUT,model);
             if (respuesta.IsSuccessStatusCode)
@@ -193,7 +193,7 @@ namespace StellarMindsWebAPP.Controllers
         }
 
         [HttpPost]
-        public IActionResult EditOcular(OcularModel model)
+        public ActionResult<OcularModel> EditOcular(OcularModel model)
         {
             HttpResponseMessage respuesta = HttpClientAuxiliar.EnviarSolicitud(baseUrl + "/oculares", HttpVerbos.PUT, model);
             if (respuesta.IsSuccessStatusCode)

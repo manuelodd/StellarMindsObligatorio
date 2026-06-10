@@ -103,6 +103,7 @@ namespace StellarMindsWebApi.Controllers
             }
         }
 
+
         [HttpPost]
         public ActionResult<PrestamoDTO> Post(PrestamoDTO dto,int coordinadorId)
         {

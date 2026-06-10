@@ -62,6 +62,7 @@ namespace StellarMindsWebApi
             builder.Services.AddScoped<ILoginUsuario, LoginUsuarioCU>();
             builder.Services.AddScoped<IFindUsuById, FindUsuByIdCU>();
             builder.Services.AddScoped<IListarSociosByTelescopio, ListarSociosByTelescopioCU>();
+            builder.Services.AddScoped<IListarSocios, ListarSociosCU>();
             builder.Services.AddScoped<IListarCoordinadores, ListarCoordinadoresCU>();
 
             //ini casos de uso EQUIPOS

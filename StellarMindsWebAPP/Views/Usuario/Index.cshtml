@@ -10,36 +10,36 @@
 <a asp-controller="Usuario" asp-action="Logout">Logout</a> 
 
 
-@if (Context.Session.GetString("rol") == "ADMINISTRADOR")
+@* @if (Context.Session.GetString("rol") == "ADMINISTRADOR") *@
 {
     <a asp-controller="Usuario" asp-action="Create">
         Crear Usuario
     </a>
 }
 
-@if (Context.Session.GetString("rol") == "ADMINISTRADOR")
-{
+@* @if (Context.Session.GetString("rol") == "ADMINISTRADOR")
+ *@{
     <a asp-controller="Equipo" asp-action="Index">
         Ver Equipos
     </a>
 }
 
-@if (Context.Session.GetString("rol") == "ADMINISTRADOR" || Context.Session.GetString("rol") == "COORDINADOR")
-{
+@* @if (Context.Session.GetString("rol") == "ADMINISTRADOR" || Context.Session.GetString("rol") == "COORDINADOR")
+ *@{
     <a asp-controller="Prestamo" asp-action="Index">
         Ver Prestamos
     </a>
 }
 
-@if (Context.Session.GetString("rol") == "ADMINISTRADOR")
-{
+@* @if (Context.Session.GetString("rol") == "ADMINISTRADOR")
+ *@{
     <a asp-controller="Observacion" asp-action="Create">
         Programar observación
     </a>
 }
 
-@if (Context.Session.GetString("rol") == "ADMINISTRADOR")
-{
+@* @if (Context.Session.GetString("rol") == "ADMINISTRADOR")
+ *@{
     <a asp-controller="Observacion" asp-action="RankingObjetosCelestes">
         Ver ranking de objetos celestes
     </a>

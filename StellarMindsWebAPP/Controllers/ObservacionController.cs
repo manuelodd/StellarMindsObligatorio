@@ -50,7 +50,7 @@ namespace StellarMindsWebAPP.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(ObservacionModel model)
+        public ActionResult<ObservacionModel> Create(ObservacionModel model)
         {
             HttpResponseMessage respuesta = HttpClientAuxiliar.EnviarSolicitud(baseUrl, HttpVerbos.POST, model);
 

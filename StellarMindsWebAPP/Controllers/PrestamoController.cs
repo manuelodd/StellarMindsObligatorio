@@ -64,7 +64,7 @@ namespace StellarMindsWebAPP.Controllers
             return View();
         }
 
-
+        [HttpGet]
         public IActionResult Create()
         {
             PrestamoAltaViewmodel vm = new PrestamoAltaViewmodel();
@@ -76,25 +76,25 @@ namespace StellarMindsWebAPP.Controllers
                 vm.Telescopios = JsonConvert.DeserializeObject<List<TelescopioModel>>(HttpClientAuxiliar.ObtenerBody(tel));
             }
 
-            HttpResponseMessage mon = HttpClientAuxiliar.EnviarSolicitud(equipoUrl + "/telescopios", HttpVerbos.GET);
+            HttpResponseMessage mon = HttpClientAuxiliar.EnviarSolicitud(equipoUrl + "/monturas", HttpVerbos.GET);
             if (mon.IsSuccessStatusCode)
             {
                 vm.Monturas = JsonConvert.DeserializeObject<List<MonturaModel>>(HttpClientAuxiliar.ObtenerBody(mon));
             }
 
-            HttpResponseMessage cam = HttpClientAuxiliar.EnviarSolicitud(equipoUrl + "/telescopios",HttpVerbos.GET);
+            HttpResponseMessage cam = HttpClientAuxiliar.EnviarSolicitud(equipoUrl + "/camaras",HttpVerbos.GET);
             if (cam.IsSuccessStatusCode)
             {
                 vm.Camaras = JsonConvert.DeserializeObject<List<CamaraModel>>(HttpClientAuxiliar.ObtenerBody(cam));
             }
 
-            HttpResponseMessage ocu = HttpClientAuxiliar.EnviarSolicitud(equipoUrl + "/telescopios", HttpVerbos.GET);
+            HttpResponseMessage ocu = HttpClientAuxiliar.EnviarSolicitud(equipoUrl + "/oculares", HttpVerbos.GET);
             if (ocu.IsSuccessStatusCode)
             {
                 vm.Oculares = JsonConvert.DeserializeObject<List<OcularModel>>(HttpClientAuxiliar.ObtenerBody(ocu));
             }
 
-            HttpResponseMessage usu = HttpClientAuxiliar.EnviarSolicitud(equipoUrl + "/telescopios", HttpVerbos.GET);
+            HttpResponseMessage usu = HttpClientAuxiliar.EnviarSolicitud(usuarioUrl + "/socios", HttpVerbos.GET);
             if (usu.IsSuccessStatusCode)
             {
                 vm.Usuarios = JsonConvert.DeserializeObject<List<UsuarioModel>>(HttpClientAuxiliar.ObtenerBody(usu));
@@ -172,48 +172,5 @@ namespace StellarMindsWebAPP.Controllers
             return RedirectToAction(nameof(Return));
         }
 
-        /*
-        // GET: PrestamoController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: PrestamoController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: PrestamoController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: PrestamoController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-        */
     }
 }

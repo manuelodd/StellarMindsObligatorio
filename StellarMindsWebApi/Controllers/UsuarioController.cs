@@ -17,14 +17,17 @@ namespace StellarMindsWebApi.Controllers
         private ILoginUsuario loginU;
         private IAltaUsuario altaCU;
         private IListarUsuarios findAllCU;
+        private IListarSocios findAllSociosCU;
 
         public UsuarioController(ILoginUsuario loginu,
                                     IAltaUsuario altau,
-                                    IListarUsuarios findAllCu)
+                                    IListarUsuarios findAllCu,
+                                    IListarSocios findAllSociosCu)
         {
             this.loginU = loginu;
             this.altaCU = altau;
             this.findAllCU = findAllCu;
+            this.findAllSociosCU = findAllSociosCu; 
         }
         // GET: api/<UsuarioController>
         /*
@@ -71,13 +74,37 @@ namespace StellarMindsWebApi.Controllers
             }
         }
 
+        [HttpGet("socios")]
+        public ActionResult<UsuarioDTO> GetSocios()
+        {
+            try
+            {
+                IEnumerable<UsuarioDTO> listado = findAllSociosCU.Execute(); // aca rompe
+                return Ok(listado);
+            }
+            catch (DbException)
+            {
+                return StatusCode(500, "Internal server error.");
+            }
+            catch (InvalidUserException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                {
+                    return BadRequest(ex.Message);
+                }
+            }
+        }
+
         /*
             [HttpPost("login")]
             public ActionResult<UsuarioDTO> Login(string username, string pass)
             {
                 try
                 {
-                    Usuario usuario = loginU.Execute(username, pass);
+                    UsuarioDTO usuario = loginU.Execute(username, pass);
 
                     return Ok(usuario);
                 }
@@ -96,7 +123,7 @@ namespace StellarMindsWebApi.Controllers
                 }
             }
         */
-
+        
         [HttpPost]
         [AllowAnonymous]
         [Route("login")]
@@ -125,6 +152,8 @@ namespace StellarMindsWebApi.Controllers
                 });
             }
         }
+
+
         [HttpPost]
             public ActionResult<UsuarioDTO> Post(UsuarioDTO dto)
             {
