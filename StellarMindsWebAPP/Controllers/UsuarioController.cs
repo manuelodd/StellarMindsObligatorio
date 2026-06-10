@@ -58,37 +58,28 @@ namespace StellarMindsWebAPP.Controllers
             return RedirectToAction("Index");
         }
 
-        [HttpPost]
-        public IActionResult Login(string username, string password)
+        public IActionResult Login()
         {
-            HttpResponseMessage respuesta =
-                HttpClientAuxiliar.EnviarSolicitud(
-                    $"{baseUrl}/login?username={username}&pass={password}",
-                    HttpVerbos.POST);
-
-            if (respuesta.IsSuccessStatusCode)
-            {
-                string json =
-                    HttpClientAuxiliar.ObtenerBody(respuesta);
-
-                UsuarioModel usuario =
-                    JsonConvert.DeserializeObject<UsuarioModel>(json);
-
-                HttpContext.Session.SetString("username", usuario.Username);
-                HttpContext.Session.SetString("rol", usuario.Rol);
-                HttpContext.Session.SetInt32("id", usuario.Id);
-
-                return RedirectToAction("Index", "Usuario");
-            }
-
-            ViewBag.Error =
-                HttpClientAuxiliar.ObtenerBody(respuesta);
-
             return View();
         }
 
-        public IActionResult Login()
+        [HttpPost]
+        public IActionResult Login(string password, string username)
         {
+            LoginModel usuario = new LoginModel();
+            usuario.Password = password;
+            usuario.Username = username;
+
+            HttpResponseMessage respuesta = HttpClientAuxiliar.EnviarSolicitud(
+                baseUrl + "/login", HttpVerbos.POST, usuario);
+            if (respuesta.IsSuccessStatusCode)
+            {
+                string jsonResponse = HttpClientAuxiliar.ObtenerBody(respuesta);
+                LoginModel login = JsonConvert.DeserializeObject<LoginModel>(jsonResponse);
+                HttpContext.Session.SetString("username", login.Username);
+                HttpContext.Session.SetString("token", login.Token);
+                return RedirectToAction(nameof(Index));
+            }
             return View();
         }
 
