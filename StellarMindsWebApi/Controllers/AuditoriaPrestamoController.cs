@@ -75,5 +75,11 @@ namespace StellarMindsWebApi.Controllers
                 return StatusCode(500, "Error de base de datos.");
             }
         }
+
+        [HttpGet("coordinadores")]
+        public IActionResult GetCoordinadores()
+        {
+            return Ok(listAllCoordinadoresCU.Execute());
+        }
     }
 }
