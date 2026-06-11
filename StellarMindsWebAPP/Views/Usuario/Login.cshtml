@@ -1,16 +1,21 @@
-﻿
-@if (ViewBag.Error != null)
+﻿@if (ViewBag.Error != null)
 {
     <p>@ViewBag.Error</p>
 }
+
+@if (TempData["MensajeLogout"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["MensajeLogout"]
+    </div>
+}
+
+<h1>Ingrese sus datos </h1>
 
 <form method="post">
-    <input name="username" placeholder="Usuario" />
-    <input name="password" type="password" placeholder="Contraseña" />
-    <button type="submit">Login</button>
+    <label for="Username">Nombre de usuario</label>
+    <input id="Username" name="username"/>
+    <label for="Password">Contraseña</label>
+    <input id="Password" name="password" type="password"/>
+    <button type="submit" class="btn btn-primary" >Login</button>
 </form>
-
-@if (ViewBag.Error != null)
-{
-    <p>@ViewBag.Error</p>
-}

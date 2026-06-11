@@ -58,10 +58,13 @@ namespace StellarMindsWebAPP.Controllers
             {
                 string objetoFormatoTexto = HttpClientAuxiliar.ObtenerBody(respuesta);
                 UsuarioModel usuario = JsonConvert.DeserializeObject<UsuarioModel>(objetoFormatoTexto);
-                return View(usuario);
+                TempData["Mensaje"] = "Usuario creado con éxito";
+                return RedirectToAction("Index");
             }
 
-            return RedirectToAction("Index");
+            ViewBag.Error = HttpClientAuxiliar.ObtenerBody(respuesta);
+
+            return View(model);
         }
 
         public IActionResult Login()
@@ -101,6 +104,7 @@ namespace StellarMindsWebAPP.Controllers
 
         public IActionResult Logout()
         {
+            TempData["MensajeLogout"] = "Ha cerrado su sesión.";
             HttpContext.Session.Clear();
             return RedirectToAction("Login");
         }
