@@ -127,16 +127,16 @@ namespace StellarMindsWebApi.Controllers
         [HttpPost]
         [AllowAnonymous]
         [Route("login")]
-        public ActionResult<UsuarioDTO> Login([FromBody] UsuarioDTO usuario)
+        public ActionResult<LoginDTO> Login([FromBody] LoginDTO login)
         {
             try
             {
-                UsuarioDTO usr = loginU.Execute(usuario.Username, usuario.Password);
-                if (usr == null || usr.Password != usuario.Password)
+                UsuarioDTO usr = loginU.Execute(login.Username, login.Password);
+                /*
+                if (usr == null || usr.Password != login.Password)
                     return Unauthorized("Credenciales inválidas. Reintente");
-                //Le pedimos al manejador de tokens que nos genere un token jwt con
-                //la información del usuario para usar como claims (el email y el nombre de rol)
-                //En caso de que se autentique, retorna el token y el usuario
+                */
+
                 var token = JWTHandler.JWTHandler.GenerarToken(usr);
                 return Ok(new
                 {
@@ -144,11 +144,15 @@ namespace StellarMindsWebApi.Controllers
                     Usuario = usr
                 });
             }
+            catch (InvalidUserException ex)
+            {
+                return Unauthorized(ex.Message);
+            }
             catch (Exception ex)
             {
                 return Unauthorized(new
                 {
-                    Message = "Se produjo un error. Intente n"
+                    Message = "Se produjo un error. Intente nuevamente."
                 });
             }
         }

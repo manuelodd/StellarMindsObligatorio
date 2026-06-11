@@ -9,9 +9,9 @@ namespace StellarMindsWebAPP.Controllers
         {
             return HttpContext.Session.GetInt32("id").Value;
         }
-        protected bool usuLogeado()
+        protected string usuLogeado()
         {
-            return HttpContext.Session.GetString("username") != null;
+            return HttpContext.Session.GetString("username");
         }
         protected string rolLogeado()
         {

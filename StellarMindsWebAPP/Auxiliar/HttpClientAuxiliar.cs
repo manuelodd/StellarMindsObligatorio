@@ -6,10 +6,18 @@ namespace StellarMindsWebAPP.Auxiliar
 {
     public class HttpClientAuxiliar
     {
-        public static HttpResponseMessage EnviarSolicitud(string url, HttpVerbos verbo, object obj = null)
+        public static HttpResponseMessage EnviarSolicitud
+                                (string url, HttpVerbos verbo, object obj = null, string token = null)
         {
             HttpClient cliente = new HttpClient();
+
+
             Task<HttpResponseMessage> tarea = null;
+
+            if (!string.IsNullOrWhiteSpace(token))
+            {
+                cliente.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
+            }
 
             if (obj != null) 
             {

@@ -67,7 +67,7 @@ namespace StellarMindsWebAPP.Controllers
             }
 
             //si me da tiempo cambiar endpoint para que solo liste socios mamita querida
-            HttpResponseMessage respuestaUsu = HttpClientAuxiliar.EnviarSolicitud("http://localhost:5077/api/Usuario", HttpVerbos.GET);
+            HttpResponseMessage respuestaUsu = HttpClientAuxiliar.EnviarSolicitud("http://localhost:5077/api/Usuario/socios", HttpVerbos.GET);
             if (respuestaUsu.IsSuccessStatusCode)
             {
                 string json = HttpClientAuxiliar.ObtenerBody(respuestaUsu);

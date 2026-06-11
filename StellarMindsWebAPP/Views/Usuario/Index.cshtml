@@ -1,6 +1,7 @@
 ﻿
 @model IEnumerable<UsuarioModel>
 
+<h3>Usuario logueado: @Context.Session.GetString("username")</h3>
 
 @{
     ViewData["Title"] = "Index";

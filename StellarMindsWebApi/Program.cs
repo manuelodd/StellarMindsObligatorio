@@ -133,7 +133,7 @@ namespace StellarMindsWebApi
                 app.UseSwaggerUI();
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
 
 
             app.UseAuthentication();

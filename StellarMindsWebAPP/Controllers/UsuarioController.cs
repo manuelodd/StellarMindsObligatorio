@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.NewtonsoftJson; //opcional
 using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages;
 using Newtonsoft.Json;//opcional
+using NuGet.Protocol.Plugins;
 using StellarMinds.Enums;
 using StellarMindsWebAPP.Auxiliar;
 using StellarMindsWebAPP.Enums;
@@ -28,6 +29,7 @@ namespace StellarMindsWebAPP.Controllers
         {
             HttpResponseMessage respuesta = HttpClientAuxiliar.EnviarSolicitud(
                 baseUrl, Enums.HttpVerbos.GET);
+
 
             if (respuesta.IsSuccessStatusCode)
             {
@@ -69,18 +71,28 @@ namespace StellarMindsWebAPP.Controllers
             LoginModel usuario = new LoginModel();
             usuario.Password = password;
             usuario.Username = username;
+            
 
             HttpResponseMessage respuesta = HttpClientAuxiliar.EnviarSolicitud(
                 baseUrl + "/login", HttpVerbos.POST, usuario);
             if (respuesta.IsSuccessStatusCode)
             {
                 string jsonResponse = HttpClientAuxiliar.ObtenerBody(respuesta);
-                LoginModel login = JsonConvert.DeserializeObject<LoginModel>(jsonResponse);
-                HttpContext.Session.SetString("username", login.Username);
-                HttpContext.Session.SetString("token", login.Token);
-                return RedirectToAction(nameof(Index));
+                //LoginModel login = JsonConvert.DeserializeObject<LoginModel>(jsonResponse);
+                LoginModelRespuesta respuestaLogin =
+                            JsonConvert.DeserializeObject<LoginModelRespuesta>(jsonResponse);
+
+                HttpContext.Session.SetInt32("id", respuestaLogin.Usuario.Id);
+                HttpContext.Session.SetString("username", respuestaLogin.Usuario.Username);
+                HttpContext.Session.SetString("rol", respuestaLogin.Usuario.Rol);
+                HttpContext.Session.SetString("token", respuestaLogin.Token);
+                return RedirectToAction("Index");
             }
+            string error = HttpClientAuxiliar.ObtenerBody(respuesta);
+            ViewBag.Error = error;
+
             return View();
+
         }
 
         public IActionResult Logout()
