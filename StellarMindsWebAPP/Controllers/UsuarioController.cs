@@ -27,8 +27,9 @@ namespace StellarMindsWebAPP.Controllers
         [HttpGet]
         public IActionResult Index()
         {
+
             HttpResponseMessage respuesta = HttpClientAuxiliar.EnviarSolicitud(
-                baseUrl, Enums.HttpVerbos.GET);
+                baseUrl, Enums.HttpVerbos.GET, null, tokenSesion());
 
 
             if (respuesta.IsSuccessStatusCode)

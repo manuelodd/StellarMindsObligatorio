@@ -1,4 +1,5 @@
 ﻿
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -9,6 +10,7 @@ using StellarMindsWebAPP.Models;
 
 namespace StellarMindsWebAPP.Controllers
 {
+
     public class AuditoriaPrestamoController : BaseController
     {
         private string baseUrl = "http://localhost:5077/api/AuditoriaPrestamo";

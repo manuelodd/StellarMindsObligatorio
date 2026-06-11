@@ -12,6 +12,7 @@ namespace StellarMindsWebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class UsuarioController : ControllerBase
     {
         private ILoginUsuario loginU;

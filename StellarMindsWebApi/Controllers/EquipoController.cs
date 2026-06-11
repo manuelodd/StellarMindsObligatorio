@@ -4,6 +4,7 @@ using DTOs.DTOs;
 using LogicaAplicacion.CasosDeUso.CUEquipo;
 using LogicaAplicacion.CasosDeUso.CUUsuario;
 using LogicaAplicacion.InterfacesCasosDeUso;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using StellarMinds.Entities;
 using System.Data.Common;
@@ -15,6 +16,7 @@ namespace StellarMindsWebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class EquipoController : ControllerBase
     {
         private IAltaEquipo altaCU;

@@ -1,6 +1,7 @@
 ﻿using Dominio.Exceptions;
 using DTOs.DTOs;
 using LogicaAplicacion.InterfacesCasosDeUso;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.OpenApi;
 using System.Data.Common;
@@ -10,6 +11,7 @@ namespace StellarMindsWebApi.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize]
     public class PrestamoController : Controller
     {
         private IAltaPrestamo altaCU;

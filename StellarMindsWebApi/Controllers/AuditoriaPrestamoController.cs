@@ -1,12 +1,14 @@
 ﻿using Dominio.Exceptions;
 using DTOs.DTOs;
 using LogicaAplicacion.InterfacesCasosDeUso;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace StellarMindsWebApi.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize]
     public class AuditoriaPrestamoController : Controller
     {
         private IListarAuditoriasPrestamo listAllAudisCU;

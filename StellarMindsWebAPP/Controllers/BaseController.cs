@@ -17,5 +17,9 @@ namespace StellarMindsWebAPP.Controllers
         {
             return HttpContext.Session.GetString("rol");
         }
+        protected string tokenSesion()
+        {
+            return HttpContext.Session.GetString("token");
+        }
     }
 }

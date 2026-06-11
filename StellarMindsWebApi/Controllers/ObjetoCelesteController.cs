@@ -1,4 +1,5 @@
 ﻿using LogicaAplicacion.InterfacesCasosDeUso;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Data.Common;
 
@@ -6,6 +7,7 @@ namespace StellarMindsWebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class ObjetoCelesteController : ControllerBase
     {
         private IListarObjetosCelestes listarObjetosCelestesCU;
