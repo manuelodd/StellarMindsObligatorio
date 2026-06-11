@@ -10,7 +10,7 @@ using StellarMindsWebAPP.Models;
 
 namespace StellarMindsWebAPP.Controllers
 {
-    public class EquipoController : Controller
+    public class EquipoController : BaseController
     {
 
         private string baseUrl = "http://localhost:5077/api/Equipo";
@@ -18,13 +18,13 @@ namespace StellarMindsWebAPP.Controllers
         // GET: EquipoController/Create
         public IActionResult Index()
         {
-            HttpResponseMessage respuesta = HttpClientAuxiliar.EnviarSolicitud(baseUrl, HttpVerbos.GET);
+            HttpResponseMessage respuesta = HttpClientAuxiliar.EnviarSolicitud
+                                        (baseUrl, HttpVerbos.GET, null, tokenSesion());
 
             if (respuesta.IsSuccessStatusCode)
             {
                 string texto = HttpClientAuxiliar.ObtenerBody(respuesta);
                 IEnumerable<EquipoModel> equipos = JsonConvert.DeserializeObject<IEnumerable<EquipoModel>>(texto);
-
                 return View(equipos);
             }
 

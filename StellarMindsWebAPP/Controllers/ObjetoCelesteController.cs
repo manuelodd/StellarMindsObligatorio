@@ -6,7 +6,7 @@ using System.Buffers.Text;
 
 namespace StellarMindsWebAPP.Controllers
 {
-    public class ObjetoCelesteController : Controller
+    public class ObjetoCelesteController : BaseController
     {
         private string baseUrl = "http://localhost:5077/api/ObjetoCeleste";
 

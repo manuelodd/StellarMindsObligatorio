@@ -28,8 +28,8 @@ namespace StellarMindsWebAPP.Controllers
         public IActionResult Index()
         {
 
-            HttpResponseMessage respuesta = HttpClientAuxiliar.EnviarSolicitud(
-                baseUrl, Enums.HttpVerbos.GET, null, tokenSesion());
+            HttpResponseMessage respuesta = HttpClientAuxiliar.EnviarSolicitud
+                                            (baseUrl, HttpVerbos.GET, null, tokenSesion());
 
 
             if (respuesta.IsSuccessStatusCode)
@@ -51,11 +51,14 @@ namespace StellarMindsWebAPP.Controllers
         public ActionResult<UsuarioModel> Create(UsuarioModel model)
         {
 
-            HttpResponseMessage respuesta = HttpClientAuxiliar.EnviarSolicitud(baseUrl, Enums.HttpVerbos.POST, model);
+            HttpResponseMessage respuesta = HttpClientAuxiliar.EnviarSolicitud
+                                            (baseUrl, HttpVerbos.POST, model, tokenSesion());
 
             if (respuesta.IsSuccessStatusCode)
             {
-                return View(model);
+                string objetoFormatoTexto = HttpClientAuxiliar.ObtenerBody(respuesta);
+                UsuarioModel usuario = JsonConvert.DeserializeObject<UsuarioModel>(objetoFormatoTexto);
+                return View(usuario);
             }
 
             return RedirectToAction("Index");

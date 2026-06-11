@@ -47,9 +47,7 @@ namespace StellarMindsWebApi.Controllers
         {
             try
             {
-                return Ok(
-                    listAllAudisByCoordinadorCU.Execute(id)
-                );
+                return Ok(listAllAudisByCoordinadorCU.Execute(id));
             }
             catch (EntityNotFoundException ex)
             {
