@@ -66,7 +66,7 @@
         <label for="Tipo" class="control-label">TIPO DE MONTURA</label>
         <select name="Tipo" class="form-control">
 
-            @if (montu.Tipo == TipoMontura.Ecuatorial)
+            @if (montu.Tipo == "ECUATORIAL")
             {
                 <option value="0" selected>Ecuatorial</option>
             }
@@ -75,7 +75,7 @@
                 <option value="0">Ecuatorial</option>
             }
 
-            @if (montu.Tipo == TipoMontura.AltAzimutal)
+            @if (montu.Tipo == "ALTAZIMUTAL")
             {
                 <option value="1" selected>AltAzimutal</option>
             }
@@ -84,7 +84,7 @@
                 <option value="1">AltAzimutal</option>
             }
 
-            @if (montu.Tipo == TipoMontura.Hibrida)
+            @if (montu.Tipo == "HIBRIDA")
             {
                 <option value="2" selected>Hibrida</option>
             }
@@ -136,7 +136,7 @@
         <label for="TipoSensor" class="control-label">TIPO SENSOR</label>
         <select name="TipoSensor" class="form-control">
 
-            @if (cama.TipoSensor == TipoSensor.CMOS)
+            @if (cama.TipoSensor == "CMOS")
             {
                 <option value="0" selected>CMOS</option>
             }
@@ -145,7 +145,7 @@
                 <option value="0">CMOS</option>
             }
 
-            @if (cama.TipoSensor == TipoSensor.CCD)
+            @if (cama.TipoSensor == "CCD")
             {
                 <option value="1" selected>CCD</option>
             }

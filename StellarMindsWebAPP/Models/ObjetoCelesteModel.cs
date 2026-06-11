@@ -6,7 +6,7 @@ namespace StellarMindsWebAPP.Models
     {
         public int Id { get; set; }
         public string Nombre { get; set; } = string.Empty;
-        public TipoObjetoCeleste Tipo { get; set; }
+        public string TipoObjetoCeleste { get; set; }
         public decimal MagnitudAparente { get; set; }
     }
 }

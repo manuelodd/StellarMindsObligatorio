@@ -18,26 +18,26 @@
 </select>
 
         <form asp-action="CreateTelescopio" id="formTelescopio" style="display: none">
-                <label for="Marca" class="control-label">MARCA</label>
+                <label for="marca" class="control-label">MARCA</label>
                 <input type="text" name="Marca" id="marca" class="form-control" />
-
-                <label for="Modelo" class="control-label">MODELO</label>
+    
+                <label for="modelo" class="control-label">MODELO</label>
                 <input type="text" name="Modelo" id="modelo" class="form-control" />
 
-                <label for="CantDisp" class="control-label">CANTIDAD DISPONIBLE</label>
+                <label for="cantDisp" class="control-label">CANTIDAD DISPONIBLE</label>
                 <input type="number" name="CantDisp" id="cantdisp" class="form-control" />
 
-                <label for="Apertura" class="control-label">APERTURA</label>
+                <label for="apertura" class="control-label">APERTURA</label>
                 <input type="number" name="Apertura" id="apertura" class="form-control" />
 
-                <label for="RelacionFocal" class="control-label">RELACION FOCAL</label>
+                <label for="relacionfocal" class="control-label">RELACION FOCAL</label>
                 <input type="text" name="RelacionFocal" id="relacionfocal" class="form-control" />
             
-            <label for="DistanciaFocal" class="control-label">DISTANCIA FOCAL</label>
-        <input type="number" name="DistanciaFocal" id="distanciafocal" class="form-control" />
+                <label for="distanciafocal" class="control-label">DISTANCIA FOCAL</label>
+                <input type="number" name="DistanciaFocal" id="distanciafocal" class="form-control" />
 
-            <label for="PesoKG" class="control-label">PESO (KG)</label>
-        <input type="number" name="PesoKG" id="pesokg" class="form-control" />
+                <label for="pesokg" class="control-label">PESO (KG)</label>
+                <input type="number" name="PesoKG" id="pesokg" class="form-control" />
 
                 <input type="submit" value="Create" class="btn btn-primary" />
         </form>
@@ -46,26 +46,26 @@
 
 <form asp-action="CreateMontura" id="formMontura" style="display:none">
 
-    <label for="Marca" class="control-label">MARCA</label>
+    <label for="marcaMontura" class="control-label">MARCA</label>
     <input type="text" name="Marca" id="marcaMontura" class="form-control" />
 
-    <label for="Modelo" class="control-label">MODELO</label>
+    <label for="modeloMontura" class="control-label">MODELO</label>
     <input type="text" name="Modelo" id="modeloMontura" class="form-control" />
 
-    <label for="CantDisp" class="control-label">CANTIDAD DISPONIBLE</label>
+    <label for="cantdispMontura" class="control-label">CANTIDAD DISPONIBLE</label>
         <input type="number" name="CantDisp" id="cantdispMontura" class="form-control" />
 
-    <label for="Tipo" class="control-label">TIPO MONTURA</label>
+    <label for="tipoMontura" class="control-label">TIPO MONTURA</label>
     <select name="Tipo" id="tipoMontura" class="form-control">
         <option value="0">Ecuatorial</option>
         <option value="1">AltAzimutal</option>
         <option value="2">Hibrida</option>
     </select>
 
-    <label for="CargaKG" class="control-label">CARGA KG</label>
+    <label for="cargakg" class="control-label">CARGA KG</label>
         <input type="number" name="CargaKG" id="cargakg" class="form-control" />
 
-    <label for="GoTo" class="control-label">GOTO</label>
+    <label for="goto" class="control-label">GOTO</label>
     <input type="checkbox" name="GoTo" id="goto" />
 
     <input type="submit" value="Create" class="btn btn-primary" />
@@ -76,25 +76,25 @@
 
 <form asp-action="CreateCamara" id="formCamara" style="display:none">
 
-    <label for="Marca" class="control-label">MARCA</label>
+    <label for="marcaCamara" class="control-label">MARCA</label>
     <input type="text" name="Marca" id="marcaCamara" class="form-control" />
 
-    <label for="Modelo" class="control-label">MODELO</label>
+    <label for="modeloCamara" class="control-label">MODELO</label>
     <input type="text" name="Modelo" id="modeloCamara" class="form-control" />
 
-    <label for="CantDisp" class="control-label">CANTIDAD DISPONIBLE</label>
+    <label for="cantdispCamara" class="control-label">CANTIDAD DISPONIBLE</label>
         <input type="number" name="CantDisp" id="cantdispCamara" class="form-control" />
 
-    <label for="TipoSensor" class="control-label">TIPO SENSOR</label>
+    <label for="tiposensor" class="control-label">TIPO SENSOR</label>
     <select name="TipoSensor" id="tiposensor" class="form-control">
         <option value="0">CMOS</option>
         <option value="1">CCD</option>
     </select>
 
-    <label for="Resolution" class="control-label">RESOLUCION</label>
+    <label for="resolution" class="control-label">RESOLUCION</label>
         <input type="number" name="Resolution" id="resolution" class="form-control" />
 
-    <label for="PixelSize" class="control-label">PIXEL SIZE</label>
+    <label for="pixelsize" class="control-label">PIXEL SIZE</label>
         <input type="number" name="PixelSize" id="pixelsize" class="form-control" />
 
     <input type="submit" value="Create" class="btn btn-primary" />
@@ -105,19 +105,19 @@
 
 <form asp-action="CreateOcular" id="formOcular" style="display:none">
 
-    <label for="Marca" class="control-label">MARCA</label>
+    <label for="marcaOcular" class="control-label">MARCA</label>
     <input type="text" name="Marca" id="marcaOcular" class="form-control" />
 
-    <label for="Modelo" class="control-label">MODELO</label>
+    <label for="modeloOcular" class="control-label">MODELO</label>
     <input type="text" name="Modelo" id="modeloOcular" class="form-control" />
 
-    <label for="CantDisp" class="control-label">CANTIDAD DISPONIBLE</label>
+    <label for="cantdispOcular" class="control-label">CANTIDAD DISPONIBLE</label>
         <input type="number" name="CantDisp" id="cantdispOcular" class="form-control" />
 
-    <label for="Diametro" class="control-label">DIAMETRO</label>
+    <label for="diametro" class="control-label">DIAMETRO</label>
         <input type="number" name="Diametro" id="diametro" class="form-control" />
 
-    <label for="GradosVision" class="control-label">GRADOS DE VISION</label>
+    <label for="gradosvision" class="control-label">GRADOS DE VISION</label>
         <input type="number" name="GradosVision" id="gradosvision" class="form-control" />
 
     <input type="submit" value="Create" class="btn btn-primary" />

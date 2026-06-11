@@ -111,7 +111,8 @@ namespace StellarMindsWebAPP.Controllers
         [HttpPost]
         public ActionResult<TelescopioModel> CreateTelescopio(TelescopioModel model)
         {
-            HttpResponseMessage respuesta = HttpClientAuxiliar.EnviarSolicitud(baseUrl + "/telescopios", HttpVerbos.POST,model);
+
+            HttpResponseMessage respuesta = HttpClientAuxiliar.EnviarSolicitud(baseUrl + "/telescopios", HttpVerbos.POST, model, tokenSesion());
             if (respuesta.IsSuccessStatusCode)
             {
                 return RedirectToAction(nameof(Index));
@@ -123,7 +124,8 @@ namespace StellarMindsWebAPP.Controllers
         [HttpPost]
         public ActionResult<MonturaModel> CreateMontura(MonturaModel model)
         {
-            HttpResponseMessage respuesta = HttpClientAuxiliar.EnviarSolicitud(baseUrl + "/monturas", HttpVerbos.POST, model);
+
+            HttpResponseMessage respuesta = HttpClientAuxiliar.EnviarSolicitud(baseUrl + "/monturas", HttpVerbos.POST, model, tokenSesion());
             if (respuesta.IsSuccessStatusCode)
             {
                 return RedirectToAction(nameof(Index));
@@ -135,7 +137,8 @@ namespace StellarMindsWebAPP.Controllers
         [HttpPost]
         public ActionResult<CamaraModel> CreateCamara(CamaraModel model)
         {
-            HttpResponseMessage respuesta = HttpClientAuxiliar.EnviarSolicitud(baseUrl + "/camaras", HttpVerbos.POST, model);
+
+            HttpResponseMessage respuesta = HttpClientAuxiliar.EnviarSolicitud(baseUrl + "/camaras", HttpVerbos.POST, model, tokenSesion());
             if (respuesta.IsSuccessStatusCode)
             {
                 return RedirectToAction(nameof(Index));
@@ -147,7 +150,8 @@ namespace StellarMindsWebAPP.Controllers
         [HttpPost]
         public ActionResult<OcularModel> CreateOcular(OcularModel model)
         {
-            HttpResponseMessage respuesta = HttpClientAuxiliar.EnviarSolicitud(baseUrl + "/oculares", HttpVerbos.POST, model);
+
+            HttpResponseMessage respuesta = HttpClientAuxiliar.EnviarSolicitud(baseUrl + "/oculares", HttpVerbos.POST, model, tokenSesion());
             if (respuesta.IsSuccessStatusCode)
             {
                 return RedirectToAction(nameof(Index));
@@ -156,66 +160,179 @@ namespace StellarMindsWebAPP.Controllers
             return View("Create");
         }
 
-        [HttpPost]
-        public ActionResult<TelescopioModel> EditTelescopio(TelescopioModel model)
+        [HttpGet]
+        public IActionResult EditTelescopio(int id)
         {
-            HttpResponseMessage respuesta = HttpClientAuxiliar.EnviarSolicitud(baseUrl + "/telescopios", HttpVerbos.PUT, model);
-            if (respuesta.IsSuccessStatusCode)
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            ViewBag.Error = HttpClientAuxiliar.ObtenerBody(respuesta);
-            return View("Edit", model);
-        }
+            HttpResponseMessage respuesta =
+                HttpClientAuxiliar.EnviarSolicitud(
+                    baseUrl + "/" + id,
+                    HttpVerbos.GET,
+                    null,
+                    tokenSesion());
 
-        [HttpPost]
-        public ActionResult<MonturaModel> EditMontura(MonturaModel model)
-        {
-            HttpResponseMessage respuesta = HttpClientAuxiliar.EnviarSolicitud(baseUrl + "/monturas", HttpVerbos.PUT, model);
-            if (respuesta.IsSuccessStatusCode)
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            ViewBag.Error = HttpClientAuxiliar.ObtenerBody(respuesta);
-            return View("Edit", model);
-        }
-
-        [HttpPost]
-        public ActionResult<CamaraModel> EditCamara(CamaraModel model)
-        {
-            HttpResponseMessage respuesta = HttpClientAuxiliar.EnviarSolicitud(baseUrl + "/camaras", HttpVerbos.PUT,model);
-            if (respuesta.IsSuccessStatusCode)
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            ViewBag.Error = HttpClientAuxiliar.ObtenerBody(respuesta);
-            return View("Edit", model);
-        }
-
-        [HttpPost]
-        public ActionResult<OcularModel> EditOcular(OcularModel model)
-        {
-            HttpResponseMessage respuesta = HttpClientAuxiliar.EnviarSolicitud(baseUrl + "/oculares", HttpVerbos.PUT, model);
-            if (respuesta.IsSuccessStatusCode)
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            ViewBag.Error = HttpClientAuxiliar.ObtenerBody(respuesta);
-            return View("Edit", model);
-        }
-
-        public IActionResult ListSocioTele()
-        {
-            SociosPorTelescopioViewmodel vm = new SociosPorTelescopioViewmodel();
-
-            HttpResponseMessage respuesta = HttpClientAuxiliar.EnviarSolicitud(baseUrl + "/telescopios", HttpVerbos.GET);
             if (respuesta.IsSuccessStatusCode)
             {
                 string json = HttpClientAuxiliar.ObtenerBody(respuesta);
-                vm.Telescopios = JsonConvert.DeserializeObject<List<TelescopioModel>>(json);
+
+                TelescopioModel model =
+                    JsonConvert.DeserializeObject<TelescopioModel>(json);
+
+                return View("Edit", model);
             }
 
-            vm.Socios = new List<UsuarioModel>();
+            return RedirectToAction(nameof(Index));
+        }
+
+        [HttpPost]
+        public IActionResult EditTelescopio(TelescopioModel model)
+        {
+            HttpResponseMessage respuesta =
+                HttpClientAuxiliar.EnviarSolicitud(
+                    baseUrl + "/telescopios",
+                    HttpVerbos.PUT,
+                    model,
+                    tokenSesion());
+            if (respuesta.IsSuccessStatusCode)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+            ViewBag.Error = HttpClientAuxiliar.ObtenerBody(respuesta);
+            return View(model);
+        }
+
+        [HttpGet]
+        public IActionResult EditMontura(int id)
+        {
+            HttpResponseMessage respuesta =
+                HttpClientAuxiliar.EnviarSolicitud(
+                    baseUrl + "/" + id,
+                    HttpVerbos.GET,
+                    null,
+                    tokenSesion());
+
+            if (respuesta.IsSuccessStatusCode)
+            {
+                string json = HttpClientAuxiliar.ObtenerBody(respuesta);
+                MonturaModel model =
+                    JsonConvert.DeserializeObject<MonturaModel>(json);
+                return View("Edit", model);
+            }
+            return RedirectToAction(nameof(Index));
+        }
+
+        [HttpPost]
+        public IActionResult EditMontura(MonturaModel model)
+        {
+            HttpResponseMessage respuesta =
+                HttpClientAuxiliar.EnviarSolicitud(
+                    baseUrl + "/monturas",
+                    HttpVerbos.PUT,
+                    model,
+                    tokenSesion());
+            if (respuesta.IsSuccessStatusCode)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+            ViewBag.Error = HttpClientAuxiliar.ObtenerBody(respuesta);
+            return View(model);
+        }
+
+        [HttpGet]
+        public IActionResult EditCamara(int id)
+        {
+            HttpResponseMessage respuesta =
+                HttpClientAuxiliar.EnviarSolicitud(
+                    baseUrl + "/" + id,
+                    HttpVerbos.GET,
+                    null,
+                    tokenSesion());
+            if (respuesta.IsSuccessStatusCode)
+            {
+                string json = HttpClientAuxiliar.ObtenerBody(respuesta);
+                CamaraModel model =
+                    JsonConvert.DeserializeObject<CamaraModel>(json);
+                return View("Edit", model);
+            }
+            return RedirectToAction(nameof(Index));
+        }
+
+        [HttpPost]
+        public IActionResult EditCamara(CamaraModel model)
+        {
+            HttpResponseMessage respuesta =
+                HttpClientAuxiliar.EnviarSolicitud(
+                    baseUrl + "/camaras",
+                    HttpVerbos.PUT,
+                    model,
+                    tokenSesion());
+            if (respuesta.IsSuccessStatusCode)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+            ViewBag.Error = HttpClientAuxiliar.ObtenerBody(respuesta);
+            return View(model);
+        }
+
+        [HttpGet]
+        public IActionResult EditOcular(int id)
+        {
+            HttpResponseMessage respuesta =
+                HttpClientAuxiliar.EnviarSolicitud(
+                    baseUrl + "/" + id,
+                    HttpVerbos.GET,
+                    null,
+                    tokenSesion());
+
+            if (respuesta.IsSuccessStatusCode)
+            {
+                string json = HttpClientAuxiliar.ObtenerBody(respuesta);
+                OcularModel model =
+                    JsonConvert.DeserializeObject<OcularModel>(json);
+                return View("Edit", model);
+            }
+            return RedirectToAction(nameof(Index));
+        }
+
+        [HttpPost]
+        public IActionResult EditOcular(OcularModel model)
+        {
+            HttpResponseMessage respuesta =
+                HttpClientAuxiliar.EnviarSolicitud(
+                    baseUrl + "/oculares",
+                    HttpVerbos.PUT,
+                    model,
+                    tokenSesion());
+            if (respuesta.IsSuccessStatusCode)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+            ViewBag.Error = HttpClientAuxiliar.ObtenerBody(respuesta);
+            return View(model);
+        }
+
+
+
+
+
+
+        public IActionResult ListSocioTele()
+        {
+            SociosPorTelescopioViewmodel vm = new SociosPorTelescopioViewmodel
+            {
+                Telescopios = new List<TelescopioModel>(),
+                Socios = new List<UsuarioModel>()
+            };
+
+            HttpResponseMessage respuesta =
+                HttpClientAuxiliar.EnviarSolicitud(baseUrl + "/telescopios", HttpVerbos.GET);
+
+            if (respuesta.IsSuccessStatusCode)
+            {
+                string json = HttpClientAuxiliar.ObtenerBody(respuesta);
+                vm.Telescopios =
+                    JsonConvert.DeserializeObject<List<TelescopioModel>>(json);
+            }
+
             return View(vm);
         }
 
@@ -225,7 +342,7 @@ namespace StellarMindsWebAPP.Controllers
         {
             SociosPorTelescopioViewmodel vm = new SociosPorTelescopioViewmodel();
 
-            HttpResponseMessage respuestaTel = HttpClientAuxiliar.EnviarSolicitud(baseUrl + "/telescopios", HttpVerbos.GET);
+            HttpResponseMessage respuestaTel = HttpClientAuxiliar.EnviarSolicitud(baseUrl + "/telescopios", HttpVerbos.GET, null, tokenSesion());
 
             if (respuestaTel.IsSuccessStatusCode)
             {
@@ -233,7 +350,7 @@ namespace StellarMindsWebAPP.Controllers
                 vm.Telescopios = JsonConvert.DeserializeObject<List<TelescopioModel>>(json);
             }
 
-            HttpResponseMessage respuestaSocios = HttpClientAuxiliar.EnviarSolicitud($"{baseUrl}/{telescopioId}",HttpVerbos.GET);
+            HttpResponseMessage respuestaSocios = HttpClientAuxiliar.EnviarSolicitud($"{baseUrl}/socios-por-telescopio/{telescopioId}", HttpVerbos.GET, null, tokenSesion());
 
             if (respuestaSocios.IsSuccessStatusCode)
             {

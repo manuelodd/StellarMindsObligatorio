@@ -40,7 +40,7 @@ namespace StellarMinds.Entities
                 throw new InvalidPrestamoException("El peso del telescopio excede la capacidad de la montura.");
             if (FechaInicio > FechaFin)
                 throw new InvalidPrestamoException("La fecha de inicio no puede ser mayor a la de fin.");
-            if (Camara != null && Montura.Tipo != TipoMontura.Ecuatorial && Montura.Tipo != TipoMontura.Hibrida)
+            if (Camara != null && Montura.Tipo != TipoMontura.ECUATORIAL && Montura.Tipo != TipoMontura.HIBRIDA)
                 throw new InvalidPrestamoException("Para astrofotografía la montura debe ser ecuatorial o híbrida.");
         }
     }

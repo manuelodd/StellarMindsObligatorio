@@ -33,7 +33,7 @@ namespace DTOs.Mappers
                 Modelo = dto.Modelo,
                 EnPrestamo = dto.EnPrestamo,
                 CantDisp = dto.CantDisp,
-                TipoSensor = Enum.Parse<TipoSensor>(dto.Tipo),
+                TipoSensor = Enum.Parse<TipoSensor>(dto.TipoSensor),
                 Resolution = dto.Resolution,
                 PixelSize = dto.PixelSize,
             };
