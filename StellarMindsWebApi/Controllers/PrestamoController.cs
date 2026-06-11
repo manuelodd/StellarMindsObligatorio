@@ -107,7 +107,7 @@ namespace StellarMindsWebApi.Controllers
 
 
         [HttpPost]
-        public ActionResult<PrestamoDTO> Post(PrestamoDTO dto,int coordinadorId)
+        public ActionResult<PrestamoDTO> Create([FromBody] PrestamoDTO dto, [FromQuery] int coordinadorId)
         {
             try
             {

@@ -323,14 +323,12 @@ namespace StellarMindsWebAPP.Controllers
                 Socios = new List<UsuarioModel>()
             };
 
-            HttpResponseMessage respuesta =
-                HttpClientAuxiliar.EnviarSolicitud(baseUrl + "/telescopios", HttpVerbos.GET);
+            HttpResponseMessage respuesta = HttpClientAuxiliar.EnviarSolicitud(baseUrl + "/telescopios", HttpVerbos.GET, null, tokenSesion());
 
             if (respuesta.IsSuccessStatusCode)
             {
                 string json = HttpClientAuxiliar.ObtenerBody(respuesta);
-                vm.Telescopios =
-                    JsonConvert.DeserializeObject<List<TelescopioModel>>(json);
+                vm.Telescopios = JsonConvert.DeserializeObject<List<TelescopioModel>>(json);
             }
 
             return View(vm);

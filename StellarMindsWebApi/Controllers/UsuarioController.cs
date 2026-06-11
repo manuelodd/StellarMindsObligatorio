@@ -20,15 +20,18 @@ namespace StellarMindsWebApi.Controllers
         private IListarUsuarios findAllCU;
         private IListarSocios findAllSociosCU;
 
+
         public UsuarioController(ILoginUsuario loginu,
                                     IAltaUsuario altau,
                                     IListarUsuarios findAllCu,
-                                    IListarSocios findAllSociosCu)
+                                    IListarSocios findAllSociosCu
+                                    /*IListarCoordinadores findAllCoordinadoresCu*/)
         {
             this.loginU = loginu;
             this.altaCU = altau;
             this.findAllCU = findAllCu;
-            this.findAllSociosCU = findAllSociosCu; 
+            this.findAllSociosCU = findAllSociosCu;
+            //this.findAllCoordinadoresCU = findAllCoordinadoresCu;
         }
         // GET: api/<UsuarioController>
         /*
@@ -99,6 +102,9 @@ namespace StellarMindsWebApi.Controllers
             }
         }
 
+
+
+
         /*
             [HttpPost("login")]
             public ActionResult<UsuarioDTO> Login(string username, string pass)
@@ -124,7 +130,7 @@ namespace StellarMindsWebApi.Controllers
                 }
             }
         */
-        
+
         [HttpPost]
         [AllowAnonymous]
         [Route("login")]

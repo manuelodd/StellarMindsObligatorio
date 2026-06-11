@@ -51,7 +51,7 @@ namespace StellarMindsWebAPP.Controllers
 
         public IActionResult Details(int id)
         {
-            HttpResponseMessage respuesta = HttpClientAuxiliar.EnviarSolicitud($"{baseUrl}/{id}", HttpVerbos.GET);
+            HttpResponseMessage respuesta = HttpClientAuxiliar.EnviarSolicitud($"{baseUrl}/{id}", HttpVerbos.GET, null, tokenSesion());
 
             if (respuesta.IsSuccessStatusCode)
             {
@@ -67,34 +67,41 @@ namespace StellarMindsWebAPP.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            PrestamoAltaViewmodel vm = new PrestamoAltaViewmodel();
+            PrestamoAltaViewmodel vm = new PrestamoAltaViewmodel
+            {
+                Telescopios = new List<TelescopioModel>(),
+                Monturas = new List<MonturaModel>(),
+                Camaras = new List<CamaraModel>(),
+                Oculares = new List<OcularModel>(),
+                Usuarios = new List<UsuarioModel>()
+            };
 
             // cargando el viewmodel
-            HttpResponseMessage tel = HttpClientAuxiliar.EnviarSolicitud(equipoUrl+"/telescopios", HttpVerbos.GET);
+            HttpResponseMessage tel = HttpClientAuxiliar.EnviarSolicitud(equipoUrl+"/telescopios", HttpVerbos.GET,null , tokenSesion());
             if (tel.IsSuccessStatusCode)
             {
                 vm.Telescopios = JsonConvert.DeserializeObject<List<TelescopioModel>>(HttpClientAuxiliar.ObtenerBody(tel));
             }
 
-            HttpResponseMessage mon = HttpClientAuxiliar.EnviarSolicitud(equipoUrl + "/monturas", HttpVerbos.GET);
+            HttpResponseMessage mon = HttpClientAuxiliar.EnviarSolicitud(equipoUrl + "/monturas", HttpVerbos.GET, null, tokenSesion());
             if (mon.IsSuccessStatusCode)
             {
                 vm.Monturas = JsonConvert.DeserializeObject<List<MonturaModel>>(HttpClientAuxiliar.ObtenerBody(mon));
             }
 
-            HttpResponseMessage cam = HttpClientAuxiliar.EnviarSolicitud(equipoUrl + "/camaras",HttpVerbos.GET);
+            HttpResponseMessage cam = HttpClientAuxiliar.EnviarSolicitud(equipoUrl + "/camaras",HttpVerbos.GET, null, tokenSesion());
             if (cam.IsSuccessStatusCode)
             {
                 vm.Camaras = JsonConvert.DeserializeObject<List<CamaraModel>>(HttpClientAuxiliar.ObtenerBody(cam));
             }
 
-            HttpResponseMessage ocu = HttpClientAuxiliar.EnviarSolicitud(equipoUrl + "/oculares", HttpVerbos.GET);
+            HttpResponseMessage ocu = HttpClientAuxiliar.EnviarSolicitud(equipoUrl + "/oculares", HttpVerbos.GET, null, tokenSesion());
             if (ocu.IsSuccessStatusCode)
             {
                 vm.Oculares = JsonConvert.DeserializeObject<List<OcularModel>>(HttpClientAuxiliar.ObtenerBody(ocu));
             }
 
-            HttpResponseMessage usu = HttpClientAuxiliar.EnviarSolicitud(usuarioUrl + "/socios", HttpVerbos.GET);
+            HttpResponseMessage usu = HttpClientAuxiliar.EnviarSolicitud(usuarioUrl + "/socios", HttpVerbos.GET, null, tokenSesion());
             if (usu.IsSuccessStatusCode)
             {
                 vm.Usuarios = JsonConvert.DeserializeObject<List<UsuarioModel>>(HttpClientAuxiliar.ObtenerBody(usu));
@@ -108,7 +115,7 @@ namespace StellarMindsWebAPP.Controllers
         {
             string url = $"{baseUrl}?coordinadorId={idLogeado()}";
 
-            HttpResponseMessage respuesta =HttpClientAuxiliar.EnviarSolicitud(url, HttpVerbos.POST,model);
+            HttpResponseMessage respuesta =HttpClientAuxiliar.EnviarSolicitud(url, HttpVerbos.POST,model ,tokenSesion());
 
             if (respuesta.IsSuccessStatusCode)
             {
@@ -116,7 +123,7 @@ namespace StellarMindsWebAPP.Controllers
             }
 
             ViewBag.Error = HttpClientAuxiliar.ObtenerBody(respuesta);
-            return View(model);
+            return RedirectToAction(nameof(Create));
         }
 
         public IActionResult Return()
@@ -160,7 +167,7 @@ namespace StellarMindsWebAPP.Controllers
             int coordinadorId = idLogeado();
 
             HttpResponseMessage respuesta = HttpClientAuxiliar.EnviarSolicitud(
-                    $"{baseUrl}/devolver/{prestamoid}?coordinadorId={coordinadorId}",
+                    $"{baseUrl}/devolver/{prestamoid}",
                     HttpVerbos.PUT);
 
             if (respuesta.IsSuccessStatusCode)

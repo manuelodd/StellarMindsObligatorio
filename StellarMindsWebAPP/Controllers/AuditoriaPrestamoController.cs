@@ -17,7 +17,7 @@ namespace StellarMindsWebAPP.Controllers
 
         public IActionResult Index()
         {
-            HttpResponseMessage respuesta = HttpClientAuxiliar.EnviarSolicitud(baseUrl, HttpVerbos.GET);
+            HttpResponseMessage respuesta = HttpClientAuxiliar.EnviarSolicitud(baseUrl, HttpVerbos.GET, null, tokenSesion());
 
             if (respuesta.IsSuccessStatusCode)
             {
@@ -25,14 +25,14 @@ namespace StellarMindsWebAPP.Controllers
                 List<AuditoriaPrestamoModel> lista = JsonConvert.DeserializeObject<List<AuditoriaPrestamoModel>>(json);
                 return View(lista);
             }
-            return View();
+            return View(new List<AuditoriaPrestamoModel>());
         }
 
         public IActionResult FilterByCoordinador()
         {
             ListarAuditoriasPorCoordinadorViewmodel vm = new ListarAuditoriasPorCoordinadorViewmodel();
 
-            HttpResponseMessage respuesta = HttpClientAuxiliar.EnviarSolicitud(baseUrl + "/coordinadores", HttpVerbos.GET);
+            HttpResponseMessage respuesta = HttpClientAuxiliar.EnviarSolicitud(baseUrl + "/coordinadores", HttpVerbos.GET, null, tokenSesion());
             if (respuesta.IsSuccessStatusCode)
             {
                 string json = HttpClientAuxiliar.ObtenerBody(respuesta);
@@ -47,14 +47,14 @@ namespace StellarMindsWebAPP.Controllers
         {
             ListarAuditoriasPorCoordinadorViewmodel vm = new ListarAuditoriasPorCoordinadorViewmodel();
 
-            HttpResponseMessage respuestaCoords = HttpClientAuxiliar.EnviarSolicitud(baseUrl + "/coordinadores",HttpVerbos.GET);
+            HttpResponseMessage respuestaCoords = HttpClientAuxiliar.EnviarSolicitud(baseUrl + "/coordinadores",HttpVerbos.GET, null, tokenSesion());
             if (respuestaCoords.IsSuccessStatusCode)
             {
                 string jsonCoords = HttpClientAuxiliar.ObtenerBody(respuestaCoords);
                 vm.Coordinadores = JsonConvert.DeserializeObject<List<UsuarioModel>>(jsonCoords);
             }
 
-            HttpResponseMessage respuestaAudis = HttpClientAuxiliar.EnviarSolicitud(baseUrl + "/coordinador/" + coordinadorId, HttpVerbos.GET);
+            HttpResponseMessage respuestaAudis = HttpClientAuxiliar.EnviarSolicitud(baseUrl + "/coordinador/" + coordinadorId, HttpVerbos.GET, null, tokenSesion());
             if (respuestaAudis.IsSuccessStatusCode)
             {
                 string jsonAudis = HttpClientAuxiliar.ObtenerBody(respuestaAudis);

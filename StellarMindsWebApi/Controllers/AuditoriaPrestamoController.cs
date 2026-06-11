@@ -3,6 +3,7 @@ using DTOs.DTOs;
 using LogicaAplicacion.InterfacesCasosDeUso;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Data.Common;
 
 namespace StellarMindsWebApi.Controllers
 {
@@ -15,17 +16,19 @@ namespace StellarMindsWebApi.Controllers
         private IListarCoordinadores listAllCoordinadoresCU;
         private IListarAuditoriasByCoordinador listAllAudisByCoordinadorCU;
         private IFindAuditoriaById findAuditoriaByIdCU;
-
+        private IListarCoordinadores findAllCoordinadoresCU;
 
         public AuditoriaPrestamoController(IListarAuditoriasPrestamo listAllAudisCu,
                                             IListarCoordinadores listAllCoordinadoresCu,
                                             IListarAuditoriasByCoordinador listAllAudisByCoordinadorCu,
-                                            IFindAuditoriaById findAuditoriaByIdCu)
+                                            IFindAuditoriaById findAuditoriaByIdCu,
+                                            IListarCoordinadores findAllCoordinadoresCu)
         {
             this.listAllAudisCU = listAllAudisCu;
             this.listAllCoordinadoresCU = listAllCoordinadoresCu;
             this.listAllAudisByCoordinadorCU = listAllAudisByCoordinadorCu;
             this.findAuditoriaByIdCU = findAuditoriaByIdCu;
+            this.findAllCoordinadoresCU = findAllCoordinadoresCu;
         }
 
 
@@ -77,9 +80,27 @@ namespace StellarMindsWebApi.Controllers
         }
 
         [HttpGet("coordinadores")]
-        public IActionResult GetCoordinadores()
+        public ActionResult<UsuarioDTO> GetCoordinadores()
         {
-            return Ok(listAllCoordinadoresCU.Execute());
+            try
+            {
+                IEnumerable<UsuarioDTO> listado = findAllCoordinadoresCU.Execute(); // aca rompe
+                return Ok(listado);
+            }
+            catch (DbException)
+            {
+                return StatusCode(500, "Internal server error.");
+            }
+            catch (InvalidUserException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                {
+                    return BadRequest(ex.Message);
+                }
+            }
         }
     }
 }
